@@ -1,6 +1,6 @@
 package it.uiip.sopraSteriaTraining;
 
-public class Cognome {
+public class Nome {
 
 	public static void main(String[] args) {
 		
