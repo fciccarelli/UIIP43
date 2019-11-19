@@ -7,7 +7,7 @@ package esercizioGIT;
  * @author Luigi
  * Questa classe ha come output la stampa della stringa "Luigi Scialpi"
  */
-public class Cognome {
+public class Nome {
 
 	/**
 	 * @param args
