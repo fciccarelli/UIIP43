@@ -10,6 +10,7 @@ public class Names {
 
 		System.out.println("Antonietta De Angelis");
 		System.out.println("Pasquale Oppido");
+		System.out.println("Luigi Scialpi");
 	}
 
 }
