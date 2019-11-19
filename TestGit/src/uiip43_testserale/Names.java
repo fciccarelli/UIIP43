@@ -17,7 +17,6 @@ public class Names {
 		System.out.println("Pasquale Oppido");
 		System.out.println("Luigi Scialpi");
 		System.out.println("Fabio Sessa");
-		System.out.println("prova");
 
 	}
 
