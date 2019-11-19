@@ -1,7 +1,12 @@
+/**
+ * Contiene il main di stampa
+ */
 package uiip43_testserale;
 
 public class Names {
-
+	/**
+	 * Classe che stampa in ordine alfabetico la classe Full-Stack Developer UIIP 43° Edizione
+	 */
 	public static void main(String[] args) {
 
 		System.out.println("Fabio Assaiante");
