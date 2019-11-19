@@ -1,5 +1,5 @@
 /**
- * Contiene la classe Oppido.java
+ * Contiene la classe Nome.java
  */
 package it.uiip.w1d1_domanda6;
 
@@ -20,12 +20,12 @@ public class Nome {
 	}
 	
 	/** 
-	 * Inizializza un oggetto Oppido con un nome e cognome
+	 * Inizializza un oggetto Nome con un nome e cognome
 	 * @param nome rappresenta il nome
 	 * @param cognome rappresenta il cognome
 	 * un oggetto con un dato nome e cognome viene inizializzato
 	 */
-	public Oppido(String nome, String cognome) {
+	public Nome (String nome, String cognome) {
 		this.nome = nome;
 		this.cognome = cognome;
 	}
