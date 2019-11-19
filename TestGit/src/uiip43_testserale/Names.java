@@ -6,7 +6,10 @@ public class Names {
 	
 		System.out.println("Assaiante Fabio");
 		System.out.println("Simona Branca");
+		System.out.println("Simone D'Elia");
 
+		System.out.println("Antonietta De Angelis");
+		System.out.println("Pasquale Oppido");
 	}
 
 }
