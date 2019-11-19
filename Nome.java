@@ -10,6 +10,3 @@ public class Nome {
 		
 		System.out.println(nome + " " +cognome);
 
-	}
-
-}
