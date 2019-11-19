@@ -1,6 +1,6 @@
-package it.uiip.Cognome;
+package it.uiip.Nome;
 
-public class Branca {
+public class Nome {
 
 	public static void main(String[] args) {
 		
