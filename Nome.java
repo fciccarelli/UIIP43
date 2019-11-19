@@ -1,22 +1,12 @@
-/** * 
- */
-package esercizioGIT;
+package ProvaSerale;
 
-/**
- * @author Luigi
- * Questa classe ha come output la stampa della stringa "Luigi Scialpi"
- */
 public class Nome {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Luigi Scialpi");
+		String nome = "Simone";
+		String cognome = "D'Elia";
+		
+		System.out.println(nome + " " +cognome);
 
-	}
-
-}
- 
