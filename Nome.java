@@ -1,6 +1,7 @@
 
-  * 
-  */
+/**
+ * 
+ */
  package it.uiip.sopraSteria.esercitazione1;
 
  /**
@@ -23,4 +24,5 @@
  	}
 
  }
+
 
