@@ -7,7 +7,7 @@ package it.uiip.w1d1_domanda6;
  * @author pasop
  * Consente di stampare nome e cognome di Pasquale Oppido
  */
-public class Oppido {
+public class Nome {
 
 	private String nome;
 	private String cognome;
@@ -15,7 +15,7 @@ public class Oppido {
 	/**
 	 * Costruttore vuoto
 	 */
-	public Oppido() {
+	public Nome () {
 		this("","");
 	}
 	
