@@ -1,3 +1,6 @@
+/**
+ * ciao pasquale aggiusta i javadoc che ti piace tanto farlo
+ */
 package uiip43_testserale;
 
 public class Names {
