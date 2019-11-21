@@ -1,1 +1,0 @@
-Questo è un file di prova per l'esercitazione del 18/11/2019 su Git.
