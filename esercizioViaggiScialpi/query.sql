@@ -47,15 +47,48 @@ select count(v.idVolo) as count from volo as v
     group by v.giornoSett = 'Venerdì';
     
 # Le città italiane da cui partono almeno 2 voli alla settimana diretti in Olanda;
-select distinct a.citta from aeroporto as a
+select count(v.idVolo), a.citta from aeroporto as a
 
 	inner join volo as v
-    on a.id = v.aeroportoArr
+    on v.aeroportoPart = a.id
     
-    where a.nazione = 'Italia' having count(v.idVolo) >=1;
+    inner join aeroporto as b
+    on v.aeroportoArr = b.id
+    
+    where a.nazione = 'Italia' and b.nazione = 'Olanda' group by a.citta having count(v.idVolo) >=2;
     
 # Le città da cui parte l'aereo caratterizzato dal massimo numero di passeggeri;
+select distinct ap.citta from aereo as a
+	
+    inner join volo as v
+	on v.tipoAereo = a.tipoAereo
+
+	inner join aeroporto as ap
+	on v.aeroportoPart = ap.id
+    
+where a.npass =  ( select max(b.npass) from aereo as b inner join volo as x on b.tipoAereo = x.tipoAereo);
 
 # Le città su cui è diretto l'aereo caratterizzato dal massimo numero di passeggeri;
+select distinct ap.citta from aereo as a
+	
+    inner join volo as v
+	on v.tipoAereo = a.tipoAereo
+
+	inner join aeroporto as ap
+	on v.aeroportoArr = ap.id
+    
+where a.npass =  ( select max(b.npass) from aereo as b inner join volo as x on b.tipoAereo = x.tipoAereo);
 
 # Le città che sono servite dall'aereo caratterizzato dal massimo numero di passeggeri;
+select distinct ap.citta from aereo as a
+	
+    inner join volo as v
+	on v.tipoAereo = a.tipoAereo
+
+	inner join aeroporto as ap
+	on v.aeroportoPart = ap.id 
+    
+    inner join aeroporto as b
+    on v.aeroportoArr = b.id
+    
+where a.npass =  ( select max(b.npass) from aereo as b inner join volo as x on b.tipoAereo = x.tipoAereo);
