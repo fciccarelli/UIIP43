@@ -162,7 +162,7 @@
 
 				<attributes>
 
-					<attribute qualifier="code" type="java.lang.String">
+					<attribute qualifier="code" type="java.lang.String" >
 						<description> Id airport primary key </description>
 						<modifiers read="true" write="false" unique="true"
 							optional="false" />

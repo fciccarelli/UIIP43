@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 25-nov-2019 23.43.56                        ---
+ * --- Generated at 26-nov-2019 0.21.36                         ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;

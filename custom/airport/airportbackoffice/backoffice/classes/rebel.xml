@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zeroturnaround.com">
+  <classpath>
+    <dir name="C:\CXCOMM\hybris\bin\custom\airport\airportbackoffice/backoffice/classes" />
+  </classpath>
+</application>
