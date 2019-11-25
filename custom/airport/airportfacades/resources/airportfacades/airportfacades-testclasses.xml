@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testclasses><airportfacades><testclass>it.uiip.airport.facades.suggestion.DefaultSimpleSuggestionFacadeIntegrationTest</testclass><testclass>it.uiip.airport.facades.suggestion.impl.DefaultSimpleSuggestionFacadeTest</testclass></airportfacades></testclasses>
