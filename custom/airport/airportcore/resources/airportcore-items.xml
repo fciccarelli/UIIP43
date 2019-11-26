@@ -32,45 +32,61 @@
 			<value code="YELLOW" />
 		</enumtype>
 	</enumtypes>
-	
+
 	<relations>
 		<relation code="Plane2FlightRelation" generate="true"
 			localized="false" autocreate="true">
-			<sourceElement type="Plane" cardinality="one"
-				qualifier="code">
-				<!-- <modifiers read="true" write="true" optional="false"/> -->
+			<sourceElement qualifier="plane" type="Plane"
+				cardinality="one">
+				<!-- <modifiers read="true" write="true" search="true" optional="true"/> -->
 			</sourceElement>
-			<targetElement type="Flight" cardinality="many"
-				qualifier="codePlanes">
+			<targetElement qualifier="planes" type="Flight"
+				cardinality="many">
+				<!-- <modifiers read="true" write="true" search="true" optional="true"/> -->
 			</targetElement>
 		</relation>
 
 		<relation code="DepartureAirport2FlightRelation"
 			generate="true" localized="false" autocreate="true">
-			<sourceElement type="Airport" cardinality="one"
-				qualifier="code">
+
+			<sourceElement qualifier="departureAirport"
+				type="Airport" cardinality="one">
 			</sourceElement>
-			<targetElement type="Flight" cardinality="many"
-				qualifier="codeDepartureAirports">
+
+			<targetElement qualifier="departureAirports"
+				type="Flight" cardinality="many">
 			</targetElement>
 		</relation>
 
 		<relation code="AirportArrival2FlightRelation"
 			generate="true" localized="false" autocreate="true">
-			<sourceElement type="Airport" cardinality="one"
-				qualifier="code">
+
+			<sourceElement qualifier="airportArrival"
+				type="Airport" cardinality="one">
 			</sourceElement>
-			<targetElement type="Flight" cardinality="many"
-				qualifier="codeAirportArrivals">
+
+			<targetElement qualifier="airportArrivals"
+				type="Flight" cardinality="many">
+			</targetElement>
+		</relation>
+
+		<relation code="Flight2PassengerRelation" generate="true"
+			localized="false">
+
+			<sourceElement qualifier="flight" type="Flight"
+				cardinality="one">
+			</sourceElement>
+
+			<targetElement qualifier="flights" type="Passenger"
+				cardinality="many">
 			</targetElement>
 		</relation>
 
 	</relations>
-	
-	
+
 	<itemtypes>
 
-		
+
 
 		<!-- Add your item definitions here -->
 
@@ -78,6 +94,7 @@
 		<!-- TypeGroups are for structure of this file only -->
 
 		<typegroup name="Apparel">
+
 			<itemtype code="ApparelProduct" extends="Product"
 				autocreate="true" generate="true"
 				jaloclass="it.uiip.airport.core.jalo.ApparelProduct">
@@ -152,6 +169,7 @@
 		</typegroup>
 
 		<typegroup name="Airport">
+
 			<itemtype code="Airport" extends="GenericItem"
 				autocreate="true" generate="true"
 				jaloclass="it.uiip.airport.core.jalo.Airport">
@@ -162,21 +180,23 @@
 
 				<attributes>
 
-					<attribute qualifier="code" type="java.lang.String" >
+					<attribute qualifier="code" type="java.lang.String">
 						<description> Id airport primary key </description>
-						<modifiers read="true" write="false" unique="true"
+						<modifiers read="true" write="true" unique="true"
 							optional="false" />
 						<persistence type="property" />
 					</attribute>
 
-					<attribute qualifier="city" type="java.lang.String">
+					<attribute qualifier="city"
+						type="localized:java.lang.String">
 						<description> Airport city </description>
 						<modifiers read="true" write="true" unique="false"
 							optional="false" />
 						<persistence type="property" />
 					</attribute>
 
-					<attribute qualifier="country" type="java.lang.String">
+					<attribute qualifier="country"
+						type="localized:java.lang.String">
 						<description> Airport country </description>
 						<modifiers read="true" write="true" unique="false"
 							optional="false" />
@@ -204,22 +224,22 @@
 
 				<attributes>
 
-					<attribute type="java.lang.String" qualifier="code">
+					<attribute qualifier="code" type="java.lang.String">
 						<description> Plane type </description>
-						<modifiers read="true" write="false" unique="true"
+						<modifiers read="true" write="true" unique="true"
 							optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.Integer"
-						qualifier="nPassengers">
+					<attribute qualifier="nPassengers"
+						type="java.lang.Integer">
 						<description> Number of the passengers </description>
 						<modifiers read="true" write="true" unique="false"
 							optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.Integer" qualifier="nGoods">
+					<attribute qualifier="nGoods" type="java.lang.Integer">
 						<description> Plane type </description>
 						<modifiers read="true" write="true" unique="false"
 							optional="false" />
@@ -239,53 +259,31 @@
 
 				<attributes>
 
-					<attribute type="java.lang.Integer" qualifier="code">
-						<description> Flight type </description>
-						<modifiers read="true" write="false" unique="true"
+					<attribute qualifier="code" type="java.lang.String">
+						<description> Flight code </description>
+						<modifiers read="true" write="true" unique="true"
 							optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.String" qualifier="dayWeek">
+					<attribute qualifier="dayWeek"
+						type="localized:java.lang.String">
 						<description> Day of the week </description>
 						<modifiers read="true" write="true" unique="false"
 							optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.String"
-						qualifier="codeDepartureAirport">
-						<description> Departure airport </description>
-						<modifiers read="true" write="true" unique="false"
-							optional="false" />
-						<persistence type="property"></persistence>
-					</attribute>
-
-					<attribute type="java.lang.String"
-						qualifier="codeAirportArrival">
-						<description> Airport of arrival </description>
-						<modifiers read="true" write="true" unique="false"
-							optional="false" />
-						<persistence type="property"></persistence>
-					</attribute>
-
-					<attribute type="java.lang.String" qualifier="codePlane">
-						<description> The type of the plane </description>
-						<modifiers read="true" write="true" unique="false"
-							optional="false" />
-						<persistence type="property"></persistence>
-					</attribute>
-
-					<attribute type="java.lang.String"
-						qualifier="departureTime">
+					<attribute qualifier="departureTime"
+						type="java.lang.String">
 						<description> The time of departure </description>
 						<modifiers read="true" write="true" unique="false"
 							optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.String"
-						qualifier="timeArrival">
+					<attribute qualifier="timeArrival"
+						type="java.lang.String">
 						<description> The time of arrival </description>
 						<modifiers read="true" write="true" unique="false"
 							optional="false" />
@@ -295,7 +293,37 @@
 				</attributes>
 
 			</itemtype>
-		</typegroup>
+			<!-- "de.hybris.platform.jalo.user.User" -->
 
+			<itemtype code="Passenger" extends="User" autocreate="true"
+				generate="true" jaloclass="it.uiip.airport.core.jalo.Passenger">
+
+				<description> Passenger type that models a passenger </description>
+
+				<deployment table="Passenger" typecode="20003" />
+				<attributes>
+					<attribute qualifier="name" type="java.lang.String"
+						redeclare="true">
+						<description> The name of the passenger </description>
+						<modifiers read="true" write="true" unique="false"
+							optional="false" />
+						<persistence type="property"></persistence>
+					</attribute>
+					<attribute qualifier="surname" type="java.lang.String">
+						<description> The surname of the passenger </description>
+						<modifiers read="true" write="true" unique="false"
+							optional="false" />
+						<persistence type="property"></persistence>
+					</attribute>
+					<attribute qualifier="passport" type="java.lang.String">
+						<description> The passport of the passenger </description>
+						<modifiers read="true" write="true" unique="true"
+							optional="false" />
+						<persistence type="property"></persistence>
+					</attribute>
+
+				</attributes>
+			</itemtype>
+		</typegroup>
 	</itemtypes>
 </items>
