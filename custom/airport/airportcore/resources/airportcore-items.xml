@@ -37,31 +37,47 @@
 		<relation code="Plane2FlightRelation" generate="true"
 			localized="false" autocreate="true">
 			<sourceElement type="Plane" cardinality="one"
-				qualifier="code">
-				<!-- <modifiers read="true" write="true" optional="false"/> -->
+				qualifier="plane">
+				<modifiers read="true" write="true" optional="false" />
 			</sourceElement>
 			<targetElement type="Flight" cardinality="many"
-				qualifier="codePlanes">
+				qualifier="planes">
+				<!-- <modifiers read="true" write="false" optional="false"/> -->
 			</targetElement>
 		</relation>
 
 		<relation code="DepartureAirport2FlightRelation"
 			generate="true" localized="false" autocreate="true">
 			<sourceElement type="Airport" cardinality="one"
-				qualifier="code">
+				qualifier="departureAirport">
+				<modifiers read="true" write="true" optional="false" />
 			</sourceElement>
 			<targetElement type="Flight" cardinality="many"
-				qualifier="codeDepartureAirports">
+				qualifier="departureAirports">
+				<!-- <modifiers read="true" write="false" optional="false"/> -->
 			</targetElement>
 		</relation>
 
 		<relation code="AirportArrival2FlightRelation"
 			generate="true" localized="false" autocreate="true">
 			<sourceElement type="Airport" cardinality="one"
-				qualifier="code">
+				qualifier="airportArrival">
+				<modifiers read="true" write="true" optional="false" />
 			</sourceElement>
 			<targetElement type="Flight" cardinality="many"
-				qualifier="codeAirportArrivals">
+				qualifier="airportArrivals">
+				<!-- <modifiers read="true" write="false" optional="false"/> -->
+			</targetElement>
+		</relation>
+
+		<relation code="Flight2PassengerRelation" generate="true"
+			localized="false">
+			<sourceElement type="Flight" cardinality="one"
+				qualifier="flight">
+				<modifiers read="true" write="true" optional="false" />
+			</sourceElement>
+			<targetElement type="Passenger" cardinality="many"
+				qualifier="flights">
 			</targetElement>
 		</relation>
 
@@ -150,25 +166,27 @@
 
 		<typegroup name="Airport">
 			<itemtype code="Airport" extends="GenericItem"
-				jaloclass="it.uiip.airport.core.jalo.Airport"
-				autocreate="true" generate="true">
+				jaloclass="it.uiip.airport.core.jalo.Airport" autocreate="true"
+				generate="true">
 				<description>Airport type that models an airport</description>
 				<deployment table="Airport" typecode="10100" />
 				<attributes>
 					<attribute qualifier="code" type="java.Lang.String">
 						<description>Id of the airport, PK</description>
-						<modifiers read="true" write="false" unique="true"
+						<modifiers read="true" write="true" unique="true"
 							optional="false" />
 						<persistence type="property">
 						</persistence>
 					</attribute>
-					<attribute qualifier="city" type="java.Lang.String">
+					<attribute qualifier="city"
+						type="localized:java.Lang.String">
 						<description>City of the airport</description>
 						<modifiers read="true" write="true" optional="false" />
 						<persistence type="property">
 						</persistence>
 					</attribute>
-					<attribute qualifier="country" type="java.Lang.String">
+					<attribute qualifier="country"
+						type="localized:java.Lang.String">
 						<description>Country of the airport</description>
 						<modifiers read="true" write="true" optional="false" />
 						<persistence type="property">
@@ -184,14 +202,14 @@
 			</itemtype>
 
 			<itemtype code="Plane" extends="GenericItem"
-				jaloclass="it.uiip.airport.core.jalo.Plane"
-				autocreate="true" generate="true">
+				jaloclass="it.uiip.airport.core.jalo.Plane" autocreate="true"
+				generate="true">
 				<description></description>
 				<deployment table="Plane" typecode="10101" />
 				<attributes>
 					<attribute qualifier="code" type="java.Lang.String">
 						<description>Type of the plane, PK</description>
-						<modifiers read="true" write="false" unique="true"
+						<modifiers read="true" write="true" unique="true"
 							optional="false" />
 						<persistence type="property">
 						</persistence>
@@ -213,40 +231,21 @@
 			</itemtype>
 
 			<itemtype code="Flight" extends="GenericItem"
-				jaloclass="it.uiip.airport.core.jalo.Flight"
-				autocreate="true" generate="true">
+				jaloclass="it.uiip.airport.core.jalo.Flight" autocreate="true"
+				generate="true">
 				<description>Flight type that models a flight</description>
-				<deployment table="Plane" typecode="10102" />
+				<deployment table="Flight" typecode="10102" />
 				<attributes>
-					<attribute qualifier="code" type="java.Lang.Integer">
+					<attribute qualifier="code" type="java.Lang.String">
 						<description>Id of the flight, PK</description>
-						<modifiers read="true" write="false" unique="true"
+						<modifiers read="true" write="true" unique="true"
 							optional="false" />
 						<persistence type="property">
 						</persistence>
 					</attribute>
-					<attribute qualifier="dayWeek" type="java.Lang.String">
+					<attribute qualifier="dayWeek"
+						type="localized:java.Lang.String">
 						<description>Day of the week on which the flight is defined</description>
-						<modifiers read="true" write="true" optional="false" />
-						<persistence type="property">
-						</persistence>
-					</attribute>
-					<attribute qualifier="codeDepartureAirport"
-						type="java.Lang.String">
-						<description>Departure airport of the flight</description>
-						<modifiers read="true" write="true" optional="false" />
-						<persistence type="property">
-						</persistence>
-					</attribute>
-					<attribute qualifier="codeAirportArrival"
-						type="java.Lang.String">
-						<description>Arrival airport of the flight</description>
-						<modifiers read="true" write="true" optional="false" />
-						<persistence type="property">
-						</persistence>
-					</attribute>
-					<attribute qualifier="codePlane" type="java.Lang.String">
-						<description>Flight code</description>
 						<modifiers read="true" write="true" optional="false" />
 						<persistence type="property">
 						</persistence>
@@ -262,6 +261,37 @@
 						type="java.Lang.String">
 						<description>Arrival time of the flight</description>
 						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<!-- de.hybris.platform.jalo.user. -->
+
+			<itemtype code="Passenger" extends="User"
+				jaloclass="it.uiip.airport.core.jalo.Passenger" autocreate="true"
+				generate="true">
+				<description>Passenger of a flight</description>
+				<deployment table="Passenger" typecode="10103" />
+				<attributes>
+					<attribute qualifier="name" type="java.Lang.String"
+						redeclare="true">
+						<description>Name of the passenger</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="surname" type="java.Lang.String">
+						<description>Surname of the passenger</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="passport" type="java.Lang.String">
+						<description>Passport of a passenger</description>
+						<modifiers read="true" write="true" optional="false"
+							unique="true" />
 						<persistence type="property">
 						</persistence>
 					</attribute>
