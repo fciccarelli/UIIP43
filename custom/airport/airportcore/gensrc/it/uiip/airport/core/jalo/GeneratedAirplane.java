@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 25-nov-2019 23.11.47                        ---
+ * --- Generated at 26-nov-2019 23.35.17                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -30,15 +30,15 @@ public abstract class GeneratedAirplane extends GenericItem
 	public static final String NPASSENGERS = "nPassengers";
 	/** Qualifier of the <code>Plane.nGoods</code> attribute **/
 	public static final String NGOODS = "nGoods";
-	/** Qualifier of the <code>Plane.codePlanes</code> attribute **/
-	public static final String CODEPLANES = "codePlanes";
+	/** Qualifier of the <code>Plane.flights</code> attribute **/
+	public static final String FLIGHTS = "flights";
 	/**
-	* {@link OneToManyHandler} for handling 1:n CODEPLANES's relation attributes from 'many' side.
+	* {@link OneToManyHandler} for handling 1:n FLIGHTS's relation attributes from 'many' side.
 	**/
-	protected static final OneToManyHandler<Flight> CODEPLANESHANDLER = new OneToManyHandler<Flight>(
+	protected static final OneToManyHandler<Flight> FLIGHTSHANDLER = new OneToManyHandler<Flight>(
 	AirportCoreConstants.TC.FLIGHT,
 	false,
-	"code",
+	"plane",
 	null,
 	false,
 	true,
@@ -78,75 +78,93 @@ public abstract class GeneratedAirplane extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Plane.codePlanes</code> attribute.
-	 * @return the codePlanes
+	 * <i>Generated method</i> - Setter of the <code>Plane.code</code> attribute. 
+	 * @param value the code - primary key of table plane
 	 */
-	public Collection<Flight> getCodePlanes(final SessionContext ctx)
+	public void setCode(final SessionContext ctx, final String value)
 	{
-		return CODEPLANESHANDLER.getValues( ctx, this );
+		setProperty(ctx, CODE,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Plane.codePlanes</code> attribute.
-	 * @return the codePlanes
+	 * <i>Generated method</i> - Setter of the <code>Plane.code</code> attribute. 
+	 * @param value the code - primary key of table plane
 	 */
-	public Collection<Flight> getCodePlanes()
+	public void setCode(final String value)
 	{
-		return getCodePlanes( getSession().getSessionContext() );
+		setCode( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Plane.codePlanes</code> attribute. 
-	 * @param value the codePlanes
+	 * <i>Generated method</i> - Getter of the <code>Plane.flights</code> attribute.
+	 * @return the flights
 	 */
-	public void setCodePlanes(final SessionContext ctx, final Collection<Flight> value)
+	public Collection<Flight> getFlights(final SessionContext ctx)
 	{
-		CODEPLANESHANDLER.setValues( ctx, this, value );
+		return FLIGHTSHANDLER.getValues( ctx, this );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Plane.codePlanes</code> attribute. 
-	 * @param value the codePlanes
+	 * <i>Generated method</i> - Getter of the <code>Plane.flights</code> attribute.
+	 * @return the flights
 	 */
-	public void setCodePlanes(final Collection<Flight> value)
+	public Collection<Flight> getFlights()
 	{
-		setCodePlanes( getSession().getSessionContext(), value );
+		return getFlights( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to codePlanes. 
-	 * @param value the item to add to codePlanes
+	 * <i>Generated method</i> - Setter of the <code>Plane.flights</code> attribute. 
+	 * @param value the flights
 	 */
-	public void addToCodePlanes(final SessionContext ctx, final Flight value)
+	public void setFlights(final SessionContext ctx, final Collection<Flight> value)
 	{
-		CODEPLANESHANDLER.addValue( ctx, this, value );
+		FLIGHTSHANDLER.setValues( ctx, this, value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to codePlanes. 
-	 * @param value the item to add to codePlanes
+	 * <i>Generated method</i> - Setter of the <code>Plane.flights</code> attribute. 
+	 * @param value the flights
 	 */
-	public void addToCodePlanes(final Flight value)
+	public void setFlights(final Collection<Flight> value)
 	{
-		addToCodePlanes( getSession().getSessionContext(), value );
+		setFlights( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from codePlanes. 
-	 * @param value the item to remove from codePlanes
+	 * <i>Generated method</i> - Adds <code>value</code> to flights. 
+	 * @param value the item to add to flights
 	 */
-	public void removeFromCodePlanes(final SessionContext ctx, final Flight value)
+	public void addToFlights(final SessionContext ctx, final Flight value)
 	{
-		CODEPLANESHANDLER.removeValue( ctx, this, value );
+		FLIGHTSHANDLER.addValue( ctx, this, value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from codePlanes. 
-	 * @param value the item to remove from codePlanes
+	 * <i>Generated method</i> - Adds <code>value</code> to flights. 
+	 * @param value the item to add to flights
 	 */
-	public void removeFromCodePlanes(final Flight value)
+	public void addToFlights(final Flight value)
 	{
-		removeFromCodePlanes( getSession().getSessionContext(), value );
+		addToFlights( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from flights. 
+	 * @param value the item to remove from flights
+	 */
+	public void removeFromFlights(final SessionContext ctx, final Flight value)
+	{
+		FLIGHTSHANDLER.removeValue( ctx, this, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from flights. 
+	 * @param value the item to remove from flights
+	 */
+	public void removeFromFlights(final Flight value)
+	{
+		removeFromFlights( getSession().getSessionContext(), value );
 	}
 	
 	/**

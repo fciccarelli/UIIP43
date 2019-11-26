@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 25-nov-2019 23.11.47                        ---
+ * --- Generated at 26-nov-2019 23.35.17                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -22,6 +22,7 @@ import it.uiip.airport.core.jalo.ApparelSizeVariantProduct;
 import it.uiip.airport.core.jalo.ApparelStyleVariantProduct;
 import it.uiip.airport.core.jalo.ElectronicsColorVariantProduct;
 import it.uiip.airport.core.jalo.Flight;
+import it.uiip.airport.core.jalo.Passenger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -203,6 +204,32 @@ public abstract class GeneratedAirportCoreManager extends Extension
 	public Flight createFlight(final Map attributeValues)
 	{
 		return createFlight( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Passenger createPassenger(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( AirportCoreConstants.TC.PASSENGER );
+			return (Passenger)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Passenger : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Passenger createPassenger(final Map attributeValues)
+	{
+		return createPassenger( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public Airplane createPlane(final SessionContext ctx, final Map attributeValues)
