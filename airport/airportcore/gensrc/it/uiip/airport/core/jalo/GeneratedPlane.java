@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 25-nov-2019 22.59.15                        ---
+ * --- Generated at 26-nov-2019 21.11.59                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -38,7 +38,7 @@ public abstract class GeneratedPlane extends GenericItem
 	protected static final OneToManyHandler<Flight> FLIGHTSHANDLER = new OneToManyHandler<Flight>(
 	AirportCoreConstants.TC.FLIGHT,
 	false,
-	"code",
+	"plane",
 	null,
 	false,
 	true,
@@ -75,6 +75,24 @@ public abstract class GeneratedPlane extends GenericItem
 	public String getCode()
 	{
 		return getCode( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Plane.code</code> attribute. 
+	 * @param value the code - id plane primary key
+	 */
+	public void setCode(final SessionContext ctx, final String value)
+	{
+		setProperty(ctx, CODE,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Plane.code</code> attribute. 
+	 * @param value the code - id plane primary key
+	 */
+	public void setCode(final String value)
+	{
+		setCode( getSession().getSessionContext(), value );
 	}
 	
 	/**

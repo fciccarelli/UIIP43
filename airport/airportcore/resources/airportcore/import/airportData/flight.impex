@@ -1,0 +1,7 @@
+INSERT_UPDATE Flight ; code[unique=true] ; dayWeek[lang=it] ; dayWeek[lang=en] ; departureAirport(code); airportArrival(code); plane(code); departureTime[allowNull=false] ; timeArrival[allowNull=false]
+
+; 1; Lunedi ; Monday ; AMS; NAP; Boeing-700; 18:25:00; 04:00:00;  
+ 
+; 2; Martedi; Tuesday; AMS; NAP; Boeing-500; 18:25:00; 04:00:00;  
+ 
+; 3; Mercoledi ; Wednesday ; AMS; NAP ; Boeing-700; 08:25:00; 18:00:00;  
