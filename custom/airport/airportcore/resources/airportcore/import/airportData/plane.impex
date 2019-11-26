@@ -1,0 +1,3 @@
+INSERT_UPDATE Plane ; code[unique=true] ; nPassengers ; nGoods ;  
+                    ; Boeing747-400     ; 100         ; 10     ;  
+                    ; Airbus300-800     ; 70          ; 4      ;  

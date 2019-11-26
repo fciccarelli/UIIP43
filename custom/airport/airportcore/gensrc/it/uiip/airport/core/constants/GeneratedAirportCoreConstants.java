@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 25-nov-2019 23.01.27                        ---
+ * --- Generated at 26-nov-2019 22.42.51                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.constants;
@@ -22,6 +22,7 @@ public class GeneratedAirportCoreConstants
 		public static final String APPARELSTYLEVARIANTPRODUCT = "ApparelStyleVariantProduct".intern();
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
 		public static final String FLIGHT = "Flight".intern();
+		public static final String PASSENGER = "Passenger".intern();
 		public static final String PLANE = "Plane".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 	}
@@ -51,6 +52,7 @@ public class GeneratedAirportCoreConstants
 	{
 		public static final String AIRPORTARRIVAL2FLIGHTRELATION = "AirportArrival2FlightRelation".intern();
 		public static final String DEPARTUREAIRPORT2FLIGHTRELATION = "DepartureAirport2FlightRelation".intern();
+		public static final String FLIGHT2PASSENGERRELATION = "Flight2PassengerRelation".intern();
 		public static final String PLANE2FLIGHTRELATION = "Plane2FlightRelation".intern();
 	}
 	
