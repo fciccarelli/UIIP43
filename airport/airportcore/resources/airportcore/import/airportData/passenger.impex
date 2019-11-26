@@ -1,0 +1,8 @@
+INSERT_UPDATE Passenger; passport[unique=true]; name[allowNull=true]; surname[allowNull=true]; flight(code)
+
+;1; Simona; Branca;1;
+;2; Simone; DElia;1;
+;3; Fabio; Sessa;2;
+;4; Fabio; Assaiante;2;
+;5; Antonietta; DeAngelis;3;
+;6; Luigi; Scialpi;3;

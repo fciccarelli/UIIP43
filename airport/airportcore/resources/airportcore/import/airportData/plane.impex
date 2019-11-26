@@ -1,0 +1,7 @@
+INSERT_UPDATE Plane; code[unique=true]; nPassengers[allowNull=true]; nGoods[allowNull=true]
+;Boeing-700; 700; 50;
+;Boeing-500; 500; 60;
+;Boeing-400; 300; 0;
+;Boeing-600; 400; 80;
+;Boeing-800; 600; 90;
+
