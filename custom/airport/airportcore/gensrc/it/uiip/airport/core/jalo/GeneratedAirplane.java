@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 25-nov-2019 23.24.05                        ---
+ * --- Generated at 26-nov-2019 23.04.48                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -30,15 +30,15 @@ public abstract class GeneratedAirplane extends GenericItem
 	public static final String NPASSENGERS = "nPassengers";
 	/** Qualifier of the <code>Plane.nGoods</code> attribute **/
 	public static final String NGOODS = "nGoods";
-	/** Qualifier of the <code>Plane.codePlanes</code> attribute **/
-	public static final String CODEPLANES = "codePlanes";
+	/** Qualifier of the <code>Plane.planes</code> attribute **/
+	public static final String PLANES = "planes";
 	/**
-	* {@link OneToManyHandler} for handling 1:n CODEPLANES's relation attributes from 'many' side.
+	* {@link OneToManyHandler} for handling 1:n PLANES's relation attributes from 'many' side.
 	**/
-	protected static final OneToManyHandler<Flight> CODEPLANESHANDLER = new OneToManyHandler<Flight>(
+	protected static final OneToManyHandler<Flight> PLANESHANDLER = new OneToManyHandler<Flight>(
 	AirportCoreConstants.TC.FLIGHT,
 	false,
-	"code",
+	"plane",
 	null,
 	false,
 	true,
@@ -78,75 +78,21 @@ public abstract class GeneratedAirplane extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Plane.codePlanes</code> attribute.
-	 * @return the codePlanes
+	 * <i>Generated method</i> - Setter of the <code>Plane.code</code> attribute. 
+	 * @param value the code - primary key of table plane
 	 */
-	public Collection<Flight> getCodePlanes(final SessionContext ctx)
+	public void setCode(final SessionContext ctx, final String value)
 	{
-		return CODEPLANESHANDLER.getValues( ctx, this );
+		setProperty(ctx, CODE,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Plane.codePlanes</code> attribute.
-	 * @return the codePlanes
+	 * <i>Generated method</i> - Setter of the <code>Plane.code</code> attribute. 
+	 * @param value the code - primary key of table plane
 	 */
-	public Collection<Flight> getCodePlanes()
+	public void setCode(final String value)
 	{
-		return getCodePlanes( getSession().getSessionContext() );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Plane.codePlanes</code> attribute. 
-	 * @param value the codePlanes
-	 */
-	public void setCodePlanes(final SessionContext ctx, final Collection<Flight> value)
-	{
-		CODEPLANESHANDLER.setValues( ctx, this, value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Plane.codePlanes</code> attribute. 
-	 * @param value the codePlanes
-	 */
-	public void setCodePlanes(final Collection<Flight> value)
-	{
-		setCodePlanes( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to codePlanes. 
-	 * @param value the item to add to codePlanes
-	 */
-	public void addToCodePlanes(final SessionContext ctx, final Flight value)
-	{
-		CODEPLANESHANDLER.addValue( ctx, this, value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to codePlanes. 
-	 * @param value the item to add to codePlanes
-	 */
-	public void addToCodePlanes(final Flight value)
-	{
-		addToCodePlanes( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from codePlanes. 
-	 * @param value the item to remove from codePlanes
-	 */
-	public void removeFromCodePlanes(final SessionContext ctx, final Flight value)
-	{
-		CODEPLANESHANDLER.removeValue( ctx, this, value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from codePlanes. 
-	 * @param value the item to remove from codePlanes
-	 */
-	public void removeFromCodePlanes(final Flight value)
-	{
-		removeFromCodePlanes( getSession().getSessionContext(), value );
+		setCode( getSession().getSessionContext(), value );
 	}
 	
 	/**
@@ -293,6 +239,78 @@ public abstract class GeneratedAirplane extends GenericItem
 	public void setNPassengers(final int value)
 	{
 		setNPassengers( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Plane.planes</code> attribute.
+	 * @return the planes
+	 */
+	public Collection<Flight> getPlanes(final SessionContext ctx)
+	{
+		return PLANESHANDLER.getValues( ctx, this );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Plane.planes</code> attribute.
+	 * @return the planes
+	 */
+	public Collection<Flight> getPlanes()
+	{
+		return getPlanes( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Plane.planes</code> attribute. 
+	 * @param value the planes
+	 */
+	public void setPlanes(final SessionContext ctx, final Collection<Flight> value)
+	{
+		PLANESHANDLER.setValues( ctx, this, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Plane.planes</code> attribute. 
+	 * @param value the planes
+	 */
+	public void setPlanes(final Collection<Flight> value)
+	{
+		setPlanes( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to planes. 
+	 * @param value the item to add to planes
+	 */
+	public void addToPlanes(final SessionContext ctx, final Flight value)
+	{
+		PLANESHANDLER.addValue( ctx, this, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to planes. 
+	 * @param value the item to add to planes
+	 */
+	public void addToPlanes(final Flight value)
+	{
+		addToPlanes( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from planes. 
+	 * @param value the item to remove from planes
+	 */
+	public void removeFromPlanes(final SessionContext ctx, final Flight value)
+	{
+		PLANESHANDLER.removeValue( ctx, this, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from planes. 
+	 * @param value the item to remove from planes
+	 */
+	public void removeFromPlanes(final Flight value)
+	{
+		removeFromPlanes( getSession().getSessionContext(), value );
 	}
 	
 }
