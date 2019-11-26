@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 25-nov-2019 15.32.36                        ---
+ * --- Generated at 26-nov-2019 22.27.54                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -15,10 +15,14 @@ import de.hybris.platform.jalo.extension.Extension;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
 import it.uiip.airport.core.constants.AirportCoreConstants;
+import it.uiip.airport.core.jalo.Airport;
 import it.uiip.airport.core.jalo.ApparelProduct;
 import it.uiip.airport.core.jalo.ApparelSizeVariantProduct;
 import it.uiip.airport.core.jalo.ApparelStyleVariantProduct;
 import it.uiip.airport.core.jalo.ElectronicsColorVariantProduct;
+import it.uiip.airport.core.jalo.Flight;
+import it.uiip.airport.core.jalo.Passenger;
+import it.uiip.airport.core.jalo.Plane;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +48,32 @@ public abstract class GeneratedAirportCoreManager extends Extension
 			ret.putAll(attr);
 		}
 		return ret;
+	}
+	
+	public Airport createAirport(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( AirportCoreConstants.TC.AIRPORT );
+			return (Airport)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Airport : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Airport createAirport(final Map attributeValues)
+	{
+		return createAirport( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public ApparelProduct createApparelProduct(final SessionContext ctx, final Map attributeValues)
@@ -148,6 +178,84 @@ public abstract class GeneratedAirportCoreManager extends Extension
 	public ElectronicsColorVariantProduct createElectronicsColorVariantProduct(final Map attributeValues)
 	{
 		return createElectronicsColorVariantProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Flight createFlight(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( AirportCoreConstants.TC.FLIGHT );
+			return (Flight)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Flight : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Flight createFlight(final Map attributeValues)
+	{
+		return createFlight( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Passenger createPassenger(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( AirportCoreConstants.TC.PASSENGER );
+			return (Passenger)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Passenger : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Passenger createPassenger(final Map attributeValues)
+	{
+		return createPassenger( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Plane createPlane(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( AirportCoreConstants.TC.PLANE );
+			return (Plane)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Plane : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Plane createPlane(final Map attributeValues)
+	{
+		return createPlane( getSession().getSessionContext(), attributeValues );
 	}
 	
 	@Override
