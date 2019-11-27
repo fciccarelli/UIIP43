@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-nov-2019 22.27.54                        ---
+ * --- Generated at 27-nov-2019 22.25.56                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -12,6 +12,7 @@ import de.hybris.platform.jalo.JaloBusinessException;
 import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.extension.Extension;
+import de.hybris.platform.jalo.link.Link;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
 import it.uiip.airport.core.constants.AirportCoreConstants;

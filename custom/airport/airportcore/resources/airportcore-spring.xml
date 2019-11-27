@@ -551,4 +551,13 @@
 		<property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
 		<property name="ticketBusinessService" ref="ticketBusinessService"/>
 	</bean>
+	
+	<!-- -->
+	
+	<alias name="defaultAirportModeDao" alias="airportDao"/>
+	<bean id="defaultAirportModeDao" class="it.uiip.airport.core.impl.DefaultAirportDao"/>
+	
+	<alias name="defaultPassengerDao" alias="passengerDao"/>
+	<bean id="PassengerModeDao" class="it.uiip.airport.core.impl.DefaultPassengerDao"/>
+	
 </beans>

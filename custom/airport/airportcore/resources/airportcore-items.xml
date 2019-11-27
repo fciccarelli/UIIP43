@@ -85,10 +85,11 @@
 
 
 		<relation code="Flight2PassengerRelation" localized="false" autocreate="true" generate="true">
-			<sourceElement qualifier="flight" type="Flight" cardinality="one">
+			<deployment table="Flig2PassRel" typecode="10143"/>
+			<sourceElement qualifier="flights" type="Flight" cardinality="many" ordered="false">
 				<modifiers read="true" write="true" search="true" optional="true" />
 			</sourceElement>
-			<targetElement qualifier="flights" type="Passenger" cardinality="many" >
+			<targetElement qualifier="passengers" type="Passenger" cardinality="many" collectiontype="list" ordered="true">
 				<modifiers read="true" write="true" search="true" optional="true" />
 			</targetElement>
 		</relation>
