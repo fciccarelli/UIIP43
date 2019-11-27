@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-nov-2019 23.12.31                        ---
+ * --- Generated at 27-nov-2019 22.12.47                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.constants;
@@ -52,7 +52,7 @@ public class GeneratedAirportCoreConstants
 	{
 		public static final String AIRPORTARRIVAL2FLIGHTRELATION = "AirportArrival2FlightRelation".intern();
 		public static final String DEPARTUREAIRPORT2FLIGHTRELATION = "DepartureAirport2FlightRelation".intern();
-		public static final String FLIGHT2PASSENGERRELATION = "Flight2PassengerRelation".intern();
+		public static final String FLIGHTPASSENGERRELATION = "FlightPassengerRelation".intern();
 		public static final String PLANE2FLIGHTRELATION = "Plane2FlightRelation".intern();
 	}
 	
