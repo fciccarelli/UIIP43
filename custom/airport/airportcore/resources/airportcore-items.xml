@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2018 SAP SE or an SAP affiliate company. 
+	All rights reserved. This software is the confidential and proprietary information 
+	of SAP ("Confidential Information"). You shall not disclose such Confidential 
+	Information and shall use it only in accordance with the terms of the license 
+	agreement you entered into with SAP. -->
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<collectiontypes>
+		<collectiontype code="GenderList" elementtype="Gender"
+			autocreate="true" generate="true" type="list" />
+		<collectiontype code="SwatchColorSet"
+			elementtype="SwatchColorEnum" autocreate="true" generate="true"
+			type="set" />
+	</collectiontypes>
+
+	<enumtypes>
+		<enumtype generate="true" code="SwatchColorEnum"
+			autocreate="true" dynamic="true">
+			<value code="BLACK" />
+			<value code="BLUE" />
+			<value code="BROWN" />
+			<value code="GREEN" />
+			<value code="GREY" />
+			<value code="ORANGE" />
+			<value code="PINK" />
+			<value code="PURPLE" />
+			<value code="RED" />
+			<value code="SILVER" />
+			<value code="WHITE" />
+			<value code="YELLOW" />
+		</enumtype>
+	</enumtypes>
+
+	<relations>
+		<relation code="Plane2FlightRelation" generate="true"
+			localized="false" autocreate="true">
+			<sourceElement type="Plane" cardinality="one"
+				qualifier="plane">
+				<modifiers read="true" write="true" optional="false" />
+			</sourceElement>
+			<targetElement type="Flight" cardinality="many"
+				qualifier="planes">
+				<!-- <modifiers read="true" write="false" optional="false"/> -->
+			</targetElement>
+		</relation>
+
+		<relation code="DepartureAirport2FlightRelation"
+			generate="true" localized="false" autocreate="true">
+			<sourceElement type="Airport" cardinality="one"
+				qualifier="departureAirport">
+				<modifiers read="true" write="true" optional="false" />
+			</sourceElement>
+			<targetElement type="Flight" cardinality="many"
+				qualifier="departureAirports">
+				<!-- <modifiers read="true" write="false" optional="false"/> -->
+			</targetElement>
+		</relation>
+
+		<relation code="AirportArrival2FlightRelation"
+			generate="true" localized="false" autocreate="true">
+			<sourceElement type="Airport" cardinality="one"
+				qualifier="airportArrival">
+				<modifiers read="true" write="true" optional="false" />
+			</sourceElement>
+			<targetElement type="Flight" cardinality="many"
+				qualifier="airportArrivals">
+				<!-- <modifiers read="true" write="false" optional="false"/> -->
+			</targetElement>
+		</relation>
+
+		<relation code="FlightPassengerRelation" generate="true"
+			localized="false">
+			<deployment table="Flight2PassRel" typecode="30104"/>
+			<sourceElement type="Flight" cardinality="many"
+				qualifier="flights">
+				<modifiers read="true" write="true" optional="false" />
+			</sourceElement>
+			<targetElement type="Passenger" cardinality="many"
+				qualifier="passengers">
+				<modifiers read="true" write="true" optional="false" />
+			</targetElement>
+		</relation>
+
+	</relations>
+
+	<itemtypes>
+
+		<!-- Add your item definitions here -->
+
+
+		<!-- TypeGroups are for structure of this file only -->
+
+		<typegroup name="Apparel">
+			<itemtype code="ApparelProduct" extends="Product"
+				autocreate="true" generate="true"
+				jaloclass="it.uiip.airport.core.jalo.ApparelProduct">
+				<description>Base apparel product extension that contains additional attributes.</description>
+				<attributes>
+					<attribute qualifier="genders" type="GenderList">
+						<description>List of genders that the ApparelProduct is designed for</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="ApparelStyleVariantProduct"
+				extends="VariantProduct" autocreate="true" generate="true"
+				jaloclass="it.uiip.airport.core.jalo.ApparelStyleVariantProduct">
+				<description>Apparel style variant type that contains additional attribute describing variant style.
+                </description>
+				<attributes>
+					<attribute qualifier="style"
+						type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Color/Pattern of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="swatchColors" type="SwatchColorSet">
+						<description>A normalized color mapping to a standardized front-end navigable name.
+                        </description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+
+			</itemtype>
+
+			<itemtype code="ApparelSizeVariantProduct"
+				extends="ApparelStyleVariantProduct" autocreate="true"
+				generate="true"
+				jaloclass="it.uiip.airport.core.jalo.ApparelSizeVariantProduct">
+				<description>Apparel size variant type that contains additional attribute describing variant size.
+                </description>
+				<attributes>
+					<attribute qualifier="size"
+						type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Size of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+
+		<typegroup name="Electronics">
+			<itemtype code="ElectronicsColorVariantProduct"
+				extends="VariantProduct" autocreate="true" generate="true"
+				jaloclass="it.uiip.airport.core.jalo.ElectronicsColorVariantProduct">
+				<description>Electronics color variant type that contains additional attribute describing variant color.
+                </description>
+				<attributes>
+					<attribute qualifier="color"
+						type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Color of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+
+		<typegroup name="Airport">
+			<itemtype code="Airport" extends="GenericItem"
+				jaloclass="it.uiip.airport.core.jalo.Airport" autocreate="true"
+				generate="true">
+				<description>Airport type that models an airport</description>
+				<deployment table="Airport" typecode="10100" />
+				<attributes>
+					<attribute qualifier="code" type="java.Lang.String">
+						<description>Id of the airport, PK</description>
+						<modifiers read="true" write="true" unique="true"
+							optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="city"
+						type="localized:java.Lang.String">
+						<description>City of the airport</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="country"
+						type="localized:java.Lang.String">
+						<description>Country of the airport</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="nRunways" type="java.Lang.Integer">
+						<description>Number of runways of the airport</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Plane" extends="GenericItem"
+				jaloclass="it.uiip.airport.core.jalo.Plane" autocreate="true"
+				generate="true">
+				<description></description>
+				<deployment table="Plane" typecode="10101" />
+				<attributes>
+					<attribute qualifier="code" type="java.Lang.String">
+						<description>Type of the plane, PK</description>
+						<modifiers read="true" write="true" unique="true"
+							optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="nPassengers"
+						type="java.Lang.Integer">
+						<description>Passengers capacity of the plane</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="nGoods" type="java.Lang.Integer">
+						<description>Goods capacity of the plane</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Flight" extends="GenericItem"
+				jaloclass="it.uiip.airport.core.jalo.Flight" autocreate="true"
+				generate="true">
+				<description>Flight type that models a flight</description>
+				<deployment table="Flight" typecode="10102" />
+				<attributes>
+					<attribute qualifier="code" type="java.Lang.String">
+						<description>Id of the flight, PK</description>
+						<modifiers read="true" write="true" unique="true"
+							optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="dayWeek"
+						type="localized:java.Lang.String">
+						<description>Day of the week on which the flight is defined</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="departureTime"
+						type="java.Lang.String">
+						<description>Departure time of the flight</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="arrivalTime"
+						type="java.Lang.String">
+						<description>Arrival time of the flight</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<!-- de.hybris.platform.jalo.user. -->
+
+			<itemtype code="Passenger" extends="User"
+				jaloclass="it.uiip.airport.core.jalo.Passenger" autocreate="true"
+				generate="true">
+				<description>Passenger of a flight</description>
+				<deployment table="Passenger" typecode="10103" />
+				<attributes>
+					<attribute qualifier="name" type="java.Lang.String"
+						redeclare="true">
+						<description>Name of the passenger</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="surname" type="java.Lang.String">
+						<description>Surname of the passenger</description>
+						<modifiers read="true" write="true" optional="false" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+					<attribute qualifier="passport" type="java.Lang.String">
+						<description>Passport of a passenger</description>
+						<modifiers read="true" write="true" optional="false"
+							unique="true" />
+						<persistence type="property">
+						</persistence>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+		</typegroup>
+	</itemtypes>
+</items>

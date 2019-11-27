@@ -1,0 +1,2 @@
+INSERT_UPDATE flight2PassRel ; flight(code)[allowNull=false] ; passenger(uid)[allowNull=false]
+                             ;                               ;                                ;  
