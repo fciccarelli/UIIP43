@@ -1,0 +1,3 @@
+INSERT_UPDATE Flight2PassengerRelation;flights(code);passengers(uid);
+;1;1
+;2;1;

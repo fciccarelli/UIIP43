@@ -1,3 +1,4 @@
 INSERT_UPDATE Airport; code[unique=true];city;country;nRunways;
 ;FCO;Rome;Italy;20;
 ;JFK;New York;United States;15;
+;MXP;Milan;Italy;20;

@@ -57,12 +57,21 @@
 			<targetElement type="Flight"
 				qualifier="airportArrivals" cardinality="many"></targetElement>
 		</relation>
+
 		<relation localized="false" generate="true"
-			code="Flight2PassengerRelation">
-			<sourceElement type="Flight"
-				qualifier="flight" cardinality="one"></sourceElement>
-			<targetElement type="Passenger"
-				qualifier="flights" cardinality="many"></targetElement>
+			code="FlightPassengerRelation" autocreate="true">
+			<deployment table="Flight2PassengerRelation"
+				typecode="11004" />
+			<sourceElement type="Flight" qualifier="flights"
+				cardinality="many" >
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</sourceElement>
+			<targetElement type="Passenger" qualifier="passengers"
+				cardinality="many" >
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</targetElement>
 		</relation>
 	</relations>
 

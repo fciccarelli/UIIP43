@@ -1,3 +1,4 @@
-INSERT_UPDATE Flight ; code[unique=true] ; dayWeek[lang=en] ; dayWeek[lang=it] ; departureTime ; timeArrival ;  departuteAirport(code); airportArrival(code);plane(code)
-                     ; 777               ; Friday           ; Venerdì          ; 13:00:00      ; 17:00:00    ;  FCO             ;JFK            ;Boeing747-400;
-                     ; 778               ; Monday           ; Lunedì           ; 13:00:00      ; 17:00:00    ;  JFK             ;FCO            ;Airbus300-800
+INSERT_UPDATE Flight ; code[unique=true] ; dayWeek[lang=en] ; dayWeek[lang=it] ; departureTime ; timeArrival ;  departuteAirport(code); airportArrival(code);plane(code);passengers(uid)[mode=append];
+                     ; 777               ; Friday           ; Venerdì          ; 13:00:00      ; 17:00:00    ;  FCO             ;JFK            ;Boeing747-400          ;1,2,3,4,5,6,7;
+                     ; 778               ; Monday           ; Lunedì           ; 13:00:00      ; 17:00:00    ;  JFK             ;FCO            ;Airbus300-800          ;1,2,3,4,5,6,7;
+                     ; 779				 ; Tuesday			; Martedi		   ; 13:00:00	   ; 17:00:00	 ;  JFK				;MXP			;Boeing747-400          ;1,2,3,4,5,6,7;
