@@ -1,0 +1,9 @@
+INSERT_UPDATE Passenger;uid;name;surname;passport[unique=true];flights(code)[mode=append];
+;1;Fabio;Sessa;PFS92;778,777,779;
+;2;Pasquale;Oppido;PPO87;778,777,779;
+;3;Luigi;Scialpi;PLS90;778,777,779;
+;4;Fabio;Assaniante;PFA86;778,777,779;
+;5;Simone;D'Elia;PSD91;778,777,779;
+;6;Antonietta;De Angelis;PAD87;778,777,779;
+;7;Simona;Branca;PSB94;778,777,779;
+
