@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-nov-2019 21.11.59                        ---
+ * --- Generated at 27-nov-2019 22.06.13                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -16,8 +16,9 @@ import de.hybris.platform.jalo.c2l.C2LManager;
 import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.jalo.type.ComposedType;
+import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.util.BidirectionalOneToManyHandler;
-import de.hybris.platform.util.OneToManyHandler;
+import de.hybris.platform.util.Utilities;
 import it.uiip.airport.core.constants.AirportCoreConstants;
 import it.uiip.airport.core.jalo.Airport;
 import it.uiip.airport.core.jalo.Passenger;
@@ -39,28 +40,25 @@ public abstract class GeneratedFlight extends GenericItem
 	public static final String DAYWEEK = "dayWeek";
 	/** Qualifier of the <code>Flight.departureTime</code> attribute **/
 	public static final String DEPARTURETIME = "departureTime";
-	/** Qualifier of the <code>Flight.Timearrival</code> attribute **/
-	public static final String TIMEARRIVAL = "Timearrival";
+	/** Qualifier of the <code>Flight.timeArrival</code> attribute **/
+	public static final String TIMEARRIVAL = "timeArrival";
 	/** Qualifier of the <code>Flight.passengers</code> attribute **/
 	public static final String PASSENGERS = "passengers";
+	/** Relation ordering override parameter constants for Flight2PassengerRelation from ((airportcore))*/
+	protected static String FLIGHT2PASSENGERRELATION_SRC_ORDERED = "relation.Flight2PassengerRelation.source.ordered";
+	protected static String FLIGHT2PASSENGERRELATION_TGT_ORDERED = "relation.Flight2PassengerRelation.target.ordered";
+	/** Relation disable markmodifed parameter constants for Flight2PassengerRelation from ((airportcore))*/
+	protected static String FLIGHT2PASSENGERRELATION_MARKMODIFIED = "relation.Flight2PassengerRelation.markmodified";
 	/** Qualifier of the <code>Flight.plane</code> attribute **/
 	public static final String PLANE = "plane";
-	/** Qualifier of the <code>Flight.airportPOS</code> attribute **/
-	public static final String AIRPORTPOS = "airportPOS";
-	/** Qualifier of the <code>Flight.airport</code> attribute **/
-	public static final String AIRPORT = "airport";
-	/**
-	* {@link OneToManyHandler} for handling 1:n PASSENGERS's relation attributes from 'many' side.
-	**/
-	protected static final OneToManyHandler<Passenger> PASSENGERSHANDLER = new OneToManyHandler<Passenger>(
-	AirportCoreConstants.TC.PASSENGER,
-	false,
-	"flight",
-	null,
-	false,
-	true,
-	CollectionType.LIST
-	);
+	/** Qualifier of the <code>Flight.departureAirportPOS</code> attribute **/
+	public static final String DEPARTUREAIRPORTPOS = "departureAirportPOS";
+	/** Qualifier of the <code>Flight.departureAirport</code> attribute **/
+	public static final String DEPARTUREAIRPORT = "departureAirport";
+	/** Qualifier of the <code>Flight.airportArrivalPOS</code> attribute **/
+	public static final String AIRPORTARRIVALPOS = "airportArrivalPOS";
+	/** Qualifier of the <code>Flight.airportArrival</code> attribute **/
+	public static final String AIRPORTARRIVAL = "airportArrival";
 	/**
 	* {@link BidirectionalOneToManyHandler} for handling 1:n PLANE's relation attributes from 'one' side.
 	**/
@@ -74,13 +72,25 @@ public abstract class GeneratedFlight extends GenericItem
 	CollectionType.LIST
 	);
 	/**
-	* {@link BidirectionalOneToManyHandler} for handling 1:n AIRPORT's relation attributes from 'one' side.
+	* {@link BidirectionalOneToManyHandler} for handling 1:n DEPARTUREAIRPORT's relation attributes from 'one' side.
 	**/
-	protected static final BidirectionalOneToManyHandler<GeneratedFlight> AIRPORTHANDLER = new BidirectionalOneToManyHandler<GeneratedFlight>(
+	protected static final BidirectionalOneToManyHandler<GeneratedFlight> DEPARTUREAIRPORTHANDLER = new BidirectionalOneToManyHandler<GeneratedFlight>(
 	AirportCoreConstants.TC.FLIGHT,
 	false,
-	"airport",
-	"airportPOS",
+	"departureAirport",
+	"departureAirportPOS",
+	true,
+	true,
+	CollectionType.LIST
+	);
+	/**
+	* {@link BidirectionalOneToManyHandler} for handling 1:n AIRPORTARRIVAL's relation attributes from 'one' side.
+	**/
+	protected static final BidirectionalOneToManyHandler<GeneratedFlight> AIRPORTARRIVALHANDLER = new BidirectionalOneToManyHandler<GeneratedFlight>(
+	AirportCoreConstants.TC.FLIGHT,
+	false,
+	"airportArrival",
+	"airportArrivalPOS",
 	true,
 	true,
 	CollectionType.LIST
@@ -94,8 +104,10 @@ public abstract class GeneratedFlight extends GenericItem
 		tmp.put(DEPARTURETIME, AttributeMode.INITIAL);
 		tmp.put(TIMEARRIVAL, AttributeMode.INITIAL);
 		tmp.put(PLANE, AttributeMode.INITIAL);
-		tmp.put(AIRPORTPOS, AttributeMode.INITIAL);
-		tmp.put(AIRPORT, AttributeMode.INITIAL);
+		tmp.put(DEPARTUREAIRPORTPOS, AttributeMode.INITIAL);
+		tmp.put(DEPARTUREAIRPORT, AttributeMode.INITIAL);
+		tmp.put(AIRPORTARRIVALPOS, AttributeMode.INITIAL);
+		tmp.put(AIRPORTARRIVAL, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -105,112 +117,112 @@ public abstract class GeneratedFlight extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.airport</code> attribute.
-	 * @return the airport
+	 * <i>Generated method</i> - Getter of the <code>Flight.airportArrival</code> attribute.
+	 * @return the airportArrival
 	 */
-	public Airport getAirport(final SessionContext ctx)
+	public Airport getAirportArrival(final SessionContext ctx)
 	{
-		return (Airport)getProperty( ctx, AIRPORT);
+		return (Airport)getProperty( ctx, AIRPORTARRIVAL);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.airport</code> attribute.
-	 * @return the airport
+	 * <i>Generated method</i> - Getter of the <code>Flight.airportArrival</code> attribute.
+	 * @return the airportArrival
 	 */
-	public Airport getAirport()
+	public Airport getAirportArrival()
 	{
-		return getAirport( getSession().getSessionContext() );
+		return getAirportArrival( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.airport</code> attribute. 
-	 * @param value the airport
+	 * <i>Generated method</i> - Setter of the <code>Flight.airportArrival</code> attribute. 
+	 * @param value the airportArrival
 	 */
-	public void setAirport(final SessionContext ctx, final Airport value)
+	public void setAirportArrival(final SessionContext ctx, final Airport value)
 	{
-		AIRPORTHANDLER.addValue( ctx, value, this  );
+		AIRPORTARRIVALHANDLER.addValue( ctx, value, this  );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.airport</code> attribute. 
-	 * @param value the airport
+	 * <i>Generated method</i> - Setter of the <code>Flight.airportArrival</code> attribute. 
+	 * @param value the airportArrival
 	 */
-	public void setAirport(final Airport value)
+	public void setAirportArrival(final Airport value)
 	{
-		setAirport( getSession().getSessionContext(), value );
+		setAirportArrival( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.airportPOS</code> attribute.
-	 * @return the airportPOS
+	 * <i>Generated method</i> - Getter of the <code>Flight.airportArrivalPOS</code> attribute.
+	 * @return the airportArrivalPOS
 	 */
-	 Integer getAirportPOS(final SessionContext ctx)
+	 Integer getAirportArrivalPOS(final SessionContext ctx)
 	{
-		return (Integer)getProperty( ctx, AIRPORTPOS);
+		return (Integer)getProperty( ctx, AIRPORTARRIVALPOS);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.airportPOS</code> attribute.
-	 * @return the airportPOS
+	 * <i>Generated method</i> - Getter of the <code>Flight.airportArrivalPOS</code> attribute.
+	 * @return the airportArrivalPOS
 	 */
-	 Integer getAirportPOS()
+	 Integer getAirportArrivalPOS()
 	{
-		return getAirportPOS( getSession().getSessionContext() );
+		return getAirportArrivalPOS( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.airportPOS</code> attribute. 
-	 * @return the airportPOS
+	 * <i>Generated method</i> - Getter of the <code>Flight.airportArrivalPOS</code> attribute. 
+	 * @return the airportArrivalPOS
 	 */
-	 int getAirportPOSAsPrimitive(final SessionContext ctx)
+	 int getAirportArrivalPOSAsPrimitive(final SessionContext ctx)
 	{
-		Integer value = getAirportPOS( ctx );
+		Integer value = getAirportArrivalPOS( ctx );
 		return value != null ? value.intValue() : 0;
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.airportPOS</code> attribute. 
-	 * @return the airportPOS
+	 * <i>Generated method</i> - Getter of the <code>Flight.airportArrivalPOS</code> attribute. 
+	 * @return the airportArrivalPOS
 	 */
-	 int getAirportPOSAsPrimitive()
+	 int getAirportArrivalPOSAsPrimitive()
 	{
-		return getAirportPOSAsPrimitive( getSession().getSessionContext() );
+		return getAirportArrivalPOSAsPrimitive( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.airportPOS</code> attribute. 
-	 * @param value the airportPOS
+	 * <i>Generated method</i> - Setter of the <code>Flight.airportArrivalPOS</code> attribute. 
+	 * @param value the airportArrivalPOS
 	 */
-	 void setAirportPOS(final SessionContext ctx, final Integer value)
+	 void setAirportArrivalPOS(final SessionContext ctx, final Integer value)
 	{
-		setProperty(ctx, AIRPORTPOS,value);
+		setProperty(ctx, AIRPORTARRIVALPOS,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.airportPOS</code> attribute. 
-	 * @param value the airportPOS
+	 * <i>Generated method</i> - Setter of the <code>Flight.airportArrivalPOS</code> attribute. 
+	 * @param value the airportArrivalPOS
 	 */
-	 void setAirportPOS(final Integer value)
+	 void setAirportArrivalPOS(final Integer value)
 	{
-		setAirportPOS( getSession().getSessionContext(), value );
+		setAirportArrivalPOS( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.airportPOS</code> attribute. 
-	 * @param value the airportPOS
+	 * <i>Generated method</i> - Setter of the <code>Flight.airportArrivalPOS</code> attribute. 
+	 * @param value the airportArrivalPOS
 	 */
-	 void setAirportPOS(final SessionContext ctx, final int value)
+	 void setAirportArrivalPOS(final SessionContext ctx, final int value)
 	{
-		setAirportPOS( ctx,Integer.valueOf( value ) );
+		setAirportArrivalPOS( ctx,Integer.valueOf( value ) );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.airportPOS</code> attribute. 
-	 * @param value the airportPOS
+	 * <i>Generated method</i> - Setter of the <code>Flight.airportArrivalPOS</code> attribute. 
+	 * @param value the airportArrivalPOS
 	 */
-	 void setAirportPOS(final int value)
+	 void setAirportArrivalPOS(final int value)
 	{
-		setAirportPOS( getSession().getSessionContext(), value );
+		setAirportArrivalPOS( getSession().getSessionContext(), value );
 	}
 	
 	/**
@@ -253,7 +265,8 @@ public abstract class GeneratedFlight extends GenericItem
 	protected Item createItem(final SessionContext ctx, final ComposedType type, final ItemAttributeMap allAttributes) throws JaloBusinessException
 	{
 		PLANEHANDLER.newInstance(ctx, allAttributes);
-		AIRPORTHANDLER.newInstance(ctx, allAttributes);
+		DEPARTUREAIRPORTHANDLER.newInstance(ctx, allAttributes);
+		AIRPORTARRIVALHANDLER.newInstance(ctx, allAttributes);
 		return super.createItem( ctx, type, allAttributes );
 	}
 	
@@ -342,6 +355,115 @@ public abstract class GeneratedFlight extends GenericItem
 	}
 	
 	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.departureAirport</code> attribute.
+	 * @return the departureAirport
+	 */
+	public Airport getDepartureAirport(final SessionContext ctx)
+	{
+		return (Airport)getProperty( ctx, DEPARTUREAIRPORT);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.departureAirport</code> attribute.
+	 * @return the departureAirport
+	 */
+	public Airport getDepartureAirport()
+	{
+		return getDepartureAirport( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.departureAirport</code> attribute. 
+	 * @param value the departureAirport
+	 */
+	public void setDepartureAirport(final SessionContext ctx, final Airport value)
+	{
+		DEPARTUREAIRPORTHANDLER.addValue( ctx, value, this  );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.departureAirport</code> attribute. 
+	 * @param value the departureAirport
+	 */
+	public void setDepartureAirport(final Airport value)
+	{
+		setDepartureAirport( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.departureAirportPOS</code> attribute.
+	 * @return the departureAirportPOS
+	 */
+	 Integer getDepartureAirportPOS(final SessionContext ctx)
+	{
+		return (Integer)getProperty( ctx, DEPARTUREAIRPORTPOS);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.departureAirportPOS</code> attribute.
+	 * @return the departureAirportPOS
+	 */
+	 Integer getDepartureAirportPOS()
+	{
+		return getDepartureAirportPOS( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.departureAirportPOS</code> attribute. 
+	 * @return the departureAirportPOS
+	 */
+	 int getDepartureAirportPOSAsPrimitive(final SessionContext ctx)
+	{
+		Integer value = getDepartureAirportPOS( ctx );
+		return value != null ? value.intValue() : 0;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.departureAirportPOS</code> attribute. 
+	 * @return the departureAirportPOS
+	 */
+	 int getDepartureAirportPOSAsPrimitive()
+	{
+		return getDepartureAirportPOSAsPrimitive( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.departureAirportPOS</code> attribute. 
+	 * @param value the departureAirportPOS
+	 */
+	 void setDepartureAirportPOS(final SessionContext ctx, final Integer value)
+	{
+		setProperty(ctx, DEPARTUREAIRPORTPOS,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.departureAirportPOS</code> attribute. 
+	 * @param value the departureAirportPOS
+	 */
+	 void setDepartureAirportPOS(final Integer value)
+	{
+		setDepartureAirportPOS( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.departureAirportPOS</code> attribute. 
+	 * @param value the departureAirportPOS
+	 */
+	 void setDepartureAirportPOS(final SessionContext ctx, final int value)
+	{
+		setDepartureAirportPOS( ctx,Integer.valueOf( value ) );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.departureAirportPOS</code> attribute. 
+	 * @param value the departureAirportPOS
+	 */
+	 void setDepartureAirportPOS(final int value)
+	{
+		setDepartureAirportPOS( getSession().getSessionContext(), value );
+	}
+	
+	/**
 	 * <i>Generated method</i> - Getter of the <code>Flight.departureTime</code> attribute.
 	 * @return the departureTime - time of departure
 	 */
@@ -377,13 +499,33 @@ public abstract class GeneratedFlight extends GenericItem
 		setDepartureTime( getSession().getSessionContext(), value );
 	}
 	
+	@Override
+	public boolean isMarkModifiedDisabled(final Item referencedItem)
+	{
+		ComposedType relationSecondEnd0 = TypeManager.getInstance().getComposedType("Passenger");
+		if(relationSecondEnd0.isAssignableFrom(referencedItem.getComposedType()))
+		{
+			return Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED);
+		}
+		return true;
+	}
+	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Flight.passengers</code> attribute.
 	 * @return the passengers
 	 */
 	public List<Passenger> getPassengers(final SessionContext ctx)
 	{
-		return (List<Passenger>)PASSENGERSHANDLER.getValues( ctx, this );
+		final List<Passenger> items = getLinkedItems( 
+			ctx,
+			true,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			"Passenger",
+			null,
+			false,
+			false
+		);
+		return items;
 	}
 	
 	/**
@@ -395,13 +537,38 @@ public abstract class GeneratedFlight extends GenericItem
 		return getPassengers( getSession().getSessionContext() );
 	}
 	
+	public long getPassengersCount(final SessionContext ctx)
+	{
+		return getLinkedItemsCount(
+			ctx,
+			true,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			"Passenger",
+			null
+		);
+	}
+	
+	public long getPassengersCount()
+	{
+		return getPassengersCount( getSession().getSessionContext() );
+	}
+	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>Flight.passengers</code> attribute. 
 	 * @param value the passengers
 	 */
 	public void setPassengers(final SessionContext ctx, final List<Passenger> value)
 	{
-		PASSENGERSHANDLER.setValues( ctx, this, value );
+		setLinkedItems( 
+			ctx,
+			true,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			null,
+			value,
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED)
+		);
 	}
 	
 	/**
@@ -419,7 +586,16 @@ public abstract class GeneratedFlight extends GenericItem
 	 */
 	public void addToPassengers(final SessionContext ctx, final Passenger value)
 	{
-		PASSENGERSHANDLER.addValue( ctx, this, value );
+		addLinkedItems( 
+			ctx,
+			true,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED)
+		);
 	}
 	
 	/**
@@ -437,7 +613,16 @@ public abstract class GeneratedFlight extends GenericItem
 	 */
 	public void removeFromPassengers(final SessionContext ctx, final Passenger value)
 	{
-		PASSENGERSHANDLER.removeValue( ctx, this, value );
+		removeLinkedItems( 
+			ctx,
+			true,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED)
+		);
 	}
 	
 	/**
@@ -486,39 +671,39 @@ public abstract class GeneratedFlight extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.Timearrival</code> attribute.
-	 * @return the Timearrival - time of arrival
+	 * <i>Generated method</i> - Getter of the <code>Flight.timeArrival</code> attribute.
+	 * @return the timeArrival - time of arrival
 	 */
-	public String getTimearrival(final SessionContext ctx)
+	public String getTimeArrival(final SessionContext ctx)
 	{
 		return (String)getProperty( ctx, TIMEARRIVAL);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Flight.Timearrival</code> attribute.
-	 * @return the Timearrival - time of arrival
+	 * <i>Generated method</i> - Getter of the <code>Flight.timeArrival</code> attribute.
+	 * @return the timeArrival - time of arrival
 	 */
-	public String getTimearrival()
+	public String getTimeArrival()
 	{
-		return getTimearrival( getSession().getSessionContext() );
+		return getTimeArrival( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.Timearrival</code> attribute. 
-	 * @param value the Timearrival - time of arrival
+	 * <i>Generated method</i> - Setter of the <code>Flight.timeArrival</code> attribute. 
+	 * @param value the timeArrival - time of arrival
 	 */
-	public void setTimearrival(final SessionContext ctx, final String value)
+	public void setTimeArrival(final SessionContext ctx, final String value)
 	{
 		setProperty(ctx, TIMEARRIVAL,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Flight.Timearrival</code> attribute. 
-	 * @param value the Timearrival - time of arrival
+	 * <i>Generated method</i> - Setter of the <code>Flight.timeArrival</code> attribute. 
+	 * @param value the timeArrival - time of arrival
 	 */
-	public void setTimearrival(final String value)
+	public void setTimeArrival(final String value)
 	{
-		setTimearrival( getSession().getSessionContext(), value );
+		setTimeArrival( getSession().getSessionContext(), value );
 	}
 	
 }

@@ -28,6 +28,14 @@
 	<!-- SystemSetup for the AirportCore -->
 	<bean id="acceleratorCoreSystemSetup" class="it.uiip.airport.core.setup.CoreSystemSetup"
 	       parent="abstractCoreSystemSetup"/>
+	      <!--   -->
+	      
+	      
+	<alias alias="airportDao" name="defaultairportDao"/>
+<bean id="defaulAirportDao" class="it.uiip.airport.core.dao.impl.DefaultAirportDao"/>
+
+<alias alias="passengerDao" name="defaultpassengerDao"/>
+<bean id="defaulPassengerDao" class="it.uiip.airport.core.dao.impl.DefaultPassengerDao"/>
 
 	<!-- Solr field value providers -->
 

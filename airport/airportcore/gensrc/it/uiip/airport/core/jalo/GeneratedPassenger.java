@@ -1,23 +1,24 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-nov-2019 21.11.59                        ---
+ * --- Generated at 27-nov-2019 22.06.13                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
 
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
-import de.hybris.platform.jalo.JaloBusinessException;
 import de.hybris.platform.jalo.SessionContext;
-import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.jalo.type.ComposedType;
+import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.jalo.user.User;
-import de.hybris.platform.util.BidirectionalOneToManyHandler;
+import de.hybris.platform.util.Utilities;
 import it.uiip.airport.core.constants.AirportCoreConstants;
 import it.uiip.airport.core.jalo.Flight;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,27 +31,19 @@ public abstract class GeneratedPassenger extends User
 	public static final String PASSPORT = "passport";
 	/** Qualifier of the <code>Passenger.surname</code> attribute **/
 	public static final String SURNAME = "surname";
-	/** Qualifier of the <code>Passenger.flight</code> attribute **/
-	public static final String FLIGHT = "flight";
-	/**
-	* {@link BidirectionalOneToManyHandler} for handling 1:n FLIGHT's relation attributes from 'one' side.
-	**/
-	protected static final BidirectionalOneToManyHandler<GeneratedPassenger> FLIGHTHANDLER = new BidirectionalOneToManyHandler<GeneratedPassenger>(
-	AirportCoreConstants.TC.PASSENGER,
-	false,
-	"flight",
-	null,
-	false,
-	true,
-	CollectionType.LIST
-	);
+	/** Qualifier of the <code>Passenger.flights</code> attribute **/
+	public static final String FLIGHTS = "flights";
+	/** Relation ordering override parameter constants for Flight2PassengerRelation from ((airportcore))*/
+	protected static String FLIGHT2PASSENGERRELATION_SRC_ORDERED = "relation.Flight2PassengerRelation.source.ordered";
+	protected static String FLIGHT2PASSENGERRELATION_TGT_ORDERED = "relation.Flight2PassengerRelation.target.ordered";
+	/** Relation disable markmodifed parameter constants for Flight2PassengerRelation from ((airportcore))*/
+	protected static String FLIGHT2PASSENGERRELATION_MARKMODIFIED = "relation.Flight2PassengerRelation.markmodified";
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(User.DEFAULT_INITIAL_ATTRIBUTES);
 		tmp.put(PASSPORT, AttributeMode.INITIAL);
 		tmp.put(SURNAME, AttributeMode.INITIAL);
-		tmp.put(FLIGHT, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -59,47 +52,139 @@ public abstract class GeneratedPassenger extends User
 		return DEFAULT_INITIAL_ATTRIBUTES;
 	}
 	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Passenger.flights</code> attribute.
+	 * @return the flights
+	 */
+	public Collection<Flight> getFlights(final SessionContext ctx)
+	{
+		final List<Flight> items = getLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			"Flight",
+			null,
+			false,
+			false
+		);
+		return items;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Passenger.flights</code> attribute.
+	 * @return the flights
+	 */
+	public Collection<Flight> getFlights()
+	{
+		return getFlights( getSession().getSessionContext() );
+	}
+	
+	public long getFlightsCount(final SessionContext ctx)
+	{
+		return getLinkedItemsCount(
+			ctx,
+			false,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			"Flight",
+			null
+		);
+	}
+	
+	public long getFlightsCount()
+	{
+		return getFlightsCount( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Passenger.flights</code> attribute. 
+	 * @param value the flights
+	 */
+	public void setFlights(final SessionContext ctx, final Collection<Flight> value)
+	{
+		setLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			null,
+			value,
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Passenger.flights</code> attribute. 
+	 * @param value the flights
+	 */
+	public void setFlights(final Collection<Flight> value)
+	{
+		setFlights( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to flights. 
+	 * @param value the item to add to flights
+	 */
+	public void addToFlights(final SessionContext ctx, final Flight value)
+	{
+		addLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to flights. 
+	 * @param value the item to add to flights
+	 */
+	public void addToFlights(final Flight value)
+	{
+		addToFlights( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from flights. 
+	 * @param value the item to remove from flights
+	 */
+	public void removeFromFlights(final SessionContext ctx, final Flight value)
+	{
+		removeLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.FLIGHT2PASSENGERRELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from flights. 
+	 * @param value the item to remove from flights
+	 */
+	public void removeFromFlights(final Flight value)
+	{
+		removeFromFlights( getSession().getSessionContext(), value );
+	}
+	
 	@Override
-	protected Item createItem(final SessionContext ctx, final ComposedType type, final ItemAttributeMap allAttributes) throws JaloBusinessException
+	public boolean isMarkModifiedDisabled(final Item referencedItem)
 	{
-		FLIGHTHANDLER.newInstance(ctx, allAttributes);
-		return super.createItem( ctx, type, allAttributes );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Passenger.flight</code> attribute.
-	 * @return the flight
-	 */
-	public Flight getFlight(final SessionContext ctx)
-	{
-		return (Flight)getProperty( ctx, FLIGHT);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Passenger.flight</code> attribute.
-	 * @return the flight
-	 */
-	public Flight getFlight()
-	{
-		return getFlight( getSession().getSessionContext() );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Passenger.flight</code> attribute. 
-	 * @param value the flight
-	 */
-	public void setFlight(final SessionContext ctx, final Flight value)
-	{
-		FLIGHTHANDLER.addValue( ctx, value, this  );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Passenger.flight</code> attribute. 
-	 * @param value the flight
-	 */
-	public void setFlight(final Flight value)
-	{
-		setFlight( getSession().getSessionContext(), value );
+		ComposedType relationSecondEnd0 = TypeManager.getInstance().getComposedType("Flight");
+		if(relationSecondEnd0.isAssignableFrom(referencedItem.getComposedType()))
+		{
+			return Utilities.getMarkModifiedOverride(FLIGHT2PASSENGERRELATION_MARKMODIFIED);
+		}
+		return true;
 	}
 	
 	/**

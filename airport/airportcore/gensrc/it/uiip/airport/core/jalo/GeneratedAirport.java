@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-nov-2019 21.11.59                        ---
+ * --- Generated at 27-nov-2019 22.06.13                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -45,8 +45,8 @@ public abstract class GeneratedAirport extends GenericItem
 	protected static final OneToManyHandler<Flight> DEPARTUREAIRPORTSHANDLER = new OneToManyHandler<Flight>(
 	AirportCoreConstants.TC.FLIGHT,
 	false,
-	"airport",
-	"airportPOS",
+	"departureAirport",
+	"departureAirportPOS",
 	true,
 	true,
 	CollectionType.LIST
@@ -57,8 +57,8 @@ public abstract class GeneratedAirport extends GenericItem
 	protected static final OneToManyHandler<Flight> AIRPORTARRIVALSHANDLER = new OneToManyHandler<Flight>(
 	AirportCoreConstants.TC.FLIGHT,
 	false,
-	"airport",
-	"airportPOS",
+	"airportArrival",
+	"airportArrivalPOS",
 	true,
 	true,
 	CollectionType.LIST

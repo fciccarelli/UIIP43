@@ -7,3 +7,4 @@ INSERT_UPDATE Airport; code[unique=true]; city[lang=it];city[lang=en];country[la
 ;BCN;Barcellona;Barcelona;Spagna;Spain;11;
 ;SXF;Berlino;Berlin;Germania;Germany;13;
 ;CPH;Copenaghen;Copenhagen;Danimarca;Denmark;15;
+;MIL;Milano; Milan;Italia;Italy;5;

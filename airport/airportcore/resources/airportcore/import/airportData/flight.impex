@@ -5,3 +5,7 @@ INSERT_UPDATE Flight ; code[unique=true] ; dayWeek[lang=it] ; dayWeek[lang=en] ;
 ; 2; Martedi; Tuesday; AMS; NAP; Boeing-500; 18:25:00; 04:00:00;  
  
 ; 3; Mercoledi ; Wednesday ; AMS; NAP ; Boeing-700; 08:25:00; 18:00:00;  
+
+; 4; Martedi; Tuesday; AMS; MIL;Boeing-700; 08:25:00; 10:00:00; 
+
+; 5; Martedi; Tuesday; NAP; MIL;Boeing-700; 08:25:00; 09:10:00;   
