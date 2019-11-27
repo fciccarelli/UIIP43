@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-nov-2019 22.42.05                        ---
+ * --- Generated at 27-nov-2019 22.04.22                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.constants;

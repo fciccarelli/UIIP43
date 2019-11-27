@@ -72,12 +72,14 @@
 
 		<relation code="Flight2PassengerRelation" generate="true"
 			localized="false">
+			
+			<deployment table="Flight2PassRel" typecode="20010"/>
 
-			<sourceElement qualifier="flight" type="Flight"
-				cardinality="one">
+			<sourceElement qualifier="flights" type="Flight"
+				cardinality="many">
 			</sourceElement>
 
-			<targetElement qualifier="flights" type="Passenger"
+			<targetElement qualifier="passengers" type="Passenger"
 				cardinality="many">
 			</targetElement>
 		</relation>

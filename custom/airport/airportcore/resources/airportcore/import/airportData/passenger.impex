@@ -1,11 +1,11 @@
-INSERT_UPDATE Passenger ; uid ; name       ; surname   ; passport[unique=true] ; flight(code)[allowNull=false]
-                        ; 1   ; Pasquale   ; Oppido    ; 1222ppp               ; 25                           
-                        ; 2   ; Simona     ; Branca    ; 1222sss               ; 12                           
-                        ; 3   ; Fabio      ; Sessa     ; 1222fff               ; 55                           
-                        ; 4   ; Fabio      ; Assaiante ; 1222aaa               ; 25                           
-                        ; 5   ; Antonietta ; De Angeis ; 1222dddd              ; 32                           
-                        ; 6   ; Simone     ; D'elia    ; 1222eee               ; 45                           
-                        ; 7   ; Luigi      ; Scialpi   ; 1222lll               ; 22                           
+INSERT_UPDATE Passenger ; uid ; name       ; surname   ; passport[unique=true] ; flights(code)[allowNull=false, mode=append]
+                        ; 1   ; Pasquale   ; Oppido    ; 1222ppp               ; 25, 26, 27, 28, 29, 30                           
+                        ; 2   ; Simona     ; Branca    ; 1222sss               ; 12, 25, 26, 27, 28, 29, 30                           
+                        ; 3   ; Fabio      ; Sessa     ; 1222fff               ; 55, 12, 25, 27, 28, 29, 39                           
+                        ; 4   ; Fabio      ; Assaiante ; 1222aaa               ; 25, 12, 10, 9                           
+                        ; 5   ; Antonietta ; De Angeis ; 1222dddd              ; 32, 1, 2, 3, 4, 122, 123, 124                         
+                        ; 6   ; Simone     ; D'elia    ; 1222eee               ; 45, 1, 2, 3, 4, 122, 123, 124                           
+                        ; 7   ; Luigi      ; Scialpi   ; 1222lll               ; 22, 1, 2, 3, 4, 122, 123, 124                             
                         ; 8   ; Giulio     ; Iori      ; 1222ggg               ; 30                           
                         ; 9   ; Marco      ; Neri      ; 1222nnn               ; 17                           
                         ; 10  ; Gino       ; Verdi     ; 1222vvv               ; 33                           
