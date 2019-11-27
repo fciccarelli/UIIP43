@@ -43,21 +43,25 @@
 		</relation>
 		<relation code="DepartureAirport2FlightRelation"
 			localized="false" generate="true" autocreate="true">
-			<sourceElement type="Airport" qualifier="departureAirport"
-				cardinality="one"></sourceElement>
+			<sourceElement type="Airport"
+				qualifier="departureAirport" cardinality="one"></sourceElement>
 			<targetElement type="Flight"
 				qualifier="departureAirports" cardinality="many"></targetElement>
 		</relation>
 		<relation code="AirportArrival2FlightRelation"
 			localized="false" generate="true" autocreate="true">
-			<sourceElement type="Airport" qualifier="arrivalAirport"
-				cardinality="one"></sourceElement>
+			<sourceElement type="Airport"
+				qualifier="arrivalAirport" cardinality="one"></sourceElement>
 			<targetElement type="Flight"
 				qualifier="arrivalAirports" cardinality="many"></targetElement>
 		</relation>
-		<relation generate="true" autocreate="true" localized="false" code="Flight2PassengerRelation">
-		<sourceElement qualifier="flight" type="Flight" cardinality="one"></sourceElement>
-		<targetElement qualifier="flights" type="Passenger" cardinality="many"></targetElement>
+		<relation generate="true" autocreate="true" localized="false"
+			code="Flight2PassengerRelation">
+			<deployment table="FLy2PassREl" typecode="11200"/>
+			<sourceElement qualifier="flights" type="Flight"
+				cardinality="many"></sourceElement>
+			<targetElement qualifier="passengers" type="Passenger"
+				cardinality="many"></targetElement>
 		</relation>
 	</relations>
 
