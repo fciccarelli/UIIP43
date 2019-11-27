@@ -1,5 +1,5 @@
 # USE CTRL-SPACE for type-ahead support
-INSERT_UPDATE Flight ; code[unique=true] ; dayWeek[lang=it] ; dayWeek[lang=en] ; codeDepartureAirport(code) ; codeAirportArrival(code) ; codeAirplane(code)[allowNull=false] ; departureTime[allowNull=false] ; timeArrival[allowNull=false]
+INSERT_UPDATE Flight ; code[unique=true] ; dayWeek[lang=it] ; dayWeek[lang=en] ; codeDepartureAirport(code) ; codeAirportArrival(code) ; codeAirplane(code)[allowNull=false] ; departureTime[allowNull=false] ; timeArrival[allowNull=false]; passengers(code)
                      ; 1                 ; Lunedi           ; Monday           ; MOW                        ; HND                      ; Boeing 747-400                      ; 18:25:00                       ; 04:00:00                    ;  
                      ; 2                 ; Martedì          ; Tuesday          ; MOW                        ; HND                      ; Boeing 747-400                      ; 18:25:00                       ; 04:00:00                    ;  
                      ; 3                 ; Mercoledì        ; Wednesday        ; MOW                        ; HND                      ; Boeing 747-400                      ; 08:25:00                       ; 18:00:00                    ;  

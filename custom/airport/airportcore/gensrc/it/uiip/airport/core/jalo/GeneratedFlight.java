@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 26-nov-2019 23.04.48                        ---
+ * --- Generated at 27-nov-2019 22.53.52                        ---
  * ----------------------------------------------------------------
  */
 package it.uiip.airport.core.jalo;
@@ -16,12 +16,17 @@ import de.hybris.platform.jalo.c2l.C2LManager;
 import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.jalo.type.ComposedType;
+import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.util.BidirectionalOneToManyHandler;
+import de.hybris.platform.util.Utilities;
 import it.uiip.airport.core.constants.AirportCoreConstants;
 import it.uiip.airport.core.jalo.Airplane;
 import it.uiip.airport.core.jalo.Airport;
+import it.uiip.airport.core.jalo.Passenger;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,6 +55,13 @@ public abstract class GeneratedFlight extends GenericItem
 	public static final String DEPARTUREAIRPORT = "departureAirport";
 	/** Qualifier of the <code>Flight.airportArrival</code> attribute **/
 	public static final String AIRPORTARRIVAL = "airportArrival";
+	/** Qualifier of the <code>Flight.passengers</code> attribute **/
+	public static final String PASSENGERS = "passengers";
+	/** Relation ordering override parameter constants for PassengerFlightRelation from ((airportcore))*/
+	protected static String PASSENGERFLIGHTRELATION_SRC_ORDERED = "relation.PassengerFlightRelation.source.ordered";
+	protected static String PASSENGERFLIGHTRELATION_TGT_ORDERED = "relation.PassengerFlightRelation.target.ordered";
+	/** Relation disable markmodifed parameter constants for PassengerFlightRelation from ((airportcore))*/
+	protected static String PASSENGERFLIGHTRELATION_MARKMODIFIED = "relation.PassengerFlightRelation.markmodified";
 	/**
 	* {@link BidirectionalOneToManyHandler} for handling 1:n PLANE's relation attributes from 'one' side.
 	**/
@@ -488,6 +500,141 @@ public abstract class GeneratedFlight extends GenericItem
 	public void setDepartureTime(final String value)
 	{
 		setDepartureTime( getSession().getSessionContext(), value );
+	}
+	
+	@Override
+	public boolean isMarkModifiedDisabled(final Item referencedItem)
+	{
+		ComposedType relationSecondEnd0 = TypeManager.getInstance().getComposedType("Passenger");
+		if(relationSecondEnd0.isAssignableFrom(referencedItem.getComposedType()))
+		{
+			return Utilities.getMarkModifiedOverride(PASSENGERFLIGHTRELATION_MARKMODIFIED);
+		}
+		return true;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.passengers</code> attribute.
+	 * @return the passengers
+	 */
+	public Collection<Passenger> getPassengers(final SessionContext ctx)
+	{
+		final List<Passenger> items = getLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.PASSENGERFLIGHTRELATION,
+			"Passenger",
+			null,
+			Utilities.getRelationOrderingOverride(PASSENGERFLIGHTRELATION_SRC_ORDERED, true),
+			false
+		);
+		return items;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Flight.passengers</code> attribute.
+	 * @return the passengers
+	 */
+	public Collection<Passenger> getPassengers()
+	{
+		return getPassengers( getSession().getSessionContext() );
+	}
+	
+	public long getPassengersCount(final SessionContext ctx)
+	{
+		return getLinkedItemsCount(
+			ctx,
+			false,
+			AirportCoreConstants.Relations.PASSENGERFLIGHTRELATION,
+			"Passenger",
+			null
+		);
+	}
+	
+	public long getPassengersCount()
+	{
+		return getPassengersCount( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.passengers</code> attribute. 
+	 * @param value the passengers
+	 */
+	public void setPassengers(final SessionContext ctx, final Collection<Passenger> value)
+	{
+		setLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.PASSENGERFLIGHTRELATION,
+			null,
+			value,
+			Utilities.getRelationOrderingOverride(PASSENGERFLIGHTRELATION_SRC_ORDERED, true),
+			false,
+			Utilities.getMarkModifiedOverride(PASSENGERFLIGHTRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Flight.passengers</code> attribute. 
+	 * @param value the passengers
+	 */
+	public void setPassengers(final Collection<Passenger> value)
+	{
+		setPassengers( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to passengers. 
+	 * @param value the item to add to passengers
+	 */
+	public void addToPassengers(final SessionContext ctx, final Passenger value)
+	{
+		addLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.PASSENGERFLIGHTRELATION,
+			null,
+			Collections.singletonList(value),
+			Utilities.getRelationOrderingOverride(PASSENGERFLIGHTRELATION_SRC_ORDERED, true),
+			false,
+			Utilities.getMarkModifiedOverride(PASSENGERFLIGHTRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to passengers. 
+	 * @param value the item to add to passengers
+	 */
+	public void addToPassengers(final Passenger value)
+	{
+		addToPassengers( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from passengers. 
+	 * @param value the item to remove from passengers
+	 */
+	public void removeFromPassengers(final SessionContext ctx, final Passenger value)
+	{
+		removeLinkedItems( 
+			ctx,
+			false,
+			AirportCoreConstants.Relations.PASSENGERFLIGHTRELATION,
+			null,
+			Collections.singletonList(value),
+			Utilities.getRelationOrderingOverride(PASSENGERFLIGHTRELATION_SRC_ORDERED, true),
+			false,
+			Utilities.getMarkModifiedOverride(PASSENGERFLIGHTRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from passengers. 
+	 * @param value the item to remove from passengers
+	 */
+	public void removeFromPassengers(final Passenger value)
+	{
+		removeFromPassengers( getSession().getSessionContext(), value );
 	}
 	
 	/**

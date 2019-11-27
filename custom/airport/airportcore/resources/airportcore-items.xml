@@ -73,12 +73,22 @@
 
 		</relation>
 
+
+
 		<relation generate="true" autocreate="true" localized="false"
-			code="Flight2PassengerRelation">
-			<sourceElement qualifier="flight" type="Flight"
-				cardinality="one"></sourceElement>
-			<targetElement qualifier="flights" type="Passenger"
-				cardinality="many"></targetElement>
+			code="PassengerFlightRelation">
+			<deployment table="Passenger2FlightRelation"
+				typecode="11004" />
+			<sourceElement qualifier="passengers" type="Passenger"
+				cardinality="many" ordered="false">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</sourceElement>
+			<targetElement qualifier="flights" type="Flight"
+				cardinality="many" collectiontype="list" ordered="true">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</targetElement>
 		</relation>
 
 	</relations>
@@ -229,8 +239,8 @@
 				<deployment table="Passenger" typecode="11003" />
 
 				<attributes>
-				
-				<attribute type="java.lang.Integer" qualifier="uid"
+
+					<attribute type="java.lang.Integer" qualifier="passid"
 						autocreate="true">
 						<description>Attribute id</description>
 						<modifiers read="true" write="true" unique="true"
@@ -238,30 +248,30 @@
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.String" qualifier="name">
+					<attribute type="java.lang.String" qualifier="nome">
 						<description>Attribute of the name of the passenger</description>
 						<modifiers read="true" write="true" optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.String" qualifier="surname">
+					<attribute type="java.lang.String" qualifier="cognome">
 						<description>Attribute of the surname of the passenger</description>
 						<modifiers read="true" write="true" optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
 
-					<attribute type="java.lang.String" qualifier="passport">
+					<attribute type="java.lang.String" qualifier="passaporto">
 						<description>Attribute of the alphanumeric code of the passport</description>
 						<modifiers read="true" write="true" optional="false" />
 						<persistence type="property"></persistence>
 					</attribute>
-					<attribute type="java.lang.Integer" qualifier="fligh">
+					<attribute type="java.lang.Integer" qualifier="flight">
 						<description>Primary key of table Flight</description>
 						<modifiers read="true" write="true" optional="false"
 							unique="true" />
 						<persistence type="property"></persistence>
 					</attribute>
-					
+
 				</attributes>
 			</itemtype>
 		</typegroup>
