@@ -199,7 +199,7 @@
 	</list></property>
 	</bean>
 	
-	<alias name="defaultAirportFacede" alias="airportFacade"/>
+	<alias name="defaultAirportFacade" alias="airportFacade"/>
 	<bean id="defaultAirportFacade" class="it.uiip.airport.facades.impl.DefaultAirportFacade">
 	<property name="airportService" ref="airportService"></property>
 	<property name="airportConverter" ref="airportConverter"></property>

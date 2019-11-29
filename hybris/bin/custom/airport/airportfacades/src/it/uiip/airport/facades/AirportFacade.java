@@ -1,7 +1,7 @@
 /**
  *
  */
-package it.uiip.airport.facedes;
+package it.uiip.airport.facades;
 
 import it.uiip.airport.facades.data.AirportData;
 
