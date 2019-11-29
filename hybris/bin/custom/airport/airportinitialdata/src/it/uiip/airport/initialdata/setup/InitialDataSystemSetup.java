@@ -19,13 +19,14 @@ import de.hybris.platform.core.initialization.SystemSetup.Type;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 import de.hybris.platform.core.initialization.SystemSetupParameter;
 import de.hybris.platform.core.initialization.SystemSetupParameterMethod;
-import it.uiip.airport.initialdata.constants.AirportInitialDataConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
+
+import it.uiip.airport.initialdata.constants.AirportInitialDataConstants;
 
 
 /**
@@ -64,7 +65,7 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	/**
 	 * Implement this method to create initial objects. This method will be called by system creator during
 	 * initialization and system update. Be sure that this method can be called repeatedly.
-	 * 
+	 *
 	 * @param context
 	 *           the context provides the selected parameters and values
 	 */
@@ -72,6 +73,16 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	public void createEssentialData(final SystemSetupContext context)
 	{
 		// Add Essential Data here as you require
+		final String path = "/airportinitialdata/import/coredata/";
+
+		importImpexFile(context, path + "contentCatalogs/catalogName/catalog.impex");
+		importImpexFile(context, path + "contentCatalogs/catalogName/cms-content.impex");
+		importImpexFile(context, path + "contentCatalogs/catalogName/cms-responsive-content.impex");
+		importImpexFile(context, path + "productCatalogs/catalogName/catalog.impex");
+		importImpexFile(context, path + "stores/storeName/site.impex");
+		importImpexFile(context, path + "stores/storeName/site-responsive.impex");
+		importImpexFile(context, path + "stores/storeName/site.impex");
+		importImpexFile(context, path + "stores/storeName/store.impex");
 	}
 
 	/**
@@ -104,6 +115,7 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 		/*
 		 * Add import data for each site you have configured
 		 */
+
 	}
 
 	public CoreDataImportService getCoreDataImportService()
