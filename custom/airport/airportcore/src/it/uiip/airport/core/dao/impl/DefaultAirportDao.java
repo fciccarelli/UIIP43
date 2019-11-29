@@ -20,9 +20,9 @@ public class DefaultAirportDao extends DefaultGenericDao implements AirportDao
 	/**
 	 * @param typecode
 	 */
-	private DefaultAirportDao(final String typecode)
+	public DefaultAirportDao()
 	{
-		super(typecode);
+		super(AirportModel._TYPECODE);
 	}
 
 	@Override

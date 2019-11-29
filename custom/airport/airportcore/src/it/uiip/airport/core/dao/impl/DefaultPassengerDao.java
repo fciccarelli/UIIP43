@@ -23,9 +23,9 @@ public class DefaultPassengerDao extends DefaultGenericDao implements PassengerD
 	/**
 	 * @param typecode
 	 */
-	private DefaultPassengerDao(final String typecode)
+	public DefaultPassengerDao()
 	{
-		super(typecode);
+		super(PassengerModel._TYPECODE);
 	}
 
 	@Override

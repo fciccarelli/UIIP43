@@ -189,4 +189,24 @@
 	</bean>
 
 	<bean id="genderData" class="it.uiip.airport.facades.product.data.GenderData" scope="prototype"/>
+	
+	<alias alias="airportConverter" name="defaultAirportConverter" />
+	<bean id="defaultAirportConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="it.uiip.airport.facades.data.AirportData"/>
+		<property name="populators">
+			<list>
+				<ref bean= "airportPopulator"/>
+			</list>
+		</property>
+	</bean>
+	
+	<alias name="defaultAirportFacade" alias="airportFacade"/>
+	<bean id="defaultAirportFacade" class="it.uiip.airport.facades.impl.DefaultAirportFacade">
+		<property name="airportService" ref="airportService"></property>
+		<property name="airportModelToDataConverter" ref="airportConverter"></property>
+	</bean>
+	
+	<alias alias="airportPopulator" name="defaultAirportDataPopulator" />
+	<bean id="defaultAirportDataPopulator" class="it.uiip.airport.facades.populators.data.impl.DefaultAirportDataPopulator"></bean>
+	
 </beans>
