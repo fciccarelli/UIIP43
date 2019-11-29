@@ -21,14 +21,14 @@ public class DefaultAirportFacade implements AirportFacade
 {
 
 	private DefaultAirportService airportService;
-	private Converter<AirportModel, AirportData> airportModelToDataConverter;
+	private Converter<AirportModel, AirportData> airportConverter;
 
 
 	@Override
 	public AirportData getAirportByCode(final String code)
 	{
 		final AirportModel airportModel = getAirportService().getAirportforcode(code);
-		return airportModelToDataConverter.convert(airportModel);
+		return airportConverter.convert(airportModel);
 
 	}
 
@@ -54,28 +54,23 @@ public class DefaultAirportFacade implements AirportFacade
 
 
 	/**
-	 * @return the airportModelToDataConverter
+	 * @return the airportConverter
 	 */
-	public Converter<AirportModel, AirportData> getAirportModelToDataConverter()
+	public Converter<AirportModel, AirportData> getAirportConverter()
 	{
-		return airportModelToDataConverter;
+		return airportConverter;
 	}
 
 
 	/**
-	 * @param airportModelToDataConverter
-	 *           the airportModelToDataConverter to set
+	 * @param airportConverter
+	 *           the airportConverter to set
 	 */
 	@Required
-	public void setAirportModelToDataConverter(final Converter<AirportModel, AirportData> airportModelToDataConverter)
+	public void setAirportConverter(final Converter<AirportModel, AirportData> airportConverter)
 	{
-		this.airportModelToDataConverter = airportModelToDataConverter;
+		this.airportConverter = airportConverter;
 	}
-
-
-
-
-
 
 
 }
