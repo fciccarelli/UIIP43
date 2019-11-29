@@ -1,2 +1,0 @@
-INSERT_UPDATE Airport ; code[unique=true] ; city[allowNull=false] ; country[allowNull=false] ; nRunways[allowNull=false]
-                      ; MIL               ; Milano                ; Italia                   ; 25                       ;  
