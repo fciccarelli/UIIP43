@@ -9,9 +9,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uiip.airport.facades.AirportFacade;
 import it.uiip.airport.facades.data.AirportData;
@@ -19,21 +19,21 @@ import it.uiip.airport.storefront.controllers.ControllerConstants;
 
 
 /**
- * @author pasop
+ * @author sdeli
  *
  */
 @Controller
-@RequestMapping(value = "/airportController")
+@RequestMapping(value = "/airport")
 public class DefaultAirportController extends AbstractPageController
 {
 
-	private static final String AIRPORT_SEARCH_CODE_PATTERN = "/search";
+	private static final String STORE_CODE_PATH_VARIABLE_PATTERN = "/airport";
 
 	@Resource(name = "airportFacade")
-	private AirportFacade airportFacade;
+	AirportFacade airportFacade;
 
- 	@RequestMapping(value = AIRPORT_SEARCH_CODE_PATTERN, method = RequestMethod.GET)
-	public String showAirport(@RequestParam("code")
+	@RequestMapping(value = STORE_CODE_PATH_VARIABLE_PATTERN, method = RequestMethod.GET)
+	public String showAirport(@PathVariable("Code")
 	final String code, final Model model)
 	{
 		final AirportData airportData = airportFacade.getAirportByCode(code);
@@ -42,7 +42,8 @@ public class DefaultAirportController extends AbstractPageController
 		model.addAttribute("country", airportData.getCountry());
 		model.addAttribute("nRunways", airportData.getNRunways());
 
-		return ControllerConstants.Views.Pages.ShowAirport.StoreFinderShowAirport;
+		return ControllerConstants.Views.Pages.Airport.ShowAirport;
 	}
+
 
 }
