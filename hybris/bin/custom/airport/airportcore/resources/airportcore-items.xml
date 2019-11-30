@@ -57,11 +57,24 @@
 		</relation>
 		<relation generate="true" autocreate="true" localized="false"
 			code="Flight2PassengerRelation">
-			<deployment table="FLy2PassREl" typecode="11200"/>
+			<deployment table="FLy2PassREl" typecode="11200" />
 			<sourceElement qualifier="flights" type="Flight"
 				cardinality="many"></sourceElement>
 			<targetElement qualifier="passengers" type="Passenger"
 				cardinality="many"></targetElement>
+		</relation>
+		<relation code="Passenger2TicketsRelation" generate="true"
+			autocreate="true" localized="false">
+			<deployment table="Pass2TickRel" typecode="11400" />
+			<sourceElement qualifier="passengers" type="Passenger"
+				cardinality="many"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket"
+				cardinality="many"></targetElement>
+		</relation>
+		<relation code="Flight2TicketsRelation" generate="true" autocreate="true" 
+		localized="false"  >
+			<sourceElement qualifier="flight" type="Flight" cardinality="one"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket" cardinality="many"></targetElement>
 		</relation>
 	</relations>
 
@@ -188,6 +201,27 @@
 				</attributes>
 
 			</itemtype>
+
+			<itemtype code="Ticket" autocreate="true" generate="true"
+				jaloclass="it.uiip.airport.core.jalo.Ticket">
+				<description> Ticket that models a flight ticket</description>
+				<deployment table="Ticket" typecode="11300" />
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<description> Code of the ticket </description>
+						<modifiers unique="true" optional="false" read="true"
+							write="true" />
+						<persistence type="property"></persistence>
+					</attribute>
+					<attribute qualifier="numberSeat" type="java.lang.String">
+						<description>The number of the seat of a flight</description>
+						<modifiers read="true" write="true" unique="false"
+							optional="false" />
+						<persistence type="property"></persistence>
+					</attribute>
+				</attributes>
+			</itemtype>
+
 
 		</typegroup>
 
