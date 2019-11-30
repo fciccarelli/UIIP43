@@ -27,7 +27,7 @@ public class DefaultTicketsDao extends DefaultGenericDao<TicketModel> implements
 	@Override
 	public List<TicketModel> findAllTickets()
 	{
-		final String query = "SELECT {PK} FROM {Tickect}";
+		final String query = "SELECT {PK} FROM {Ticket}";
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(query);
 		final SearchResult<TicketModel> result = getFlexibleSearchService().search(fsq);
 		final List<TicketModel> ticketModels = result.getResult();
