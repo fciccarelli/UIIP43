@@ -58,15 +58,16 @@ public class DefaultAirportController extends AbstractPageController
 	final String code, final Model model)
 	{
 		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
-		for (final PassengerData p : passengersData)
-		{
-			model.addAttribute("uid", p.getUid());
-			model.addAttribute("name", p.getName());
-			model.addAttribute("surname", p.getSurname());
-			model.addAttribute("passport", p.getPassport());
+		//for (final PassengerData p : passengersData)
+		//{
+		//		model.addAttribute("uid", passengersData.get(0).getUid());
+		//		model.addAttribute("name", passengersData.get(0).getName());
+		//		model.addAttribute("surname", passengersData.get(0).getSurname());
+		//		model.addAttribute("passport", passengersData.get(0).getPassport());
 
-		}
+		//}
 
+		model.addAttribute("passengersData", passengersData);
 		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
 	}
 }

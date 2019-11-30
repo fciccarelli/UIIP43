@@ -28,13 +28,8 @@ public class DefaultPassengerFacade implements PassengerFacade
 	@Override
 	public List<PassengerData> getPassengersByFlight(final String code)
 	{
-		final List<PassengerData> passengersData = null;
 		final List<PassengerModel> passengersModel = passengerService.getPassengersForFlight(code);
-		for (final PassengerModel p : passengersModel)
-		{
-			passengersData.add(passengerConverter.convert(p));
-		}
-		return passengersData;
+		return passengerConverter.convertAll(passengersModel);
 	}
 
 	/**
