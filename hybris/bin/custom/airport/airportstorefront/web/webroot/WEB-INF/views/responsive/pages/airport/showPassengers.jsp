@@ -4,15 +4,9 @@
 <body>
 	<h1>Passengers Info</h1>
 	<ul>
-		<c:forEach items="${passengersData}" var="passenger">
-		    <tr>      
-		        <td>${passenger.uid}</td>
-		        <td>${passenger.name}</td>
-		        <td>${passenger.surname}</td>
-		        <td>${passenger.passport}</td>
-		    </tr>
-		</c:forEach>
-		
+        <li>${passengerData}</li>
+        <li>${ticketNumber}</li>
+        <li>${numberSeat}</li>
 	</ul>
 </body>
 </html>

@@ -16,9 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uiip.airport.facades.AirportFacade;
+import it.uiip.airport.facades.FlightFacade;
 import it.uiip.airport.facades.PassengerFacade;
+import it.uiip.airport.facades.TicketsFacade;
 import it.uiip.airport.facades.data.AirportData;
+import it.uiip.airport.facades.data.FlightData;
 import it.uiip.airport.facades.data.PassengerData;
+import it.uiip.airport.facades.data.TicketsData;
 import it.uiip.airport.storefront.controllers.ControllerConstants;
 
 
@@ -33,12 +37,20 @@ public class DefaultAirportController extends AbstractPageController
 
 	private static final String AIRPORT_SEARCH_CODE_PATTERN = "/search";
 	private static final String PASSENGER_FILTER_PATTERN = "/passengers";
+	private static final String FIND_PASSENGER_FILTER_PATTERN = "/findPassengers";
 
 	@Resource(name = "airportFacade")
 	private AirportFacade airportFacade;
 
 	@Resource(name = "passengerFacade")
 	private PassengerFacade passengerFacade;
+
+	@Resource(name = "flightFacade")
+	private FlightFacade flightFacade;
+
+	@Resource(name = "ticketsFacade")
+	private TicketsFacade ticketFacade;
+
 
  	@RequestMapping(value = AIRPORT_SEARCH_CODE_PATTERN, method = RequestMethod.GET)
 	public String showAirport(@RequestParam("code")
@@ -58,16 +70,24 @@ public class DefaultAirportController extends AbstractPageController
 	final String code, final Model model)
 	{
 		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
-		//for (final PassengerData p : passengersData)
-		//{
-		//		model.addAttribute("uid", passengersData.get(0).getUid());
-		//		model.addAttribute("name", passengersData.get(0).getName());
-		//		model.addAttribute("surname", passengersData.get(0).getSurname());
-		//		model.addAttribute("passport", passengersData.get(0).getPassport());
-
-		//}
 
 		model.addAttribute("passengersData", passengersData);
 		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
 	}
+
+	@RequestMapping(value = FIND_PASSENGER_FILTER_PATTERN, method = RequestMethod.GET)
+	public String findPassengers(@RequestParam("code")
+	final String code, final Model model)
+	{
+		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
+		final List<FlightData> flightsData = flightFacade.getAllFlights();
+		final List<TicketsData> ticketData = ticketFacade.getAllTickets();
+
+		model.addAttribute("passengersData", passengersData);
+		model.addAttribute("ticketNumber", ticketData.get(Integer.parseInt(code)).getCode());
+		model.addAttribute("numberSeat", ticketData.get(Integer.parseInt(code)).getNumberSeat());
+
+		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
+	}
+
 }
