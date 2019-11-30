@@ -12,7 +12,7 @@ import it.uiip.airport.core.model.TicketModel;
  * @author pasop
  *
  */
-public interface TicketDao
+public interface TicketsDao
 {
 	List<TicketModel> findAllTickets();
 }

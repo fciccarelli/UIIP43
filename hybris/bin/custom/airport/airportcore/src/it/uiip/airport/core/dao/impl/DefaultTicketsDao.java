@@ -9,7 +9,7 @@ import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
 
-import it.uiip.airport.core.dao.TicketDao;
+import it.uiip.airport.core.dao.TicketsDao;
 import it.uiip.airport.core.model.TicketModel;
 
 
@@ -17,10 +17,10 @@ import it.uiip.airport.core.model.TicketModel;
  * @author pasop
  *
  */
-public class DefaultTicketDao extends DefaultGenericDao<TicketModel> implements TicketDao
+public class DefaultTicketsDao extends DefaultGenericDao<TicketModel> implements TicketsDao
 {
 
-	public DefaultTicketDao() {
+	public DefaultTicketsDao() {
 		super(TicketModel._TYPECODE);
 	}
 

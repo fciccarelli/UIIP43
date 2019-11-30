@@ -750,19 +750,19 @@
 	</bean>
 	
 	<alias name="defaultFlightService" alias="flightService" />
-	<bean id="defaultflightService"
-		class="it.uiip.airport.core.service.impl.DefaultflightService">
+	<bean id="defaultFlightService"
+		class="it.uiip.airport.core.service.impl.DefaultFlightService">
 		<property name="flightDao" ref="flightDao"></property>
 	</bean>
 
-	<alias name="defaultTicketDao" alias="ticketDao" />
-	<bean id="defaultTicketDao"
-		class="it.uiip.airport.core.dao.impl.DefaultTicketDao">
+	<alias name="defaultTicketsDao" alias="ticketsDao" />
+	<bean id="defaultTicketsDao"
+		class="it.uiip.airport.core.dao.impl.DefaultTicketsDao">
 	</bean>
 	
-	<alias name="defaultTicketService" alias="ticketService" />
-	<bean id="defaultTicketService"
-		class="it.uiip.airport.core.service.impl.DefaultTicketService">
-		<property name="ticketDao" ref="ticketDao"></property>
+	<alias name="defaultTicketsService" alias="ticketsService" />
+	<bean id="defaultTicketsService"
+		class="it.uiip.airport.core.service.impl.DefaultTicketsService">
+		<property name="ticketsDao" ref="ticketsDao"></property>
 	</bean>
 </beans>
