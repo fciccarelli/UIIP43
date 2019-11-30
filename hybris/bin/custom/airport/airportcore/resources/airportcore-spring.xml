@@ -712,14 +712,21 @@
 			ref="ticketBusinessService" />
 	</bean>
 
+	<alias name="defaultPlaneDao" alias="planeDao" />
+	<bean id="defaultPlaneDao"
+		class="it.uiip.airport.core.dao.impl.DefaultPlaneDao">
+	</bean>
+	
+	<alias name="defaultPlaneService" alias="planeService" />
+	<bean id="defaultPlaneService"
+		class="it.uiip.airport.core.service.impl.DefaultPlaneService">
+		<property name="planeDao" ref="planeDao"></property>
+	</bean>
+
 	<alias name="defaultAirportDao" alias="airportDao" />
 	<bean id="defaultAirportDao"
 		class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
 	</bean>
-
-	<alias name="defaultPassengerDao" alias="passengerDao" />
-	<bean id="defaultPassengerDao"
-		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao"></bean>
 
 	<alias name="defaultAirportService" alias="airportService" />
 	<bean id="defaultAirportService"
@@ -727,4 +734,35 @@
 		<property name="airportDao" ref="airportDao"></property>
 	</bean>
 
+	<alias name="defaultPassengerDao" alias="passengerDao" />
+	<bean id="defaultPassengerDao"
+		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao"></bean>
+
+	<alias alias="passengerService" name="defaultPassengerService" />
+	<bean id="defaultPassengerService"
+		class="it.uiip.airport.core.service.impl.DefaultPassengerService">
+		<property name="passengerDao" ref="passengerDao"></property>
+	</bean>
+	
+	<alias name="defaultFlightDao" alias="flightDao" />
+	<bean id="defaultFlightDao"
+		class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
+	</bean>
+	
+	<alias name="defaultFlightService" alias="flightService" />
+	<bean id="defaultflightService"
+		class="it.uiip.airport.core.service.impl.DefaultflightService">
+		<property name="flightDao" ref="flightDao"></property>
+	</bean>
+
+	<alias name="defaultTicketDao" alias="ticketDao" />
+	<bean id="defaultTicketDao"
+		class="it.uiip.airport.core.dao.impl.DefaultTicketDao">
+	</bean>
+	
+	<alias name="defaultTicketService" alias="ticketService" />
+	<bean id="defaultTicketService"
+		class="it.uiip.airport.core.service.impl.DefaultTicketService">
+		<property name="ticketDao" ref="ticketDao"></property>
+	</bean>
 </beans>
