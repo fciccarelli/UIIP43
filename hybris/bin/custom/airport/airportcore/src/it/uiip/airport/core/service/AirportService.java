@@ -7,10 +7,10 @@ import it.uiip.airport.core.model.AirportModel;
 
 
 /**
- * @author sdeli
+ * @author fabiosessa
  *
  */
 public interface AirportService
 {
-	AirportModel getAirportforcode(String code);
+	public AirportModel getAirportforcode(String code);
 }

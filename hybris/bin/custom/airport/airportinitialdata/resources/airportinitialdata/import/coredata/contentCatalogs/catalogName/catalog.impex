@@ -11,7 +11,7 @@
 #
 # Import the Content Catalog
 #
-$contentCatalog=apparel-deContentCatalog
+$contentCatalog=__CONTENT_CATALOG_NAME__
 $languages=ja,en,de,zh
 
 # Content catalog for CMS contents

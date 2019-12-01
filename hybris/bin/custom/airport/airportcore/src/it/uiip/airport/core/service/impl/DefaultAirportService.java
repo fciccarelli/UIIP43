@@ -11,19 +11,12 @@ import it.uiip.airport.core.service.AirportService;
 
 
 /**
- * @author sdeli
+ * @author fabiosessa
  *
  */
 public class DefaultAirportService implements AirportService
 {
 	AirportDao airportDao;
-
-	@Override
-	public AirportModel getAirportforcode(final String code)
-	{
-		return airportDao.findAirportByCode(code);
-
-	}
 
 	/**
 	 * @return the airportDao
@@ -37,13 +30,18 @@ public class DefaultAirportService implements AirportService
 	 * @param airportDao
 	 *           the airportDao to set
 	 */
+
 	@Required
 	public void setAirportDao(final AirportDao airportDao)
 	{
 		this.airportDao = airportDao;
 	}
 
-
-
+	@Override
+	public AirportModel getAirportforcode(final String code)
+	{
+		// XXX Auto-generated method stub
+		return airportDao.findAirportByCode(code);
+	}
 
 }

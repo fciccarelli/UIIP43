@@ -43,6 +43,48 @@
 		<property name="catalogVersionService"
 			ref="catalogVersionService" />
 	</bean>
+	
+	<alias name="defaultAirportService" alias="airportService" />
+	<bean id="defaultAirportService"
+		class="it.uiip.airport.core.service.impl.DefaultAirportService">
+		<property name="airportDao" ref="airportDao"></property>
+	</bean>
+	
+	<alias name="defaultPassengerService" alias="passengerService" />
+	<bean id="defaultPassengerService"
+		class="it.uiip.airport.core.service.impl.DefaultPassengerService">
+		<property name="passengerDao" ref="passengerDao"></property>
+	</bean>
+	
+	<alias name="defaultFlightService" alias="flightService" />
+	<bean id="defaultFlightService"
+		class="it.uiip.airport.core.service.impl.DefaultFlightService">
+		<property name="flightDao" ref="flightDao"></property>
+	</bean>
+	<alias name="defaultTicketsService" alias="ticketsService" />
+	<bean id="defaultTicketsService"
+		class="it.uiip.airport.core.service.impl.DefaultTicketService">
+		<property name="ticketDao" ref="ticketsDao"></property>
+	</bean>
+	
+
+	<alias name="defaultAirportDao" alias="airportDao" />
+	<bean id="defaultAirportDao"
+		class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
+	</bean>
+
+	<alias name="defaultPassengerDao" alias="passengerDao" />
+	<bean id="defaultPassengerDao"
+		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao">
+	</bean>
+	<alias name="defaultFlightDao" alias="flightDao" />
+	<bean id="defaultFlightDao"
+		class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
+	</bean>
+	<alias name="defaultTicketsDao" alias="ticketsDao" />
+	<bean id="defaultTicketsDao"
+		class="it.uiip.airport.core.dao.impl.DefaultTicketDao">
+	</bean>
 
 	<bean id="volumePriceComparator"
 		class="it.uiip.airport.core.comparators.VolumeAwarePriceInformationComparator"
@@ -711,20 +753,4 @@
 		<property name="ticketBusinessService"
 			ref="ticketBusinessService" />
 	</bean>
-
-	<alias name="defaultAirportDao" alias="airportDao" />
-	<bean id="defaultAirportDao"
-		class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
-	</bean>
-
-	<alias name="defaultPassengerDao" alias="passengerDao" />
-	<bean id="defaultPassengerDao"
-		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao"></bean>
-
-	<alias name="defaultAirportService" alias="airportService" />
-	<bean id="defaultAirportService"
-		class="it.uiip.airport.core.service.impl.DefaultAirportService">
-		<property name="airportDao" ref="airportDao"></property>
-	</bean>
-
 </beans>

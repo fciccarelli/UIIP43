@@ -9,16 +9,113 @@
  Information and shall use it only in accordance with the terms of the
  license agreement you entered into with SAP.
 -->
-<beans xmlns="http://www.springframework.org/schema/beans"
+ <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
-		
-	<context:annotation-config/> 
+       http://www.springframework.org/schema/context/spring-context.xsd"> 
 
+	<context:annotation-config/>
+	
+	<alias name="defaultTicketConverter" alias="ticketsConverter" />
+	<bean id="defaultTicketConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.TicketsData"></property>
+		<property name="populators">
+			<list>
+				<ref bean="ticketsPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="DefaultTicketsFacade" alias="ticketFacade" />
+	<bean id="DefaultTicketsFacade"
+		class="it.uiip.airport.facade.impl.DefaultTicketsFacade">
+		<property name="ticketService" ref="ticketsService"></property>
+		<property name="ticketConverter" ref="ticketsConverter"></property>
+	</bean>
+
+	<alias name="defaultTicketsPopulator" alias="ticketsPopulator" />
+	<bean id="defaultTicketsPopulator"
+		class="it.uiip.airport.facades.populators.TicketsPopulator">
+	</bean>
+	
+	<alias name="defaultPassengerConverter" alias="passengerConverter" />
+	<bean id="defaultPassengerConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.PassengerData"></property>
+		<property name="populators">
+			<list>
+				<ref bean="passengerPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultPassengerFacade" alias="passengerFacade" />
+	<bean id="defaultPassengerFacade"
+		class="it.uiip.airport.facade.impl.DefaultPassengerFacade">
+		<property name="passengerService" ref="passengerService"></property>
+		<property name="passengerConverter" ref="passengerConverter"></property>
+	</bean>
+
+	<alias name="defaultPassengerPopulator" alias="passengerPopulator" />
+	<bean id="defaultPassengerPopulator"
+		class="it.uiip.airport.facades.populators.PassengerPopulator">
+	</bean>
+	
+	<alias name="defaultFlightConverter" alias="flightConverter" />
+	<bean id="defaultFlightConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.FlightData"></property>
+		<property name="populators">
+			<list>
+				<ref bean="flightPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultFlightFacade" alias="flightFacade" />
+	<bean id="defaultFlightFacade"
+		class="it.uiip.airport.facade.impl.DefaultFlightFacade">
+		<property name="flightService" ref="flightService"></property>
+		<property name="flightConverter" ref="flightConverter"></property>
+	</bean>
+
+	<alias name="defaultFlightPopulator" alias="flightPopulator" />
+	<bean id="defaultFlightPopulator"
+		class="it.uiip.airport.facades.populators.FlightPopulator">
+	</bean>
+
+	<alias name="defaultAirportConverter" alias="airportConverter" />
+	<bean id="defaultAirportConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="it.uiip.airport.facades.data.AirportData"></property>
+		<property name="populators">
+			<list>
+				<ref bean="airportPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultAirportFacade" alias="airportFacade" />
+	<bean id="defaultAirportFacade"
+		class="it.uiip.airport.facade.impl.DefaultAirportFacade">
+		<property name="airportService" ref="airportService"></property>
+		<property name="airportConverter" ref="airportConverter"></property>
+	</bean>
+
+	<alias name="defaultAirportPopulator" alias="airportPopulator" />
+	<bean id="defaultAirportPopulator"
+		class="it.uiip.airport.facades.populators.AirportPopulator">
+	</bean>
+	
+	
 	<alias alias="simpleSuggestionFacade" name="defaultSimpleSuggestionFacade"/>
 	<bean id="defaultSimpleSuggestionFacade" class="it.uiip.airport.facades.suggestion.impl.DefaultSimpleSuggestionFacade" >
 		<property name="simpleSuggestionService" ref="simpleSuggestionService"/>
@@ -188,25 +285,6 @@
 		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter"/>
 	</bean>
 
-	<bean id="genderData" class="it.uiip.airport.facades.product.data.GenderData" scope="prototype"/>
-	
-	<alias name="defaultAirportConverter" alias="airportConverter"/>
-	<bean id="defaultAirportConverter" parent="abstractPopulatingConverter">
-	<property name="targetClass" value="it.uiip.airport.facades.data.AirportData"></property>
-	<property name="populators">
-	<list>
-	<ref bean="airportPopulator"/>
-	</list></property>
+	<bean id="genderData" class="it.uiip.airport.facades.product.data.GenderData" scope="prototype">
 	</bean>
-	
-	<alias name="defaultAirportFacade" alias="airportFacade"/>
-	<bean id="defaultAirportFacade" class="it.uiip.airport.facades.impl.DefaultAirportFacade">
-	<property name="airportService" ref="airportService"></property>
-	<property name="airportConverter" ref="airportConverter"></property>
-	</bean>
-	
-
-	
-	<alias name="defaultAirportPopulator" alias="airportPopulator"/>
-	<bean id="defaultAirportPopulator" class="it.uiip.airport.facades.populators.impl.AirportPopulator"></bean>
 </beans>

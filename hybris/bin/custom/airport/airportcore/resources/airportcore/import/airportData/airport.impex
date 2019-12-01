@@ -13,4 +13,4 @@ INSERT_UPDATE Airport ; code[unique=true] ; city[allowNull= false, lang=it] ; ci
                       ; AHO               ; Alghero                         ; Alghero                        ; Italia                            ; Italy                             ; 12                       ;  
                       ; AOI               ; Ancona                          ; Ancona                         ; Italia                            ; Italy                             ; 5                        ;  
                       ; BRI               ; Bari                            ; Bari                           ; Italia                            ; Italy                             ; 6                        ;  
-                      ; MIL               ; Milano                          ; Milan                          ;Italia                            ;Italy                             ;7                        ;
+                      ; MIL				  ; Milano							; Milan							 ; Italia							 ; Italy							 ; 20						;
