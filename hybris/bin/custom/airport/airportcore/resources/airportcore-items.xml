@@ -34,7 +34,6 @@
 	</enumtypes>
 
 	<relations>
-	
 		<relation generate="true" code="Plane2FlightRelation"
 			localized="false" autocreate="true">
 			<sourceElement qualifier="plane" type="Plane"
@@ -42,7 +41,6 @@
 			<targetElement qualifier="flights" type="Flight"
 				cardinality="many"></targetElement>
 		</relation>
-		
 		<relation code="DepartureAirport2FlightRelation"
 			localized="false" generate="true" autocreate="true">
 			<sourceElement type="Airport"
@@ -50,7 +48,6 @@
 			<targetElement type="Flight"
 				qualifier="departureAirports" cardinality="many"></targetElement>
 		</relation>
-		
 		<relation code="AirportArrival2FlightRelation"
 			localized="false" generate="true" autocreate="true">
 			<sourceElement type="Airport"
@@ -58,7 +55,6 @@
 			<targetElement type="Flight"
 				qualifier="arrivalAirports" cardinality="many"></targetElement>
 		</relation>
-		
 		<relation generate="true" autocreate="true" localized="false"
 			code="Flight2PassengerRelation">
 			<deployment table="FLy2PassREl" typecode="11200" />
@@ -68,12 +64,36 @@
 				cardinality="many"></targetElement>
 		</relation>
 		
-		<relation localized="false" code="Passenger2TicketsRelation" generate="true" autocreate="true">
-		<sourceElement qualifier="passenger" type="Passenger" cardinality="one"></sourceElement>
-		<targetElement qualifier="tickets" type="Ticket" cardinality="many"></targetElement>
+		<relation generate="true" autocreate="true" localized="false"
+			code="Passenger2TicketsRelation">
+			<sourceElement qualifier="passenger" type="Passenger"
+				cardinality="one"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket"
+				cardinality="many"></targetElement>
 		</relation>
-		
+
+		<relation code="Flight2TicketsRelation" generate="true"
+			autocreate="true" localized="false">
+			<sourceElement qualifier="flight" type="Flight"
+				cardinality="one"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket"
+				cardinality="many"></targetElement>
+		</relation>
 	</relations>
+<!-- 		<relation code="Passenger2TicketsRelation" generate="true"
+			autocreate="true" localized="false">
+			<deployment table="Pass2TickRel" typecode="11400" />
+			<sourceElement qualifier="passengers" type="Passenger"
+				cardinality="many"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket"
+				cardinality="many"></targetElement>
+		</relation>
+		<relation code="Flight2TicketsRelation" generate="true" autocreate="true" 
+		localized="false"  >
+			<sourceElement qualifier="flight" type="Flight" cardinality="one"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket" cardinality="many"></targetElement>
+		</relation>
+	</relations> -->
 
 
 
@@ -200,23 +220,25 @@
 			</itemtype>
 
 			<itemtype code="Ticket" autocreate="true" generate="true"
-				jaloclass="it.uiip.airport.jalo.Ticket">
-				<description>Ticket product that contian atrribute</description>
+				jaloclass="it.uiip.airport.core.jalo.Ticket">
+				<description> Ticket that models a flight ticket</description>
 				<deployment table="Ticket" typecode="11300" />
 				<attributes>
 					<attribute qualifier="code" type="java.lang.String">
-						<description>Code of ticket</description>
-						<modifiers read="true" write="true" optional="false" unique="true"/>
+						<description> Code of the ticket </description>
+						<modifiers unique="true" optional="false" read="true"
+							write="true" />
 						<persistence type="property"></persistence>
 					</attribute>
-					<attribute qualifier="numberSeat" type="java.lang.String" >
-					<description>Number of the seat</description>
-					<modifiers read="true" write="true" optional="false" unique="true"/>
-					<persistence type="property"></persistence>
+					<attribute qualifier="numberSeat" type="java.lang.String">
+						<description>The number of the seat of a flight</description>
+						<modifiers read="true" write="true" unique="false"
+							optional="false" />
+						<persistence type="property"></persistence>
 					</attribute>
-					
 				</attributes>
 			</itemtype>
+
 
 		</typegroup>
 
