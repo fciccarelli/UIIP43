@@ -3,8 +3,6 @@
  */
 package it.uiip.airport.core.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.dao.TicketsDao;
@@ -21,9 +19,9 @@ public class DefaultTicketsService implements TicketsService
 	TicketsDao ticketsDao;
 
 	@Override
-	public List<TicketModel> getAllTickets()
+	public TicketModel getTicketForFlight(final String code, final String passport)
 	{
-		return ticketsDao.findAllTickets();
+		return ticketsDao.findTicketsByFlight(code, passport);
 	}
 
 	/**

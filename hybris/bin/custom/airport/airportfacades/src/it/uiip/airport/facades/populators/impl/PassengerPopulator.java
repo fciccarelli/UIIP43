@@ -20,6 +20,7 @@ public class PassengerPopulator implements Populator<PassengerModel, PassengerDa
 	@Override
 	public void populate(final PassengerModel source, final PassengerData target) throws ConversionException
 	{
+
 		target.setUid(source.getUid());
 		target.setName(source.getName());
 		target.setSurname(source.getSurname());

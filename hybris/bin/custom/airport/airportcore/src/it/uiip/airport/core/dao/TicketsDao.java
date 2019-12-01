@@ -3,8 +3,6 @@
  */
 package it.uiip.airport.core.dao;
 
-import java.util.List;
-
 import it.uiip.airport.core.model.TicketModel;
 
 
@@ -14,5 +12,5 @@ import it.uiip.airport.core.model.TicketModel;
  */
 public interface TicketsDao
 {
-	List<TicketModel> findAllTickets();
+	TicketModel findTicketsByFlight(String code, String passport);
 }

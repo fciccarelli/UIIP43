@@ -45,7 +45,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	@Override
 	public List<PassengerModel> findPassengersByFlight(final String code)
 	{
-		final String queryStr = "SELECT {p.PK} FROM {Flight as f "
+		final String queryStr = "SELECT {p.PK}, {t.numberSeat}, {t.code} FROM {Flight as f "
 				+ "	JOIN Ticket as t 	" + "	ON {t.flight} = {f.PK} "
 
 				+ "	JOIN Passenger as p " + "	ON {t.passenger} = {p.PK} "

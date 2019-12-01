@@ -742,6 +742,7 @@
 	<bean id="defaultPassengerService"
 		class="it.uiip.airport.core.service.impl.DefaultPassengerService">
 		<property name="passengerDao" ref="passengerDao"></property>
+		<property name="ticketsDao" ref="ticketsDao"></property>
 	</bean>
 	
 	<alias name="defaultFlightDao" alias="flightDao" />

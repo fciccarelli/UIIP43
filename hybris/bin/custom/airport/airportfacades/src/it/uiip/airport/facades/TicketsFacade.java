@@ -14,5 +14,5 @@ import it.uiip.airport.facades.data.TicketsData;
  */
 public interface TicketsFacade
 {
-	List<TicketsData> getAllTickets();
+	List<TicketsData> getTickets(String code);
 }

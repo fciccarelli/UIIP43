@@ -15,16 +15,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import it.uiip.airport.facades.AirportFacade;
 import it.uiip.airport.facades.FlightFacade;
 import it.uiip.airport.facades.PassengerFacade;
 import it.uiip.airport.facades.TicketsFacade;
 import it.uiip.airport.facades.data.AirportData;
-import it.uiip.airport.facades.data.FlightData;
 import it.uiip.airport.facades.data.PassengerData;
-import it.uiip.airport.facades.data.TicketsData;
 import it.uiip.airport.storefront.controllers.ControllerConstants;
 
 
@@ -69,26 +66,11 @@ public class DefaultAirportController extends AbstractPageController
 
 	@RequestMapping(value = PASSENGER_FILTER_PATTERN, method = RequestMethod.GET)
 	public String showPassengers(@RequestParam("code")
-	final String code, final ModelAndView model)
-	{
-		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
-		model.addObject("passengersData", passengersData);
-		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
-	}
-
-	@RequestMapping(value = FIND_PASSENGER_FILTER_PATTERN, method = RequestMethod.GET)
-	public String findPassengers(@RequestParam("code")
 	final String code, final ModelMap model)
 	{
 		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
-		final List<FlightData> flightsData = flightFacade.getAllFlights();
-		final List<TicketsData> ticketData = ticketFacade.getAllTickets();
-
-		//		model.addAttribute("passengersData", passengersData);
-		model.put("passengersData", ticketData);
-
+		model.put("passengersData", passengersData);
 		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
 	}
-
 
 }

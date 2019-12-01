@@ -27,10 +27,10 @@ public class DefaultTicketsFacade implements TicketsFacade
 
 
 	@Override
-	public List<TicketsData> getAllTickets()
+	public List<TicketsData> getTickets(final String code)
 	{
-		final List<TicketModel> ticketsModel = ticketsService.getAllTickets();
-		return ticketsConverter.convertAll(ticketsModel);
+
+		return null;
 	}
 
 
