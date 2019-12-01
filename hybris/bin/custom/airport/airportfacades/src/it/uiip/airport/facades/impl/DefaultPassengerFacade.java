@@ -36,13 +36,14 @@ public class DefaultPassengerFacade implements PassengerFacade
 		final List<PassengerModel> passengersModel = passengerService.getPassengersForFlight(code);
 		final List<PassengerData> passengersData = passengerConverter.convertAll(passengersModel);
 
-		for (int i = 0; i < passengersModel.size(); i++)
-		{
-
-			passengersData.get(i).setTicket(
-					ticketsConverter.convert(ticketsService.getTicketForFlight(code, passengersModel.get(i).getPassport())));
-
-		}
+		//		for (int i = 0; i < passengersModel.size(); i++)
+		//		{
+		//			final String passport = passengersModel.get(i).getPassport();
+		//			final TicketModel ticketModel = ticketsService.getTicketForFlight(code, passport);
+		//			final TicketsData ticketData = ticketsConverter.convert(ticketModel);
+		//			passengersData.get(i).setTicket(ticketData);
+		//
+		//		}
 		return passengersData;
 	}
 

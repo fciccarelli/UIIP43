@@ -29,7 +29,6 @@ public class DefaultTicketsFacade implements TicketsFacade
 	@Override
 	public List<TicketsData> getTickets(final String code)
 	{
-
 		return null;
 	}
 
