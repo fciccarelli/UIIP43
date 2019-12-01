@@ -24,6 +24,7 @@ public class DefaultPassengerService implements PassengerService
 	public List<PassengerModel> getPassengersForFlight(final String code)
 	{
 		return passengerDao.findPassengersByFlight(code);
+
 	}
 
 	@Override

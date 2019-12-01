@@ -45,7 +45,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	@Override
 	public List<PassengerModel> findPassengersByFlight(final String code)
 	{
-		final String queryStr = " SELECT {p.PK} FROM {Flight as f "
+		final String queryStr = "SELECT {p.PK} FROM {Flight as f "
 				+ "	JOIN Ticket as t 	" + "	ON {t.flight} = {f.PK} "
 
 				+ "	JOIN Passenger as p " + "	ON {t.passenger} = {p.PK} "
@@ -55,8 +55,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("code", code);
 		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
-		final List<PassengerModel> passengersModel = result.getResult();
-		return passengersModel;
+		return result.getResult();
 
 	}
 

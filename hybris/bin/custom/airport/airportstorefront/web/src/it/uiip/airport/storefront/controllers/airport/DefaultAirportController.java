@@ -11,9 +11,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import it.uiip.airport.facades.AirportFacade;
 import it.uiip.airport.facades.FlightFacade;
@@ -67,27 +69,26 @@ public class DefaultAirportController extends AbstractPageController
 
 	@RequestMapping(value = PASSENGER_FILTER_PATTERN, method = RequestMethod.GET)
 	public String showPassengers(@RequestParam("code")
-	final String code, final Model model)
+	final String code, final ModelAndView model)
 	{
 		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
-
-		model.addAttribute("passengersData", passengersData);
+		model.addObject("passengersData", passengersData);
 		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
 	}
 
 	@RequestMapping(value = FIND_PASSENGER_FILTER_PATTERN, method = RequestMethod.GET)
 	public String findPassengers(@RequestParam("code")
-	final String code, final Model model)
+	final String code, final ModelMap model)
 	{
 		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
 		final List<FlightData> flightsData = flightFacade.getAllFlights();
 		final List<TicketsData> ticketData = ticketFacade.getAllTickets();
 
-		model.addAttribute("passengersData", passengersData);
-		model.addAttribute("ticketNumber", ticketData.get(Integer.parseInt(code)).getCode());
-		model.addAttribute("numberSeat", ticketData.get(Integer.parseInt(code)).getNumberSeat());
+		//		model.addAttribute("passengersData", passengersData);
+		model.put("passengersData", ticketData);
 
 		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
 	}
+
 
 }
