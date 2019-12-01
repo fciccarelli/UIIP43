@@ -24,5 +24,11 @@
 		<property name="country" type="String"></property>
 		<property name="nRunways" type="Integer"></property>
 	</bean>
+	
+	<bean class="it.uiip.airport.facades.data.PassengerData">
+		<property name="passport" type="String"></property>
+		<property name="name" type="String"></property>
+		<property name="surname" type="String"></property>
+	</bean>
 
 </beans>

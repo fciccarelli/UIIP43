@@ -42,6 +42,7 @@ public class DefaultAirportController extends AbstractPageController
 		model.addAttribute("country", airportData.getCountry());
 		model.addAttribute("nRunways", airportData.getNRunways());
 
+
 		return ControllerConstants.Views.Pages.ShowAirport.StoreFinderShowAirport;
 	}
 
