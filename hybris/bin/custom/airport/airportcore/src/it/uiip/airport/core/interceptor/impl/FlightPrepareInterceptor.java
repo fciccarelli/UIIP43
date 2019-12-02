@@ -7,6 +7,9 @@ import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.PrepareInterceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import it.uiip.airport.core.model.FlightModel;
 
 
@@ -16,6 +19,9 @@ import it.uiip.airport.core.model.FlightModel;
  */
 public class FlightPrepareInterceptor implements PrepareInterceptor<FlightModel>
 {
+
+	Logger log = LoggerFactory.getLogger(FlightPrepareInterceptor.class);
+
 	public static final int MAX_LENGTH_CODE = 12;
 
 	@Override
@@ -26,6 +32,7 @@ public class FlightPrepareInterceptor implements PrepareInterceptor<FlightModel>
 		{
 			var1.setCode(trim(var1.getCode()));
 		}
+		log.info("The code has been set to {}", var1.getCode());
 
 	}
 

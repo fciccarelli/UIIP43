@@ -1,7 +1,7 @@
 /**
  *
  */
-package it.uiip.airport.core.cronJob.impl;
+package it.uiip.airport.core.job.impl;
 
 import de.hybris.platform.cronjob.enums.CronJobResult;
 import de.hybris.platform.cronjob.enums.CronJobStatus;
