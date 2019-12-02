@@ -14,35 +14,30 @@ import it.uiip.airport.core.model.FlightModel;
 
 
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
 public class FlightPrepareInterceptor implements PrepareInterceptor<FlightModel>
 {
 
-	private final Logger log = LoggerFactory.getLogger(PassengerPrepareInterceptor.class);
+	private final Logger log = LoggerFactory.getLogger(FlightPrepareInterceptor.class);
 
 	@Override
 	public void onPrepare(final FlightModel flight, final InterceptorContext arg1) throws InterceptorException
 	{
 
-		if (flight != null)
-		{
-			String newCode = "";
-			String ultimateCode = "";
-			newCode = flight.getCode().replaceAll("\\s", "");
-			if (newCode.length() > 12)
-			{
-				ultimateCode = newCode.substring(0, 12);
-				flight.setCode(ultimateCode);
-			}
-			else
-			{
-				flight.setCode(newCode);
-			}
-		}
-		log.info("Changed Code string to 12 character without spaces", flight);
 
-	}
+		String prova = flight.getCode().replaceAll("\\s", "");
+		//prova = prova.trim();
+			if (prova.length() > 12)
+			{
+				prova = prova.substring(0, 12);
+				flight.setCode(prova);
+
+			}
+		flight.setCode(prova);
+			log.info("Changed format of code", flight.getCode());
+		}
+
 
 }

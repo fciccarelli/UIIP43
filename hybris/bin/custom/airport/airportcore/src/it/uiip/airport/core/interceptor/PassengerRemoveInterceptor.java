@@ -11,27 +11,21 @@ import it.uiip.airport.core.model.PassengerModel;
 
 
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
 public class PassengerRemoveInterceptor implements RemoveInterceptor<PassengerModel>
 {
 
 	@Override
-	public void onRemove(final PassengerModel arg0, final InterceptorContext arg1) throws InterceptorException
+	public void onRemove(final PassengerModel var1, final InterceptorContext var2) throws InterceptorException
 	{
-
-		throw new InterceptorException("Interceptor Exception");
-
-		//		if (arg0 != null)
-		//		{
-		//			System.out.println("Sto per rimuovere qualcosa");
-		//		}
-		//		else
-		//		{
-		//			throw new InterceptorException("Interceptor Exception");
-		//		}
+		if (var1 == null)
+		{
+			throw new InterceptorException("Il PassengerModel è nullo!");
+		}
 
 	}
+
 
 }

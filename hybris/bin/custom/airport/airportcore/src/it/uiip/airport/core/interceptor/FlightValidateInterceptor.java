@@ -9,32 +9,32 @@ import de.hybris.platform.servicelayer.interceptor.ValidateInterceptor;
 
 import it.uiip.airport.core.model.FlightModel;
 
+
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
-public class FlightValidateInterceptor implements ValidateInterceptor
+public class FlightValidateInterceptor implements ValidateInterceptor<FlightModel>
 {
 
 	@Override
-	public void onValidate(final Object flight, final InterceptorContext arg1) throws InterceptorException
+	public void onValidate(final FlightModel flight, final InterceptorContext arg1) throws InterceptorException
 	{
 
-		final FlightModel flightModel = (FlightModel) flight;
 
-		if (flight instanceof FlightModel)
-		{
-			if (flightModel.getCode() == null)
+			if (flight == null)
 			{
-				throw new InterceptorException("Code cannot be null.");
+				throw new InterceptorException("Code cannot be null");
 			}
-			else if (flightModel.getCode().length() != 12)
+			else if (flight.getCode().length() != 12)
 			{
-				throw new InterceptorException("Code length cannot be different from 12 character.");
-			}
 
+				throw new InterceptorException("Code have a diffenter lenght of 12");
+			}
 		}
 
-	}
+
+
+
 
 }

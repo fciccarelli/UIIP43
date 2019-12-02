@@ -11,27 +11,25 @@ import it.uiip.airport.core.model.TicketModel;
 
 
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
 public class AirportValidateInterceptor implements ValidateInterceptor
 {
 
 	@Override
-	public void onValidate(final Object model, final InterceptorContext arg1) throws InterceptorException
+	public void onValidate(final Object var1, final InterceptorContext var2) throws InterceptorException
 	{
-
-		final TicketModel ticketModel = (TicketModel) model;
-
-		if (model instanceof TicketModel)
+		if (var1 instanceof TicketModel)
 		{
-			if (ticketModel.getCode() == null)
+			final TicketModel tick = (TicketModel) var1;
+			if (tick.getCode() == null)
 			{
-				throw new InterceptorException("Code cannot be null.");
+				throw new InterceptorException("Code cannot be null");
 			}
-			if (ticketModel.getNumberSeat() == null)
+			if (tick.getNumberSeat() == null)
 			{
-				throw new InterceptorException("NumberSeat cannot be null.");
+				throw new InterceptorException("numberSeat cannot be null");
 			}
 		}
 

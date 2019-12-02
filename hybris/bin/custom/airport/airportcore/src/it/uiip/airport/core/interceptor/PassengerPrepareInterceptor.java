@@ -14,7 +14,7 @@ import it.uiip.airport.core.model.PassengerModel;
 
 
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
 public class PassengerPrepareInterceptor implements PrepareInterceptor<PassengerModel>
@@ -23,9 +23,15 @@ public class PassengerPrepareInterceptor implements PrepareInterceptor<Passenger
 	private final Logger log = LoggerFactory.getLogger(PassengerPrepareInterceptor.class);
 
 	@Override
-	public void onPrepare(final PassengerModel arg0, final InterceptorContext arg1) throws InterceptorException
+	public void onPrepare(final PassengerModel var1, final InterceptorContext var2) throws InterceptorException
 	{
-		setPassportUpperCase(arg0);
+		if (var1 instanceof PassengerModel)
+		{
+
+			setPassportUpperCase(var1);
+
+		}
+
 	}
 
 	private void setPassportUpperCase(final PassengerModel passenger)
@@ -33,10 +39,9 @@ public class PassengerPrepareInterceptor implements PrepareInterceptor<Passenger
 
 		if (passenger != null)
 		{
+
 			passenger.setPassport(passenger.getPassport().toUpperCase());
 		}
-		log.info("Changed passport string to uppercase", passenger.getPassport());
-
+		log.info("Cambiato la scritture del Passaporto in UpperCase", passenger.getPassport());
 	}
-
 }

@@ -726,5 +726,43 @@
 		class="it.uiip.airport.core.service.impl.DefaultAirportService">
 		<property name="airportDao" ref="airportDao"></property>
 	</bean>
+	
+	<alias name="defaultTicketZDao" alias="ticketZDao"/>
+	<bean id="defaultTicketZDao" class="it.uiip.airport.core.dao.impl.DefaultTicketZDao">
+	</bean>
+	
+	<alias name="defaultTicketZService" alias="ticketZService"/>
+	<bean id="defaultTicketZService" class="it.uiip.airport.core.service.impl.DefaultTicketZService">
+		<property name="ticketZDao" ref="ticketZDao">
+		</property>
+	</bean>
+	
+	
+	<bean id="passengerInitDefaultInterceptor" class="it.uiip.airport.core.interceptor.PassengerInitDefaultsInterceptor"></bean>
+	
+	<bean id="passengerPrepareInterceptor" class="it.uiip.airport.core.interceptor.PassengerPrepareInterceptor"></bean>
+	
+	<bean id="passengerRemoveInterceptor" class="it.uiip.airport.core.interceptor.PassengerRemoveInterceptor"></bean>
 
+	<bean id="airportLoadInterceptor" class="it.uiip.airport.core.interceptor.AirportLoadInterceptor"></bean>
+	
+	<bean id="flightValidateInterceptor" class="it.uiip.airport.core.interceptor.FlightValidateInterceptor"></bean>
+	
+	<bean id="flightPrepareInterceptor" class="it.uiip.airport.core.interceptor.FlightPrepareInterceptor"></bean>
+	
+	<bean id="airportValidateInterceptor" class="it.uiip.airport.core.interceptor.AirportValidateInterceptor"></bean>
+	
+	<bean id="airportValidateInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="airportValidateInterceptor"></property>
+		<property name="typeCode" value="Ticket"></property>
+	</bean>
+	
+	<bean id="myJob" class="it.uiip.airport.core.cronjob.impl.MyJob" parent="abstractJobPerformable"></bean>
+	
+	<bean id="ticketInitDefaultInterceptor" class="it.uiip.airport.core.interceptor.TicketInitDefaultsInterceptor"></bean>
+	
+	<bean id="ticketPrepareInterceptor" class="it.uiip.airport.core.interceptor.TicketPrepareInterceptor"></bean>
+	
+	<bean id="ticketRemoveInterceptor" class="it.uiip.airport.core.interceptor.TicketRemoveInterceptor"></bean>
+	
 </beans>
