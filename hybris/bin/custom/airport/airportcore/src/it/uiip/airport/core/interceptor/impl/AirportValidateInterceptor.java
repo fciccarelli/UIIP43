@@ -10,6 +10,7 @@ import de.hybris.platform.servicelayer.interceptor.ValidateInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import it.uiip.airport.core.model.FlightModel;
 import it.uiip.airport.core.model.PassengerModel;
 import it.uiip.airport.core.model.TicketModel;
 
@@ -28,12 +29,12 @@ public class AirportValidateInterceptor implements ValidateInterceptor
 		// XXX Auto-generated method stub
 		if (arg0 instanceof TicketModel)
 		{
-			final TicketModel pm = (TicketModel) arg0;
-			if (pm.getCode() == null)
+			final TicketModel tm = (TicketModel) arg0;
+			if (tm.getCode() == null)
 			{
 				throw new InterceptorException("The code is null");
 			}
-			if (pm.getNumberSeat() == null)
+			if (tm.getNumberSeat() == null)
 			{
 				throw new InterceptorException("The number of seat is null");
 			}
@@ -59,6 +60,32 @@ public class AirportValidateInterceptor implements ValidateInterceptor
 				throw new InterceptorException("The passport is null");
 			}
 
+		}
+
+		if (arg0 instanceof FlightModel)
+		{
+
+			final FlightModel fm = (FlightModel) arg0;
+			if (fm.getCode() == null)
+			{
+				throw new InterceptorException("code is null");
+			}
+			else if (fm.getCode().length() != 12)
+			{
+				throw new InterceptorException("The code has length different from 12");
+			}
+			if (fm.getDayWeek() == null)
+			{
+				throw new InterceptorException("dayWeek is null");
+			}
+			if (fm.getDepartureTime() == null)
+			{
+				throw new InterceptorException("departureTime is null");
+			}
+			if (fm.getArrivalAirport() == null)
+			{
+				throw new InterceptorException("arrivalTime is null");
+			}
 		}
 
 	}
