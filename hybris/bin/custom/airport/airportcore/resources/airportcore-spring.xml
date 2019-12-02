@@ -825,4 +825,19 @@
 	<bean id="flightRemoveInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.FlightRemoveInterceptor">
 	</bean>
+	
+	<!-- TICKET PREPARE INTERCEPTOR -->
+	<bean id="ticketPrepareInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.TicketPrepareInterceptor">
+	</bean>
+	
+	<!-- TICKET INIT DEFAULT INTERCEPTOR -->
+	<bean id="ticketInitDefaultInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.TicketInitDefaultInterceptor">
+	</bean>
+	
+	<!-- TICKET REMOVE INTERCEPTOR -->
+	<bean id="ticketRemoveInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.TicketRemoveInterceptor">
+	</bean>
 </beans>
