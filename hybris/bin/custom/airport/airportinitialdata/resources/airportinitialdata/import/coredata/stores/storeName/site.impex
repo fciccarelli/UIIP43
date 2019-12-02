@@ -11,12 +11,12 @@
 #
 # Import the CMS Site configuration for the store
 #
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$contentCatalog=__CONTENT_CATALOG_NAME__
+$productCatalog=apparelProductCatalog
+$contentCatalog=apparel-deContentCatalog
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $defaultLanguage=en
-$storeUid=__STORE_UID__
-$siteUid=__STORE_UID__
+$storeUid=apparel-de
+$siteUid=apparel-de
 $promoGrp=__DEFAULT_PROMO_GRP__
 $siteMapUrlLimitPerFile=50000
 

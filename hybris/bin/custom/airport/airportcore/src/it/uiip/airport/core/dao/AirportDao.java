@@ -10,7 +10,7 @@ import it.uiip.airport.core.model.AirportModel;
 
 
 /**
- * @author sdeli
+ * @author aDeAngelis
  *
  */
 

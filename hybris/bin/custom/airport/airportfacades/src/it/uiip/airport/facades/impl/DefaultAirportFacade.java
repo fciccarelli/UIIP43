@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.AirportModel;
 import it.uiip.airport.core.service.impl.DefaultAirportService;
+import it.uiip.airport.facades.AirportFacade;
 import it.uiip.airport.facades.data.AirportData;
-import it.uiip.airport.facedes.AirportFacade;
 
 
 /**
- * @author sdeli
+ * @author aDeangelis
  *
  */
 public class DefaultAirportFacade implements AirportFacade
