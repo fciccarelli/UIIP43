@@ -738,8 +738,26 @@
 	</bean>
 	
 	
+	<bean id="passengerInitDefaultInterceptor" class="it.uiip.airport.core.interceptor.PassengerInitDefaultsInterceptor"></bean>
 	
 	
+	<bean id="passengerPrepareInterceptor" class="it.uiip.airport.core.interceptor.PassengerPrepareInterceptor"></bean>
 	
+	<bean id="passengerRemoveInterceptor" class="it.uiip.airport.core.interceptor.PassengerRemoveInterceptor"></bean>
 
+	<bean id="airportLoadInterceptor" class="it.uiip.airport.core.interceptor.AirportLoadInterceptor"></bean>
+	
+	<bean id="flightValidateInterceptor" class="it.uiip.airport.core.interceptor.FlightValidateInterceptor"></bean>
+	
+	<bean id="flightPrepareInterceptor" class="it.uiip.airport.core.interceptor.FlightPrepareInterceptor"></bean>
+	
+	<bean id="airportValidateInterceptor" class="it.uiip.airport.core.interceptor.AirportValidateInterceptor"></bean>
+	
+	<bean id="airportValidateInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="airportValidateInterceptor"></property>
+		<property name="typeCode" value="Ticket"></property>
+	</bean>
+	
+	<bean id="myJob" class="it.uiip.airport.core.cronjob.impl.MyJob" parent="abstractJobPerformable"></bean>
+	
 </beans>
