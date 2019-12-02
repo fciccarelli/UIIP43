@@ -753,6 +753,12 @@
 	
 	<bean id="airportValidateInterceptor" class="it.uiip.airport.core.interceptor.AirportValidateInterceptor"></bean>
 	
+	<bean id="ticketPrepareInterceptor" class="it.uiip.airport.core.interceptor.TicketPrepareInterceptor"></bean>
+	
+	<bean id="ticketRemoveInterceptor" class="it.uiip.airport.core.interceptor.TicketRemoveInterceptor"></bean>
+	
+	<bean id="ticketInitDefaultInterceptor" class="it.uiip.airport.core.interceptor.TicketInitDefaultInterceptor"></bean>
+	
 	<bean id="airportValidateInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="airportValidateInterceptor"></property>
 		<property name="typeCode" value="Ticket"></property>
