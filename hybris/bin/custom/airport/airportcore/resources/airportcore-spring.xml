@@ -767,11 +767,6 @@
 		<property name="ticketsDao" ref="ticketsDao"></property>
 	</bean>
 
-	<!-- PASSENGER INIT DEFAULT INTERCEPTOR -->
-	<bean id="passengerInitDefaultInterceptor"
-		class="it.uiip.airport.core.interceptor.impl.PassengerInitDefaultInterceptor">
-	</bean>
-
 	<!-- AIRPORT LOAD INTERCEPTOR -->
 	<bean id="airportLoadInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.AirportLoadInterceptor">
@@ -795,6 +790,11 @@
 		<property name="interceptor" ref="airportValidateInterceptor" />
 		<property name="typeCode" value="Ticket" />
 	</bean>
+	
+	<!-- PASSENGER INIT DEFAULT INTERCEPTOR -->
+	<bean id="passengerInitDefaultInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.PassengerInitDefaultInterceptor">
+	</bean>
 
 	<!-- PASSENGER PREPARE INTERCEPTOR -->
 	<bean id="passengerPrepareInterceptor"
@@ -811,4 +811,18 @@
 		class="it.uiip.airport.core.cronJob.impl.DefaultAirportCronJob"
 		parent="abstractJobPerformable"></bean>
 
+	<!-- FLIGHT PREPARE INTERCEPTOR -->
+	<bean id="flightPrepareInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.FlightPrepareInterceptor">
+	</bean>
+	
+	<!-- FLIGHT INIT DEFAULT INTERCEPTOR -->
+	<bean id="flightInitDefaultInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.FlightInitDefaultInterceptor">
+	</bean>
+	
+	<!-- FLIGHT REMOVE INTERCEPTOR -->
+	<bean id="flightRemoveInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.FlightRemoveInterceptor">
+	</bean>
 </beans>

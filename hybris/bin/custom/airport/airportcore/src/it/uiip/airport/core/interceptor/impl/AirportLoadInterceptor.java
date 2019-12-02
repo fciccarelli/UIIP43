@@ -12,6 +12,7 @@ import java.time.LocalTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import it.uiip.airport.core.model.FlightModel;
 import it.uiip.airport.core.model.PassengerModel;
 
 
@@ -30,6 +31,10 @@ public class AirportLoadInterceptor implements LoadInterceptor
 		if (arg0 instanceof PassengerModel)
 		{
 			log.info("Passenger model list loaded {}", LocalTime.now());
+		}
+		if (arg0 instanceof FlightModel)
+		{
+			log.info("Flight model list loaded {}", LocalTime.now());
 		}
 
 	}
