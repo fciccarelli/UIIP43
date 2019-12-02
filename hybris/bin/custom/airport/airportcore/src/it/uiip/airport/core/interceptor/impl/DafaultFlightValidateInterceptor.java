@@ -7,6 +7,9 @@ import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.ValidateInterceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import it.uiip.airport.core.model.FlightModel;
 
 
@@ -16,7 +19,7 @@ import it.uiip.airport.core.model.FlightModel;
  */
 public class DafaultFlightValidateInterceptor implements ValidateInterceptor
 {
-
+	Logger log = LoggerFactory.getLogger(DafaultFlightValidateInterceptor.class);
 	@Override
 	public void onValidate(final Object fli, final InterceptorContext arg1) throws InterceptorException
 	{
@@ -26,10 +29,13 @@ public class DafaultFlightValidateInterceptor implements ValidateInterceptor
 			final FlightModel flight = (FlightModel) fli;
 			if (flight.getCode() != null)
 			{
-				final String code = flight.getCode();
-				if (checkCode(code) == false)
+				if (checkCode(flight.getCode()) == false)
 				{
 					throw new InterceptorException("code invalidate");
+				}
+				else
+				{
+					log.info("code validate");
 				}
 			}
 			else
@@ -37,6 +43,7 @@ public class DafaultFlightValidateInterceptor implements ValidateInterceptor
 				throw new InterceptorException("code flight is null");
 			}
 		}
+
 	}
 
 	private boolean checkCode(final String code)

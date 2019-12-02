@@ -45,7 +45,7 @@
 	</bean>
 	
 	
-	<bean id="airportCroneJOb" class="it.uiip.airport.core.job.AirportCroneJob" parent="abstractJobPerformable">
+	<bean id="airportCroneJob" class="it.uiip.airport.core.job.AirportCroneJob" parent="abstractJobPerformable">
 	</bean>
 
 	<bean id="airportLoadInterceptorMapping"
@@ -59,8 +59,14 @@
 		<property name="typeCode" value="ticketModel'"></property>
 	</bean>
 
-
-
+	<bean id="ticketPrepareInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketPrepareInterception"></bean>
+	<bean id="ticketValidateInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketValidateInterceptor"></bean>
+	<bean id="ticketDefaultiInitInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketInitDefaultInterceptor "></bean>
+	
+	
 	<bean id="passengerInitDeafaultInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.DefaultPassengerInitDefaultInterceptor"></bean>
 	<bean id="passengerPrepareInterceptor"

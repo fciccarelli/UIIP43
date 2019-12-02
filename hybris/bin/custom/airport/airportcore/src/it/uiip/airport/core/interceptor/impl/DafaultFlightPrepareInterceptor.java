@@ -7,6 +7,9 @@ import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.PrepareInterceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import it.uiip.airport.core.model.FlightModel;
 
 
@@ -16,7 +19,7 @@ import it.uiip.airport.core.model.FlightModel;
  */
 public class DafaultFlightPrepareInterceptor implements PrepareInterceptor
 {
-
+	Logger log = LoggerFactory.getLogger(DafaultFlightPrepareInterceptor.class);
 	@Override
 	public void onPrepare(final Object fli, final InterceptorContext arg1) throws InterceptorException
 	{
@@ -29,12 +32,14 @@ public class DafaultFlightPrepareInterceptor implements PrepareInterceptor
 				final String code = flight.getCode();
 				final String codeTrunc = trimCode(code);
 				flight.setCode(codeTrunc);
+				log.info("code prepare");
 			}
 			else
 			{
 				throw new InterceptorException("code flight is null");
 			}
 		}
+
 
 
 
