@@ -31,7 +31,7 @@ public class DefaultFlightDao extends DefaultGenericDao<FlightModel> implements 
 	public FlightModel findFlightByCode(final String code)
 	{
 		// XXX Auto-generated method stub
-		final String queryStr = "SELECT {p.name},{p.surname},{t.code},{t.numberSeat} FROM { Flight as f Join Ticket as t ON {t.flight} = {f.pk} Join Passenger as p ON {p.pk} = {t.passengers}} where {f.code} = ?code";
+		final String queryStr = "SELECT {p.name},{p.surname},{t.code},{t.numberSeat} FROM { Flight as f Join Ticket as t ON {t.flight} = {f.pk} Join Passenger as p ON {p.pk} = {t.passengers}} where {f.code} =?code";
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("code", code);
 		final SearchResult<FlightModel> result = getFlexibleSearchService().search(fsq);

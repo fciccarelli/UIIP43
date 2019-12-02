@@ -35,7 +35,7 @@ import it.uiip.airport.storefront.controllers.ControllerConstants;
 public class DafaultAirportController extends AbstractPageController
 {
 
-	private static final String AIRPORT_SEARCH_CODE_PATTERN = "/searchA";
+	private static final String AIRPORT_SEARCH_CODE_PATTERN = "/search";
 	private static final String FLIGHT_SEARCH_CODE_PATTERN = "/searchF";
 
 	@Resource(name = "airportFacade")

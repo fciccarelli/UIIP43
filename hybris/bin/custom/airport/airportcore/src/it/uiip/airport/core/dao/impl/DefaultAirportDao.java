@@ -33,7 +33,7 @@ public class DefaultAirportDao extends DefaultGenericDao<AirportModel> implement
 	public AirportModel findAirportByCode(final String code)
 	{
 		// XXX Auto-generated method stub
-		final String queryStr = "Select {PK} from {Airport} where {code}= ?code";
+		final String queryStr = "Select {PK} from {Airport} where {code}=?code";
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("code",code);
 		final SearchResult<AirportModel> result = getFlexibleSearchService().search(fsq);
