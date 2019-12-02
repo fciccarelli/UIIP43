@@ -190,6 +190,8 @@
 
 	<bean id="genderData" class="it.uiip.airport.facades.product.data.GenderData" scope="prototype"/>
 	
+	
+	<!-- airport -->
 	<alias name="defaultAirportConverter" alias="airportConverter"/>
 	<bean id="defaultAirportConverter" parent="abstractPopulatingConverter">
 	<property name="targetClass" value="it.uiip.airport.facades.data.AirportData"></property>
@@ -199,14 +201,32 @@
 	</list></property>
 	</bean>
 	
-	<alias name="defaultAirportFacede" alias="airportFacade"/>
+	<alias name="defaultAirportFacade" alias="airportFacade"/>
 	<bean id="defaultAirportFacade" class="it.uiip.airport.facades.impl.DefaultAirportFacade">
 	<property name="airportService" ref="airportService"></property>
 	<property name="airportConverter" ref="airportConverter"></property>
 	</bean>
 	
-
-	
 	<alias name="defaultAirportPopulator" alias="airportPopulator"/>
 	<bean id="defaultAirportPopulator" class="it.uiip.airport.facades.populators.impl.AirportPopulator"></bean>
+	
+	
+	<!-- passenger -->
+	<alias name="defaultPassengerConverter" alias="passengerConverter"/>
+	<bean id="defaultPassengerConverter" parent="abstractPopulatingConverter">
+	<property name="targetClass" value="it.uiip.airport.facades.data.PassengerData"></property>
+	<property name="populators">
+	<list>
+	<ref bean="passengerPopulator"/>
+	</list></property>
+	</bean>
+	
+	<alias name="defaultPassengerFacade" alias="passengerFacade"/>
+	<bean id="defaultPassengerFacade" class="it.uiip.airport.facades.impl.DefaultPassengerFacade">
+	<property name="passengerService" ref="passengerService"></property>
+	<property name="passengerConverter" ref="passengerConverter"></property>
+	</bean>
+	
+	<alias name="defaultPassengerPopulator" alias="passengerPopulator"/>
+	<bean id="defaultPassengerPopulator" class="it.uiip.airport.facades.populators.impl.PassengerPopulator"></bean>
 </beans>

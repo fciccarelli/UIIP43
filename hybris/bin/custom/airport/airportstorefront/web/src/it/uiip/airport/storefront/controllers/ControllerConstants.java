@@ -164,6 +164,18 @@ public interface ControllerConstants
 			{
 				String ImportCSVSavedCartPage = "pages/csv/importCSVSavedCartPage"; // NOSONAR
 			}
+
+			interface ShowAirport // NOSONAR
+			{
+				String StoreFinderShowAirport = "pages/airport/showAirport";
+			}
+
+			interface ShowPassengers // NOSONAR
+			{
+				String StoreFinderShowPassengers = "pages/passenger/showPassengers";
+			}
+
+
 		}
 
 		interface Fragments
@@ -204,6 +216,7 @@ public interface ControllerConstants
 				String ReviewsTab = "fragments/product/reviewsTab"; // NOSONAR
 				String StorePickupSearchResults = "fragments/product/storePickupSearchResults"; // NOSONAR
 			}
+
 		}
 	}
 }
