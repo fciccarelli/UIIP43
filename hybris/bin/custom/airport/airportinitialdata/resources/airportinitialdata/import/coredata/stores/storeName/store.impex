@@ -11,12 +11,12 @@
 # 
 # Create the BaseStore
 #
-$productCatalog=apparelProductCatalog
-$contentCatalog=apparel-deContentCatalog
-$classificationCatalog=apparelClassificationCatalog
+
+$productCatalog=__PRODUCT_CATALOG_NAME__
+$classificationCatalog=__CLASSIFICATION_CATALOG_NAME__
 $currencies=JPY,USD
 $net=false
-$storeUid=apparel-de
+$storeUid=__STORE_UID__
 $defaultCurrency=USD
 $languages=ja,en,de,zh
 $defaultLanguage=en

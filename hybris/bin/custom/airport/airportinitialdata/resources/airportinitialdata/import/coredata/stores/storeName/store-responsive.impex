@@ -12,7 +12,7 @@
 # Create the BaseStore
 #
 
-$storeUid=apparel-de
+$storeUid=__STORE_UID__
 $checkoutFlowGroup=responsiveCheckoutGroup
 
 # Base Store

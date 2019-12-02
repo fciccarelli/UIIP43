@@ -1,28 +1,26 @@
-
 /**
  *
  */
 package it.uiip.airport.core.dao.impl;
 
-
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
-
-import java.util.List;
 
 import it.uiip.airport.core.dao.PassengerDao;
 import it.uiip.airport.core.model.PassengerModel;
 
 
 /**
- * @author sdeli
+ * @author fabiosessa
  *
  */
 public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> implements PassengerDao
 {
 
-
+	/**
+	 * @param typecode
+	 */
 	public DefaultPassengerDao()
 	{
 		super(PassengerModel._TYPECODE);
@@ -30,19 +28,15 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	}
 
 	@Override
-	public List<PassengerModel> findPassengerByNameSurname(final String name, final String surname)
+	public PassengerModel findPassengerByCode(final String code)
 	{
-		final String queryStr = "SELECT {PK} FROM {Passenger} WHERE {name}=?name AND {surname}=?surname";
+		// XXX Auto-generated method stub
+		final String queryStr = "Select {PK} from {Passenger} where {code}= ?code";
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
-		fsq.addQueryParameter("name", name);
-		fsq.addQueryParameter("surname", surname);
+		fsq.addQueryParameter("code", code);
 		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
-		final List<PassengerModel> passengers = result.getResult();
-
-		return passengers;
+		final PassengerModel passenger = (PassengerModel) result.getResult();
+		return passenger;
 	}
-
-
-
 
 }

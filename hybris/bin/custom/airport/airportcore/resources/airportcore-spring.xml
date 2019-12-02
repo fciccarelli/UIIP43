@@ -43,6 +43,93 @@
 		<property name="catalogVersionService"
 			ref="catalogVersionService" />
 	</bean>
+	
+	
+	<bean id="airportCroneJob" class="it.uiip.airport.core.job.AirportCroneJob" parent="abstractJobPerformable">
+	</bean>
+
+	<bean id="airportLoadInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="airportLoadInterceptor"></property>
+		<property name="typeCode" value="ticketModel'"></property>
+	</bean>
+	<bean id="airportValidateInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="airportValidateInterceptor"></property>
+		<property name="typeCode" value="ticketModel'"></property>
+	</bean>
+
+	<bean id="ticketPrepareInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketPrepareInterception"></bean>
+	<bean id="ticketValidateInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketValidateInterceptor"></bean>
+	<bean id="ticketDefaultiInitInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketInitDefaultInterceptor "></bean>
+	
+	
+	<bean id="passengerInitDeafaultInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultPassengerInitDefaultInterceptor"></bean>
+	<bean id="passengerPrepareInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultPassengerPrepareInterceptor"></bean>
+	<bean id="passengerRemoveInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultPassengerRemoveInterceptor"></bean>
+	<bean id="passengerLoadInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DafaultPasssengerLoadInterceptor"></bean>
+	<bean id="passengerValidateInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultPassengerValidateInterceptor"></bean>
+	
+	<bean id="airportLoadInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultAirportLoadInterceptor"></bean>
+	<bean id="airportValidateInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultAirportValidateInterceptor"></bean>
+		
+		
+	<bean id="flightValidateInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DafaultFlightValidateInterceptor"></bean>
+	<bean id="flightPrepareInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DafaultFlightPrepareInterceptor"></bean>
+
+	<alias name="defaultAirportService" alias="airportService" />
+	<bean id="defaultAirportService"
+		class="it.uiip.airport.core.service.impl.DefaultAirportService">
+		<property name="airportDao" ref="airportDao"></property>
+	</bean>
+
+	<alias name="defaultPassengerService" alias="passengerService" />
+	<bean id="defaultPassengerService"
+		class="it.uiip.airport.core.service.impl.DefaultPassengerService">
+		<property name="passengerDao" ref="passengerDao"></property>
+	</bean>
+
+	<alias name="defaultFlightService" alias="flightService" />
+	<bean id="defaultFlightService"
+		class="it.uiip.airport.core.service.impl.DefaultFlightService">
+		<property name="flightDao" ref="flightDao"></property>
+	</bean>
+	<alias name="defaultTicketsService" alias="ticketsService" />
+	<bean id="defaultTicketsService"
+		class="it.uiip.airport.core.service.impl.DefaultTicketService">
+		<property name="ticketDao" ref="ticketsDao"></property>
+	</bean>
+
+
+	<alias name="defaultAirportDao" alias="airportDao" />
+	<bean id="defaultAirportDao"
+		class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
+	</bean>
+
+	<alias name="defaultPassengerDao" alias="passengerDao" />
+	<bean id="defaultPassengerDao"
+		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao">
+	</bean>
+	<alias name="defaultFlightDao" alias="flightDao" />
+	<bean id="defaultFlightDao"
+		class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
+	</bean>
+	<alias name="defaultTicketsDao" alias="ticketsDao" />
+	<bean id="defaultTicketsDao"
+		class="it.uiip.airport.core.dao.impl.DefaultTicketDao">
+	</bean>
 
 	<bean id="volumePriceComparator"
 		class="it.uiip.airport.core.comparators.VolumeAwarePriceInformationComparator"
@@ -711,20 +798,4 @@
 		<property name="ticketBusinessService"
 			ref="ticketBusinessService" />
 	</bean>
-
-	<alias name="defaultAirportDao" alias="airportDao" />
-	<bean id="defaultAirportDao"
-		class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
-	</bean>
-
-	<alias name="defaultPassengerDao" alias="passengerDao" />
-	<bean id="defaultPassengerDao"
-		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao"></bean>
-
-	<alias name="defaultAirportService" alias="airportService" />
-	<bean id="defaultAirportService"
-		class="it.uiip.airport.core.service.impl.DefaultAirportService">
-		<property name="airportDao" ref="airportDao"></property>
-	</bean>
-
 </beans>

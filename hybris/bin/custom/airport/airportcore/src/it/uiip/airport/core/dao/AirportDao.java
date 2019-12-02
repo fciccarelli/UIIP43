@@ -8,14 +8,12 @@ import de.hybris.platform.servicelayer.internal.dao.GenericDao;
 import it.uiip.airport.core.model.AirportModel;
 
 
-
 /**
- * @author sdeli
+ * @author fabiosessa
  *
  */
-
 public interface AirportDao extends GenericDao<AirportModel>
 {
-	AirportModel findAirportByCode(String code);
+	public AirportModel findAirportByCode(String code);
 
 }

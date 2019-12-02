@@ -1,4 +1,3 @@
-
 INSERT Plane ; code[unique=true] ; nPassengers[allowNull=false] ; nGoods[allowNull=false, default=0]
              ; Airbus A340-300   ; 295                          ; 10                                ;  
              ; Airbus A340-500   ; 372                          ; 20                                ;  

@@ -169,6 +169,11 @@ public interface ControllerConstants
 			{
 				String StoreFinderShowAirport = "pages/airport/showAirport";
 			}
+
+			interface ShowPassenger // NOSONAR
+			{
+				String StoreFinderShowPassenger = "pages/airport/showPassenger";
+			}
 		}
 
 		interface Fragments
@@ -209,7 +214,6 @@ public interface ControllerConstants
 				String ReviewsTab = "fragments/product/reviewsTab"; // NOSONAR
 				String StorePickupSearchResults = "fragments/product/storePickupSearchResults"; // NOSONAR
 			}
-
 		}
 	}
 }

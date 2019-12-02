@@ -1,16 +1,15 @@
 /**
  *
  */
-package it.uiip.airport.facades;
+package it.uiip.airport.facade;
 
 import it.uiip.airport.facades.data.AirportData;
 
-
 /**
- * @author sdeli
+ * @author fabiosessa
  *
  */
 public interface AirportFacade
 {
-	AirportData getAirportByCode(String code);
+	public AirportData searchAirport(String code);
 }

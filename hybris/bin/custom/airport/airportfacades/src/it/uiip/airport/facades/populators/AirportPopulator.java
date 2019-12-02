@@ -1,7 +1,8 @@
+package it.uiip.airport.facades.populators;
+
 /**
  *
  */
-package it.uiip.airport.facades.populators.impl;
 
 import de.hybris.platform.converters.Populator;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
@@ -11,7 +12,8 @@ import it.uiip.airport.facades.data.AirportData;
 
 
 /**
- * @author sdeli
+ *
+ * @author fabiosessa
  *
  */
 public class AirportPopulator implements Populator<AirportModel, AirportData>
