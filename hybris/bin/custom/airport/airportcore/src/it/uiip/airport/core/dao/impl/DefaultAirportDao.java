@@ -14,7 +14,7 @@ import it.uiip.airport.core.model.AirportModel;
 
 
 /**
- * @author sdeli
+ * @author aDeAngelis
  *
  */
 public class DefaultAirportDao extends DefaultGenericDao<AirportModel> implements AirportDao

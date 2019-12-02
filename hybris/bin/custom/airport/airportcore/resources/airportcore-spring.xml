@@ -737,6 +737,36 @@
 		</property>
 	</bean>
 	
+	<!--bean per Interceptor -->
+	
+	<bean id= "PassengerInitDefaultsInterceptor" class="it.uiip.airport.core.interceptor.PassengerInitDefaultsInterceptor"/>
+   	<bean id= "PassengerPrepareIntercetor"  class="it.uiip.airport.core.interceptor.PassengerPrepareIntercetor"/>
+	<bean id= "PassengerRemoveInterceptor"  class="it.uiip.airport.core.interceptor.PassengerRemoveInterceptor"/>
+	<bean id= "airportLoadInterceptor"      class="it.uiip.airport.core.interceptor.AirportLoadInterceptor"/>
+	<bean id= "airportValidateInterceptor" class="it.uiip.airport.core.interceptor.AirportValidateInterceptor"/>
+	
+	
+	
+	<bean id="airportValidateInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	<property name="interceptor" ref="airportValidateInterceptor"/>
+	<property name="typeCode" value="ticketModel"/>
+	</bean>
+	
+	<bean id="airportLoadInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	<property name="interceptor" ref="airportLoadInterceptor"/>
+	<property name="typeCode" value="TicketModel"/>
+	</bean>
+	
+
+	
+	
+	
+	<bean id="airportJob"   class="it.uiip.airport.core.job.AirportJob" parent="abstractJobPerformable"/>
+	
+	
+	
 	
 	
 	

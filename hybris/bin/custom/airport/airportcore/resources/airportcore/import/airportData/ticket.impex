@@ -1,11 +1,11 @@
-INSERT_UPDATE Ticket;	code[unique=true]  ; numberSeat[allowNull=false]; passenger(uid)[allowNull=false]; flight(code)[allowNull=false]
-;	        	                       S350;				         100;        		                2;  				        8;
-;		                               S351;				         101;			   	                8;				            8;
-;	                               	   S352;				         102;			                    1;                          2;
-;	        	                       S353;			      	     103;			        	       10;			             	9;
-;	        	                       S354;			    	     104;			    	            3;				            9;
-;	                               	   S355;	    	             105;			    	            4;                          3;
-;	        	                       S356;			    	     106;			    	            5;				            9;
-;	        	                       S357;			    	     107;			     	            6;			            	9;
-;		                               S358;			    	     108;			    	            7;			            	9;
-;                                      S359;			    	     109;			                    9;                          3;
+INSERT_UPDATE Ticket ; code[unique=true]  ; numberSeat[allowNull=false]; passenger(uid)[allowNull=false]; flight(code)[allowNull=false]
+ 	        	     ;S350				  ;100        		           ;2  				                ;8;
+ 		             ;S351				  ;101			   	           ;8				                ;8;
+ 	                 ;S352				  ;102			               ;1                               ;2;
+ 	        	     ;S353			      ;103			        	   ;10			             	    ;9;
+ 	        	     ;S354			      ;104			    	       ;3				                ;9;
+ 	                 ;S355	    	      ;105			    	       ;4                               ;3;
+ 	        	     ;S356			      ;106			    	       ;5				                ;9;
+ 	        	     ;S357			      ;107			     	       ;6			            	    ;9;
+ 		             ;S358			      ;108			    	       ;7			            	    ;9;
+                     ;S359			      ;109			               ;9                               ;3;
