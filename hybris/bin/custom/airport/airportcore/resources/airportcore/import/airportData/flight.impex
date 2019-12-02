@@ -18,4 +18,4 @@ INSERT_UPDATE Flight ; code[unique=true] ; dayWeek[lang=it] ; dayWeek[lang=en] ;
                      ; 17                ; Lunedì           ; Monday           ; FCO                    ; AMS                  ; Airbus A340-300              ; 16:30:00                       ; 18:50:00                    ;  9
                      ; 18                ; Lunedì           ; Monday           ; FCO                    ; AMS                  ; Airbus A340-300              ; 14:35:00                       ; 19:45:00                    ;  10
                      ; 19                ; Martedì          ; Tuesday          ; FCO                    ; AMS                  ; Airbus A340-500              ; 07:20:00                       ; 09:45:00                    ;  10
-					 ; 20				 ; Martedì			; Tuesday		   ; MOW					; FCO				   ; Airbus A340-500			  ; 14:35:00					   ; 19:45:00					 ;  1
+					 ; 20				 ; Martedì			; Tuesday		   ; MOW					; MIL				   ; Airbus A340-500			  ; 14:35:00					   ; 19:45:00					 ;  1

@@ -32,7 +32,7 @@ public class DefaultAirportController extends AbstractPageController
 	@Resource(name = "airportFacade")
 	private AirportFacade airportFacade;
 
- 	@RequestMapping(value = AIRPORT_SEARCH_CODE_PATTERN, method = RequestMethod.GET)
+	@RequestMapping(value = AIRPORT_SEARCH_CODE_PATTERN, method = RequestMethod.GET)
 	public String showAirport(@RequestParam("code")
 	final String code, final Model model)
 	{
