@@ -28,14 +28,26 @@ public class DefaultTicketsDao extends DefaultGenericDao<TicketModel> implements
 	@Override
 	public TicketModel findTicketsByFlight(final String code, final String passport)
 	{
-		final String query = " SELECT {t.PK} FROM { Flight as f  JOIN Flight2PassengerRelation AS ff  ON {ff.source} = {f.PK} "
-				+ "  JOIN Passenger AS p " + " ON {ff.target} = {p.PK}  JOIN Ticket AS t " + " ON {t.passenger} = {p.PK} "
-				+ " }WHERE {f.code} LIKE '1' AND {p.passport} LIKE '?passport' ";
+		final String query = "SELECT {t.PK} FROM { Flight as f \r\n" + "\r\n" + "        JOIN Flight2PassengerRelation AS ff  \r\n"
+				+ "        ON {ff.source} = {f.PK}   \r\n" + "        \r\n" + "        JOIN Passenger AS p  \r\n"
+				+ "        ON {ff.target} = {p.PK}  \r\n" + "        \r\n" + "        JOIN Ticket AS t  \r\n"
+				+ "        ON {t.passenger} = {p.PK}\r\n" + "        \r\n"
+				+ "} WHERE {f.code} LIKE ?code AND {p.passport} LIKE ?passport";
 
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(query);
+		fsq.addQueryParameter("code", code);
+		fsq.addQueryParameter("passport", passport);
 		final SearchResult<TicketModel> result = getFlexibleSearchService().search(fsq);
 		final List<TicketModel> ticketModels = result.getResult();
-		return ticketModels.get(0);
+
+		if (ticketModels.size() != 0)
+		{
+			return ticketModels.get(0);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 }
