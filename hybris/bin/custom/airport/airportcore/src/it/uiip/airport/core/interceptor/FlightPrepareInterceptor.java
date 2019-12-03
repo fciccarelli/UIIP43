@@ -14,7 +14,7 @@ import it.uiip.airport.core.model.FlightModel;
 
 
 /**
- * @author sdeli
+ * @author Luigi
  *
  */
 public class FlightPrepareInterceptor implements PrepareInterceptor<FlightModel>

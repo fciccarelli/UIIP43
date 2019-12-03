@@ -26,10 +26,24 @@
 	</bean>
 	
 	<bean class="it.uiip.airport.facades.data.TicketData">
-	<property name="name" type="String"></property>
-	<property name="surname" type="String"></property>
+	<property name="passenger" type="PassengerData"></property>
+	<property name="flight" type="FlightData"></property>
 	<property name="code" type="String"></property>
 	<property name="numberSeat" type="String"></property>
+	</bean>
+	
+	<bean class="it.uiip.airport.facades.data.FlightData">
+	<property name="code" type="String"></property>
+	<property name="passenger" type="PassengerData"></property>
+	<property name="ticket" type="TicketData"></property>
+	</bean>
+	
+	<bean class="it.uiip.airport.facades.data.PassengerData">
+	<property name="uid" type="String"></property>
+	<property name="name" type="String"></property>
+	<property name="surname" type="String"></property>
+	<property name="passport" type="String"></property>
+	<property name="ticket" type="TicketData"></property>
 	</bean>
 
 </beans>

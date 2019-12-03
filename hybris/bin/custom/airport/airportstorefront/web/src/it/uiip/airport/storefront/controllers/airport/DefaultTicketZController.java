@@ -1,7 +1,7 @@
 /**
  *
  */
-package it.uiip.ticketZ.storefront.controllers.ticketZ;
+package it.uiip.airport.storefront.controllers.airport;
 
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uiip.airport.facades.TicketZFacade;
+import it.uiip.airport.facades.data.PassengerData;
 import it.uiip.airport.facades.data.TicketData;
 import it.uiip.airport.storefront.controllers.ControllerConstants;
 
@@ -34,16 +35,20 @@ public class DefaultTicketZController extends AbstractPageController
 	@Resource(name = "ticketZFacade")
 	private TicketZFacade ticketZFacade;
 
+	//	@Resource(name = "passFacade")
+	//	private PassengerFacade passFacade;
+
 	@RequestMapping(value = TICKETZ_SEARCH_CODE_PATTERN, method = RequestMethod.GET)
 	public String showTicketZ(@RequestParam("code")
 	final String code, final Model model)
 	{
 		final List<TicketData> ticketData = ticketZFacade.getTicketByCodeFlight(code);
+		final List<PassengerData> passData = passFacade.getPassengerByTicket(code);
 		for (int i = 0; i < ticketData.size(); i++)
 		{
 			model.addAttribute("code", ticketData.get(i).getCode());
-			model.addAttribute("name", ticketData.get(i).getName());
-			model.addAttribute("surname", ticketData.get(i).getSurname());
+			model.addAttribute("name", passData.get(i).getName());
+			model.addAttribute("surname", passData.get(i).getSurname());
 			model.addAttribute("numberSeat", ticketData.get(i).getNumberSeat());
 		}
 

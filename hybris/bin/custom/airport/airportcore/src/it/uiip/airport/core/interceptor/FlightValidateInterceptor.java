@@ -11,7 +11,7 @@ import it.uiip.airport.core.model.FlightModel;
 
 
 /**
- * @author sdeli
+ * @author Luigi
  *
  */
 public class FlightValidateInterceptor implements ValidateInterceptor<FlightModel>
@@ -20,8 +20,7 @@ public class FlightValidateInterceptor implements ValidateInterceptor<FlightMode
 	@Override
 	public void onValidate(final FlightModel flight, final InterceptorContext arg1) throws InterceptorException
 	{
-
-
+		
 			if (flight == null)
 			{
 				throw new InterceptorException("Code cannot be null");

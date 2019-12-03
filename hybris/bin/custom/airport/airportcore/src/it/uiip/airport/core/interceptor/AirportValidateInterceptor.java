@@ -11,7 +11,7 @@ import it.uiip.airport.core.model.TicketModel;
 
 
 /**
- * @author sdeli
+ * @author Luigi
  *
  */
 public class AirportValidateInterceptor implements ValidateInterceptor

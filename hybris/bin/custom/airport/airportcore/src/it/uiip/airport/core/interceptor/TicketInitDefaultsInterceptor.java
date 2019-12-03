@@ -4,9 +4,9 @@
 package it.uiip.airport.core.interceptor;
 
 import de.hybris.platform.servicelayer.event.EventService;
+import de.hybris.platform.servicelayer.interceptor.InitDefaultsInterceptor;
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
-import de.hybris.platform.servicelayer.interceptor.RemoveInterceptor;
 
 import org.springframework.beans.factory.annotation.Required;
 
@@ -17,14 +17,15 @@ import it.uiip.airport.core.model.TicketModel;
  * @author Luigi
  *
  */
-public class TicketRemoveInterceptor implements RemoveInterceptor<TicketModel>
+public class TicketInitDefaultsInterceptor implements InitDefaultsInterceptor<TicketModel>
 {
 
 	private EventService eventService;
 
 	@Override
-	public void onRemove(final TicketModel ticket, final InterceptorContext arg1) throws InterceptorException
+	public void onInitDefaults(final TicketModel ticket, final InterceptorContext arg1) throws InterceptorException
 	{
+
 
 	}
 

@@ -11,7 +11,7 @@ import it.uiip.airport.core.model.PassengerModel;
 
 
 /**
- * @author sdeli
+ * @author Luigi
  *
  */
 public class PassengerRemoveInterceptor implements RemoveInterceptor<PassengerModel>
