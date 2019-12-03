@@ -367,6 +367,8 @@
 		class="it.uiip.airport.facades.impl.DefaultTicketsFacade">
 		<property name="ticketsService" ref="ticketsService"></property>
 		<property name="ticketsConverter" ref="ticketsConverter"></property>
+		<property name="passengerService" ref="passengerService"></property>
+		<property name="passengerConverter" ref="passengerConverter"></property>
 	</bean>
 
 	<alias name="defaultTicketsPopulator" alias="ticketPopulator" />

@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import it.uiip.airport.facades.data.TicketsData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -36,7 +37,7 @@ public class DefaultAirportController extends AbstractPageController
 
 	private static final String AIRPORT_SEARCH_CODE_PATTERN = "/search";
 	private static final String PASSENGER_FILTER_PATTERN = "/passengers";
-	private static final String FIND_PASSENGER_FILTER_PATTERN = "/findPassengers";
+	private static final String TICKET_FILTER_PATTERN = "/passengersTicket";
 
 	@Resource(name = "airportFacade")
 	private AirportFacade airportFacade;
@@ -71,6 +72,15 @@ public class DefaultAirportController extends AbstractPageController
 		final List<PassengerData> passengersData = passengerFacade.getPassengersByFlight(code);
 		model.put("passengersData", passengersData);
 		return ControllerConstants.Views.Pages.ShowPassengers.StoreFinderShowPassengers;
+	}
+
+	@RequestMapping(value = TICKET_FILTER_PATTERN, method = RequestMethod.GET)
+	public String showPassengersTickets(@RequestParam("code")
+								 final String code, final ModelMap model)
+	{
+		final List<TicketsData> ticketsData = ticketFacade.getTicketsListForFlight(code);
+		model.put("ticketsData", ticketsData);
+		return ControllerConstants.Views.Pages.StoreFinderShowPassengersTicket.StoreFinderShowPassengersTicket;
 	}
 
 }

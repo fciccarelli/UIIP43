@@ -29,6 +29,7 @@ public class PassengerPrepareInterceptor implements PrepareInterceptor<Passenger
 		if (arg0 instanceof PassengerModel)
 		{
 			setPassportUpperCase(arg0);
+
 		}
 
 	}

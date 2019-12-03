@@ -788,7 +788,7 @@
 	<bean id="airportValidateInterceptorMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="airportValidateInterceptor" />
-		<property name="typeCode" value="Ticket" />
+		<property name="typeCode" value="Flight" />
 	</bean>
 	
 	<!-- PASSENGER INIT DEFAULT INTERCEPTOR -->
@@ -796,10 +796,19 @@
 		class="it.uiip.airport.core.interceptor.impl.PassengerInitDefaultInterceptor">
 	</bean>
 
+	<!-- PASSENGER INIT DEFAULT INTERCEPTOR MAPPING -->
+	<bean id="passengerInitDefaultInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerInitDefaultInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
+
 	<!-- PASSENGER PREPARE INTERCEPTOR -->
 	<bean id="passengerPrepareInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.PassengerPrepareInterceptor">
 	</bean>
+
+
 
 	<!-- PASSENGER REMOVE INTERCEPTOR -->
 	<bean id="passengerRemoveInterceptor"
@@ -815,7 +824,15 @@
 	<bean id="flightPrepareInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.FlightPrepareInterceptor">
 	</bean>
-	
+
+	<!-- FLIGHT PREPARE INTERCEPTOR MAPPING -->
+	<bean id="flightPrepareInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="flightPrepareInterceptor" />
+		<property name="typeCode" value="Flight" />
+	</bean>
+
+
 	<!-- FLIGHT INIT DEFAULT INTERCEPTOR -->
 	<bean id="flightInitDefaultInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.FlightInitDefaultInterceptor">

@@ -50,7 +50,7 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 
 				+ "	JOIN Passenger as p " + "	ON {t.passenger} = {p.PK} "
 
-				+ "}  WHERE {f.code}=?code";
+				+ "}  WHERE {f.code}=?code" ;
 
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("code", code);

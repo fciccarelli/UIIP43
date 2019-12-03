@@ -36,6 +36,7 @@ public class DefaultPassengerFacade implements PassengerFacade
 		final List<PassengerModel> passengersModel = passengerService.getPassengersForFlight(code);
 		final List<PassengerData> passengersData = passengerConverter.convertAll(passengersModel);
 		final int cont = passengersData.size();
+
 		for (int i = 0; i < passengersModel.size(); i++)
 		{
 			final String passport = passengersModel.get(i).getPassport();
