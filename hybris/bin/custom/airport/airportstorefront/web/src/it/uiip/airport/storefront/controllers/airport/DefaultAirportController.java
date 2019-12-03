@@ -10,7 +10,13 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import de.hybris.platform.servicelayer.model.ModelService;
+import it.uiip.airport.core.model.FlightModel;
+import it.uiip.airport.core.model.PassengerModel;
+import it.uiip.airport.core.model.TicketModel;
 import it.uiip.airport.facades.data.TicketsData;
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -42,6 +48,9 @@ public class DefaultAirportController extends AbstractPageController
 	private static final String PASSENGER_FILTER_PATTERN = "/passengers";
 	private static final String TICKET_FILTER_PATTERN = "/passengersTicket";
 	private static final String TICKET_REGISTRATION_INFO_PATTERN = "/newTicket";
+	provate static final String TICKET_REGISTRATION_PATTERN = "/addTicket";
+	public static final int CODE_LENGTH = 4;
+	public static final int SEAT_CODE_LENGTH = 1;
 
 	@Resource(name = "airportFacade")
 	private AirportFacade airportFacade;
@@ -54,6 +63,9 @@ public class DefaultAirportController extends AbstractPageController
 
 	@Resource(name = "ticketsFacade")
 	private TicketsFacade ticketFacade;
+
+	@Resource(name= "modelService")
+	private ModelService modelService;
 
 
  	@RequestMapping(value = AIRPORT_SEARCH_CODE_PATTERN, method = RequestMethod.GET)
@@ -87,20 +99,42 @@ public class DefaultAirportController extends AbstractPageController
 		return ControllerConstants.Views.Pages.StoreFinderShowPassengersTicket.StoreFinderShowPassengersTicket;
 	}
 
-//	@RequestMapping(value = TICKET_REGISTRATION_INFO_PATTERN, method=RequestMethod.GET )
-//	public String showNewTicketInfo(){}
+	@RequestMapping(value = TICKET_REGISTRATION_INFO_PATTERN, method=RequestMethod.GET )
+	public String showNewTicketInfo(){
+ 		return ControllerConstants.Views.Pages.StoreNewTicket.NewTicketForm;
+	}
 
-	@RequestMapping(value = TICKET_REGISTRATION_INFO_PATTERN, method=RequestMethod.POST )
+	@RequestMapping(value = TICKET_REGISTRATION_PATTERN, method=RequestMethod.POST )
 	public String submit(@Valid @ModelAttribute("ticket") TicketsData newTicket, BindingResult result, Model model){
 		if(result.hasErrors()){
 			return "error";
 		}
+
+		ticketFacade.setTicket(newTicket);
+
+		TicketModel ticket = modelService.create(TicketModel.class);
+		ticket.setNumberSeat(RandomStringUtils.randomAlphabetic(SEAT_CODE_LENGTH) + RandomStringUtils.random(SEAT_CODE_LENGTH));
+		ticket.setCode(RandomStringUtils.randomAlphanumeric(CODE_LENGTH));
+
+		PassengerModel passenger = modelService.create(PassengerModel.class);
+		passenger.setName(newTicket.getPassenger().getName());
+		passenger.setSurname(newTicket.getPassenger().getSurname());
+		passenger.setPassport(newTicket.getPassenger().getPassport());
+
+		ticket.setPassenger(passenger);
+		String numFlight = ""+(int)Math.random()*20;
+		FlightModel flight = modelService.create(FlightModel.class);
+		flight.setCode(""+1);
+		ticket.setFlight(flight);
+
+		modelService.save(ticket);
+
 		//Creare numero biglietto e posto
 		model.addAttribute("name", newTicket.getPassenger().getName());
 		model.addAttribute("surname", newTicket.getPassenger().getSurname());
 		model.addAttribute("passport", newTicket.getPassenger().getPassport());
 
-		return ControllerConstants.Views.Pages.StoreTicketNew.StoreNewTicket;
+		return ControllerConstants.Views.Pages.NewTicketRegistered.NewTicketRegistered;
 	}
 
 //	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)

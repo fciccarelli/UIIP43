@@ -177,10 +177,13 @@ public interface ControllerConstants {
                 String StoreFinderShowPassengersTicket = "pages/airport/showPassengersTickets";
             }
 
-            interface StoreTicketNew {
-				String StoreNewTicket = "pages/airport/registerTicket";
+            interface StoreNewTicket {
+				String NewTicketForm = "pages/airport/registerTicket";
             }
 
+            interface NewTicketRegistered {
+                String NewTicketRegistered = "pages/airport/ticketRegistered";
+            }
         }
 
         interface Fragments {

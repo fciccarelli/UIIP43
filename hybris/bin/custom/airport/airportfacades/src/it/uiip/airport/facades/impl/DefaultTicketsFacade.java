@@ -16,6 +16,7 @@ import it.uiip.airport.core.model.TicketModel;
 import it.uiip.airport.core.service.TicketsService;
 import it.uiip.airport.facades.TicketsFacade;
 import it.uiip.airport.facades.data.TicketsData;
+import sun.security.krb5.internal.Ticket;
 
 
 /**
@@ -29,6 +30,7 @@ public class DefaultTicketsFacade implements TicketsFacade
 	Converter<TicketModel, TicketsData> ticketsConverter;
 	PassengerService passengerService;
 	Converter<PassengerModel, PassengerData> passengerConverter;
+	Converter<TicketsData, TicketModel> ticketReverseConverter;
 
 
 	@Override
@@ -47,6 +49,12 @@ public class DefaultTicketsFacade implements TicketsFacade
 			ticketsData.get(i).setPassenger(pd);
 		}
 		return ticketsData;
+	}
+
+	@Override
+	public void setTicket(TicketsData ticketData) {
+		TicketModel  ticket = ticketReverseConverter.convert(ticketData);
+		ticketsService.setTicket(ticket);
 	}
 
 	/**
@@ -104,5 +112,14 @@ public class DefaultTicketsFacade implements TicketsFacade
 	@Required
 	public void setPassengerConverter(Converter<PassengerModel, PassengerData> passengerConverter) {
 		this.passengerConverter = passengerConverter;
+	}
+
+	public Converter<TicketsData, TicketModel> getTicketReverseConverter() {
+		return ticketReverseConverter;
+	}
+
+	@Required
+	public void setTicketReverseConverter(Converter<TicketsData, TicketModel> ticketReverseConverter) {
+		this.ticketReverseConverter = ticketReverseConverter;
 	}
 }

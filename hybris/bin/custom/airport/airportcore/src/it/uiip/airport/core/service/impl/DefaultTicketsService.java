@@ -32,6 +32,11 @@ public class DefaultTicketsService implements TicketsService
 		return ticketsDao.findTicketsListByFlight(code);
 	}
 
+	@Override
+	public void setTicket(TicketModel ticketModel) {
+		ticketsDao.saveTicket(ticketModel);
+	}
+
 	/**
 	 * @return the ticketsDao
 	 */

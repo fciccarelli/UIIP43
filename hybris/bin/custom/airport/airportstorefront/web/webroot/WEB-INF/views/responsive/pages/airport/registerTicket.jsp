@@ -6,7 +6,7 @@
     <body>
         <h3>Welcome, Enter The Passenger Details</h3>
         <form:form method="POST"
-          action="/addTicket" modelAttribute="ticket">
+          action="/newTicket" modelAttribute="ticket">
              <table>
                 <tr>
                     <td><form:label path="name">Name</form:label></td>

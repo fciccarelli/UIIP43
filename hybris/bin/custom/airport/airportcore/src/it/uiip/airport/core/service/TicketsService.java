@@ -16,5 +16,6 @@ public interface TicketsService
 {
 	TicketModel getTicketForFlight(String code, String passport);
 	List<TicketModel> getTicketsForFlight(String code);
+	void setTicket(TicketModel ticketmodel);
 
 }

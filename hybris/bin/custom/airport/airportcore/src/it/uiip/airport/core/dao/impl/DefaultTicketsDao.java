@@ -68,4 +68,10 @@ public class DefaultTicketsDao extends DefaultGenericDao<TicketModel> implements
 		return ticketModels;
 	}
 
+	@Override
+	public void saveTicket(TicketModel ticketModel) {
+
+	}
+
+
 }

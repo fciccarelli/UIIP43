@@ -881,6 +881,7 @@
     <bean id="ticketInitDefaultInterceptor"
           class="it.uiip.airport.core.interceptor.impl.TicketInitDefaultInterceptor">
         <property name="eventService" ref="eventService"/>
+        <property name="ticketEvent" ref="ticketEvent"/>
     </bean>
 
     <!-- TICKET INIT DEFAULT INTERCEPTOR MAPPING -->
@@ -910,6 +911,7 @@
     <!-- TICKET EVENT LISTENER -->
     <bean id="ticketEventListener" class="it.uiip.airport.core.event.listener.TicketEventListener"
           parent="abstractEventListener">
+        <property name="ticketsService" ref="ticketsService"/>
     </bean>
 
     <!--..................................CRONJOBS..................................-->
