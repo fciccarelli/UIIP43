@@ -7,16 +7,17 @@ package it.uiip.airport.core.dao.impl;
 
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
-import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
 
+import javax.naming.directory.SearchResult;
+
+import bootstrap.gensrc.it.uiip.airport.core.model.PassengerModel;
 import it.uiip.airport.core.dao.PassengerDao;
-import it.uiip.airport.core.model.PassengerModel;
 
 
 /**
- * @author sdeli
+ * @author asus
  *
  */
 public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> implements PassengerDao

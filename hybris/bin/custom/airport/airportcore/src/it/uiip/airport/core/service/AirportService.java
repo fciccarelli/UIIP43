@@ -3,11 +3,11 @@
  */
 package it.uiip.airport.core.service;
 
-import it.uiip.airport.core.model.AirportModel;
+import bootstrap.gensrc.it.uiip.airport.core.model.AirportModel;
 
 
 /**
- * @author sdeli
+ * @author asus
  *
  */
 public interface AirportService

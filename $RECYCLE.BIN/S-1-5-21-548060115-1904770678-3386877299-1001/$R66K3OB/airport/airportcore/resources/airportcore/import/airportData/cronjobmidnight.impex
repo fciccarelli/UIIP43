@@ -1,0 +1,7 @@
+# USE CTRL-SPACE for type-ahead support
+INSERT_UPDATE ServicelayerJob; code[unique=true]; springId; myJob; myJob
+
+INSERT_UPDATE CronJob;
+code[unique=true]; job(code); singleExecutable; sessionLanguage(isocode); myCronJob; myJob; false; de
+
+INSERT_UPDATE Trigger; cronJob(code)[unique=true]; cronExpression; myCronJob; 0 0 0 * * ?

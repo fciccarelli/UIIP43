@@ -758,6 +758,69 @@
 		<property name="typeCode" value="Ticket"></property>
 	</bean>
 	
+	<!--..CRONJOB........-->
 	<bean id="myJob" class="it.uiip.airport.core.cronjob.impl.MyJob" parent="abstractJobPerformable"></bean>
+	
+	
+	<bean id="ticketZInitDefaultInterceptor" class="it.uiip.airport.core.interceptor.TicketZInitDefaultsInterceptor"></bean>
+	
+	
+<!--  <bean id="ticketZPrepareInterceptor" class="it.uiip.airport.core.interceptor.TicketZPrepareInterceptor"></bean> -->
+	
+	<bean id="ticketZRemoveInterceptor" class="it.uiip.airport.core.interceptor.TicketZRemoveInterceptor" 
+	></bean>
+	
+	<!-- PASSENGER PREPARE INTERCEPTOR MAPPING -->
+	<bean id="passengerPrepareInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerPrepareInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
+	
+	<!-- PASSENGER REMOVE INTERCEPTOR MAPPING -->
+	<bean id="defaultAirportCronJob"		<bean id="passengerRemoveInterceptorMapping"
+		class="it.uiip.airport.core.cronJob.impl.DefaultAirportCronJob"			  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		parent="abstractJobPerformable"></bean>			<property name="interceptor" ref="passengerRemoveInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
+	
+<!-- 	<!-- FLIGHT INIT DEFAULT INTERCEPTOR MAPPING --> -->
+<!-- 	<bean id="flightInitDefaultInterceptorMapping" -->
+<!-- 		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping"> -->
+<!-- 		<property name="interceptor" ref="flightInitDefaultInterceptor" /> -->
+<!-- 		<property name="typeCode" value="Flight" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<!-- FLIGHT REMOVE INTERCEPTOR MAPPING --> -->
+<!-- 	<bean id="flightRemoveInterceptorMapping" -->
+<!-- 		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping"> -->
+<!-- 		<property name="interceptor" ref="flightRemoveInterceptor" /> -->
+<!-- 		<property name="typeCode" value="Flight" /> -->
+	</bean>
+	
+	<!-- TICKET PREPARE INTERCEPTOR MAPPING -->
+	<bean id="ticketZPrepareInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketZPrepareInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+	
+	<!-- TICKET INIT DEFAULT INTERCEPTOR MAPPING -->
+	<bean id="ticketInitDefaultInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketInitDefaultInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+	
+	<!-- TICKET REMOVE INTERCEPTOR MAPPING -->
+	<bean id="ticketZRemoveInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketZRemoveInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+
+	
+
+	
 	
 </beans>

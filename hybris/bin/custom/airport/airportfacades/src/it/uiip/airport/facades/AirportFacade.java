@@ -3,11 +3,11 @@
  */
 package it.uiip.airport.facades;
 
-import it.uiip.airport.facades.data.AirportData;
+import bootstrap.gensrc.it.uiip.airport.facades.data.AirportData;
 
 
 /**
- * @author sdeli
+ * @author asus
  *
  */
 public interface AirportFacade

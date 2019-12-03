@@ -9,7 +9,7 @@ import it.uiip.airport.facades.data.TicketData;
 
 
 /**
- * @author sdeli
+ * @author asus
  *
  */
 public interface TicketZFacade

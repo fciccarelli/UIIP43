@@ -1,0 +1,11 @@
+INSERT_UPDATE Passenger ; uid ; name       ; surname   ; passport[unique=true] ; flights(code)[allowNull=false, mode=append]
+                        ; 1   ; Luigi      ; Scialpi   ; 1222lll               ; 1,2,20
+                        ; 2   ; Simona     ; Branca    ; 1222sss               ; 3,4                           
+                        ; 3   ; Fabio      ; Sessa     ; 1222fff               ; 5,6                           
+                        ; 4   ; Fabio      ; Assaiante ; 1222aaa               ; 7,8,20                           
+                        ; 5   ; Antonietta ; De Angeis ; 1222dddd              ; 9,10                           
+                        ; 6   ; Simone     ; D'elia    ; 1222eee               ; 10,11                           
+                        ; 7   ; Pasquale   ; Oppido    ; 1222ppp               ; 12,13   
+                        ; 8   ; Giulio     ; Iori      ; 1222ggg               ; 14,15,20                           
+                        ; 9   ; Marco      ; Neri      ; 1222nnn               ; 16,17                           
+                        ; 10  ; Gino       ; Verdi     ; 1222vvv               ; 18,19                           

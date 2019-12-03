@@ -5,11 +5,11 @@ package it.uiip.airport.core.service;
 
 import java.util.List;
 
-import it.uiip.airport.core.model.TicketModel;
+import bootstrap.gensrc.it.uiip.airport.core.model.TicketModel;
 
 
 /**
- * @author sdeli
+ * @author asus
  *
  */
 public interface TicketZService

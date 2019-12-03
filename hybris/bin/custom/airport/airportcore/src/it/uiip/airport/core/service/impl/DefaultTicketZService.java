@@ -13,7 +13,7 @@ import it.uiip.airport.core.service.TicketZService;
 
 
 /**
- * @author sdeli
+ * @author asus
  *
  */
 public class DefaultTicketZService implements TicketZService

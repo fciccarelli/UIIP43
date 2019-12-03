@@ -7,11 +7,11 @@ import de.hybris.platform.servicelayer.internal.dao.GenericDao;
 
 import java.util.List;
 
-import it.uiip.airport.core.model.PassengerModel;
+import bootstrap.gensrc.it.uiip.airport.core.model.PassengerModel;
 
 
 /**
- * @author sdeli
+ * @author asus
  *
  */
 public interface PassengerDao extends GenericDao<PassengerModel>
