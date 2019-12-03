@@ -175,6 +175,10 @@ public interface ControllerConstants
 				String StoreFinderShowTicketZ = "pages/airport/showTicket";
 			}
 
+			interface SubmitTicket // NOSONAR
+			{
+				String StoreFinderSubmitTicketZ = "pages/airport/submitTicket";
+			}
 		}
 
 		interface Fragments

@@ -31,7 +31,8 @@ public class DefaultTicketZDao extends DefaultGenericDao<TicketModel> implements
 	@Override
 	public List<TicketModel> findTicketByCodeFlight(final String code)
 	{
-		final String queryStr = "SELECT {p.name},{p.surname},{t.code},{t.numberSeat} FROM { Flight as f Join Ticket as t ON {t.flight} = {f.pk} Join Passenger as p ON {p.pk} = {t.passenger}} where {code} = ?code";
+		final String queryStr = "SELECT {t.PK} FROM { Flight as f Join Ticket as t ON {t.flight} = {f.pk} Join Passenger as p "
+				+ "ON {p.pk} = {t.passenger}} where {f.code} = ?code";
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("code", code);
 		final SearchResult<TicketModel> result = getFlexibleSearchService().search(fsq);

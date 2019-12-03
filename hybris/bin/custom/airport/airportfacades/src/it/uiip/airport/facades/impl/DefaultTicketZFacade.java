@@ -28,8 +28,8 @@ public class DefaultTicketZFacade implements TicketZFacade
 	@Override
 	public List<TicketData> getTicketByCodeFlight(final String code)
 	{
-		final TicketModel listTicket = (TicketModel) getTicketZService().getTicketForCode(code);
-		return (List<TicketData>) ticketZConverter.convert(listTicket);
+		final List<TicketModel> listTicket = getTicketZService().getTicketForCode(code);
+		return ticketZConverter.convertAll(listTicket);
 	}
 
 	/**

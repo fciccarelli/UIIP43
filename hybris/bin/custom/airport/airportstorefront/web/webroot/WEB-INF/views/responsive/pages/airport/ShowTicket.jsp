@@ -4,19 +4,25 @@
 <title>Ticket Info</title>
 <body>
 	<h1>Ticket Info</h1>
-
-	<select id="food" name="fooditems">
-
-		<c:forEach items="${TicketData}" var="t">
-			<tr>
-				<td>Code: ${t.code}</td>
-				<td>Name: ${t.name}</td>
-				<td>Surname: ${t.surname}</td>
-				<td>numberSeat: ${t.numberSeat}</td>
-			</tr>
+	${ticketData}
+		<c:forEach items="${ticketData}" var="t">
+			<ul>
+				<li>codeTicket: ${t.code}</li>
+				<li>numberSeat: ${t.numberSeat}</li>
+				<li></li>
+				<li></li>
+			</ul>
+				
+			
 		</c:forEach>
-
-	</select>
+		<c:forEach items="${passengerData}" var="p">
+			<ul>
+				<li>passName: ${p.name}</li>
+				<li>passSurname: ${p.surname}</li>
+			</ul>
+				
+			
+		</c:forEach>
 
 </body>
 </html>

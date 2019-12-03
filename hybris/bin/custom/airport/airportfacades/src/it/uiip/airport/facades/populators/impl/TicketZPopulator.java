@@ -21,8 +21,6 @@ public class TicketZPopulator implements Populator<TicketModel, TicketData>
 	public void populate(final TicketModel source, final TicketData target) throws ConversionException
 	{
 
-		target.setName(source.getPassenger().getName());
-		target.setSurname(source.getPassenger().getSurname());
 		target.setCode(source.getCode());
 		target.setNumberSeat(source.getNumberSeat());
 	}
