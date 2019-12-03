@@ -8,24 +8,33 @@ import de.hybris.platform.servicelayer.interceptor.InitDefaultsInterceptor;
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 
+import javax.annotation.Resource;
+
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Required;
 
+import it.uiip.airport.core.event.TicketEvent;
 import it.uiip.airport.core.model.TicketModel;
 
 
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
-public class TicketInitDefaultsInterceptor implements InitDefaultsInterceptor<TicketModel>
+public class TicketInitDefaultInterceptor implements InitDefaultsInterceptor<TicketModel>
 {
-
+	@Resource
 	private EventService eventService;
+	private TicketEvent ticketEvent;
+
+
 
 	@Override
-	public void onInitDefaults(final TicketModel ticket, final InterceptorContext arg1) throws InterceptorException
+	public void onInitDefaults(final TicketModel arg0, final InterceptorContext arg1) throws InterceptorException
 	{
 
+		ticketEvent.setCode(RandomStringUtils.randomAlphanumeric(3));
+		eventService.publishEvent(ticketEvent);
 
 	}
 
@@ -48,5 +57,22 @@ public class TicketInitDefaultsInterceptor implements InitDefaultsInterceptor<Ti
 	}
 
 
+	/**
+	 * @return the ticketEvent
+	 */
+	public TicketEvent getTicketEvent()
+	{
+		return ticketEvent;
+	}
+
+	/**
+	 * @param ticketEvent
+	 *           the ticketEvent to set
+	 */
+	@Required
+	public void setTicketEvent(final TicketEvent ticketEvent)
+	{
+		this.ticketEvent = ticketEvent;
+	}
 
 }

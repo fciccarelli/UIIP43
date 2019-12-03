@@ -30,11 +30,12 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 	}
 
 	@Override
-	public List<PassengerModel> findPassengerByCode(final String code)
+	public List<PassengerModel> findPassengerByNameSurname(final String name, final String surname)
 	{
-		final String queryStr = "SELECT {PK} FROM {Passenger} WHERE {code}=?code";
+		final String queryStr = "SELECT {PK} FROM {Passenger} WHERE {name}=?name AND {surname}=?surname";
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
-		fsq.addQueryParameter("code", code);
+		fsq.addQueryParameter("name", name);
+		fsq.addQueryParameter("surname", surname);
 		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
 		final List<PassengerModel> passengers = result.getResult();
 

@@ -11,7 +11,7 @@ import it.uiip.airport.core.model.TicketModel;
 
 
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
 public class TicketPrepareInterceptor implements PrepareInterceptor<TicketModel>
@@ -20,7 +20,7 @@ public class TicketPrepareInterceptor implements PrepareInterceptor<TicketModel>
 	@Override
 	public void onPrepare(final TicketModel arg0, final InterceptorContext arg1) throws InterceptorException
 	{
-		// XXX Auto-generated method stub
+
 
 	}
 

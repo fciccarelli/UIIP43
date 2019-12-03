@@ -11,15 +11,13 @@ import de.hybris.platform.servicelayer.cronjob.PerformResult;
 
 import java.time.LocalDate;
 
+import org.apache.commons.lang.RandomStringUtils;
+
 import it.uiip.airport.core.model.FlightModel;
 
 
 /**
- * @author Luigi
- *
- *         Scrivere un job che, schedulato ad un dato orario, crei un Flight che abbia come attributi: - code (random
- *         alpha number) - dayWeek (sempre il giorno corrente) - departureTime (orario prefissato) - timeArrival (orario
- *         prefissato)
+ * @author sdeli
  *
  */
 public class MyJob extends AbstractJobPerformable<CronJobModel>
@@ -29,45 +27,26 @@ public class MyJob extends AbstractJobPerformable<CronJobModel>
 	public PerformResult perform(final CronJobModel cronJob)
 	{
 
-		try {
-			final FlightModel flightModel = modelService.create(FlightModel.class);
 
-			flightModel.setCode(getAlphaNumericString());
 
-			// ALTERNATIVA STRINGA RANDOM
-			//flightModel.setCode(RandomStringUtils.randomAlphanumeric(12));
+		try
+		{
 
-			flightModel.setDayWeek(LocalDate.now().getDayOfWeek().name());
-			flightModel.setDepartureTime("12:00:00");
-			flightModel.setTimeArrival("18:00:00");
+			final FlightModel flight = modelService.create(FlightModel.class);
+		flight.setCode(RandomStringUtils.randomAlphanumeric(12));
+		flight.setDayWeek(LocalDate.now().getDayOfWeek().name());
+		flight.setDepartureTime("12:00:00");
+		flight.setTimeArrival("14:30:00");
 
-			modelService.save(flightModel);
+			modelService.save(flight);
+		return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);
 
-			return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);
 		}
 		catch (final Exception e)
 		{
 			return new PerformResult(CronJobResult.ERROR, CronJobStatus.ABORTED);
 		}
-	}
 
-
-	public String getAlphaNumericString()
-	{
-		final int n = 12;
-		String randomString;
-		final String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "abcdefghijklmnopqrstuvxyz";
-		final StringBuilder sb = new StringBuilder(n);
-
-		for (int i = 0; i < n; i++)
-		{
-			// generate a random number between 0 to AlphaNumericString variable length
-			final int index = (int) (AlphaNumericString.length() * Math.random());
-
-			// add Character one by one in end of sb
-			sb.append(AlphaNumericString.charAt(index));
-		}
-		return randomString = sb.toString();
 	}
 
 

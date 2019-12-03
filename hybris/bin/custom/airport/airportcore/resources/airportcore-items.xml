@@ -63,7 +63,7 @@
 			<targetElement qualifier="passengers" type="Passenger"
 				cardinality="many"></targetElement>
 		</relation>
-
+		
 		<relation generate="true" autocreate="true" localized="false"
 			code="Passenger2TicketsRelation">
 			<sourceElement qualifier="passenger" type="Passenger"
@@ -80,14 +80,20 @@
 				cardinality="many"></targetElement>
 		</relation>
 	</relations>
-	<!-- <relation code="Passenger2TicketsRelation" generate="true" autocreate="true" 
-		localized="false"> <deployment table="Pass2TickRel" typecode="11400" /> <sourceElement 
-		qualifier="passengers" type="Passenger" cardinality="many"></sourceElement> 
-		<targetElement qualifier="tickets" type="Ticket" cardinality="many"></targetElement> 
-		</relation> <relation code="Flight2TicketsRelation" generate="true" autocreate="true" 
-		localized="false" > <sourceElement qualifier="flight" type="Flight" cardinality="one"></sourceElement> 
-		<targetElement qualifier="tickets" type="Ticket" cardinality="many"></targetElement> 
-		</relation> </relations> -->
+<!-- 		<relation code="Passenger2TicketsRelation" generate="true"
+			autocreate="true" localized="false">
+			<deployment table="Pass2TickRel" typecode="11400" />
+			<sourceElement qualifier="passengers" type="Passenger"
+				cardinality="many"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket"
+				cardinality="many"></targetElement>
+		</relation>
+		<relation code="Flight2TicketsRelation" generate="true" autocreate="true" 
+		localized="false"  >
+			<sourceElement qualifier="flight" type="Flight" cardinality="one"></sourceElement>
+			<targetElement qualifier="tickets" type="Ticket" cardinality="many"></targetElement>
+		</relation>
+	</relations> -->
 
 
 

@@ -16,7 +16,7 @@ import it.uiip.airport.core.model.PassengerModel;
 
 
 /**
- * @author Luigi
+ * @author sdeli
  *
  */
 public class PassengerInitDefaultsInterceptor implements InitDefaultsInterceptor<PassengerModel>

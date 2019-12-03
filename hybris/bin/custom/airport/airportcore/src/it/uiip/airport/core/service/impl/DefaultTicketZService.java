@@ -24,6 +24,7 @@ public class DefaultTicketZService implements TicketZService
 	@Override
 	public List<TicketModel> getTicketForCode(final String code)
 	{
+
 		return ticketZDao.findTicketByCodeFlight(code);
 	}
 
