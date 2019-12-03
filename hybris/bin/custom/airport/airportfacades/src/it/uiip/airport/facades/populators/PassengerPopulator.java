@@ -25,6 +25,7 @@ public class PassengerPopulator implements Populator<PassengerModel, PassengerDa
 		target.setSurname(source.getSurname());
 		target.setPassport(source.getPassport());
 
+
 	}
 
 }

@@ -3,6 +3,8 @@
  */
 package it.uiip.airport.facade;
 
+import java.util.List;
+
 import it.uiip.airport.facades.data.PassengerData;
 
 
@@ -12,5 +14,5 @@ import it.uiip.airport.facades.data.PassengerData;
  */
 public interface PassengerFacade
 {
-	public PassengerData searchPassenger(String code);
+	public List<PassengerData> searchPassenger(String code);
 }

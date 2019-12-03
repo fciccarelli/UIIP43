@@ -3,6 +3,8 @@
  */
 package it.uiip.airport.core.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.dao.PassengerDao;
@@ -19,7 +21,7 @@ public class DefaultPassengerService implements PassengerService
 	PassengerDao passengerDao;
 
 	@Override
-	public PassengerModel getPassengerForCode(final String code)
+	public List<PassengerModel> getPassengerForCode(final String code)
 	{
 		// XXX Auto-generated method stub
 		return passengerDao.findPassengerByCode(code);

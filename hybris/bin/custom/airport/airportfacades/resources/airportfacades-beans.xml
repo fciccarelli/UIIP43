@@ -33,6 +33,7 @@
 		<property name="name" type="String"></property>
 		<property name="surname" type="String"></property>
 		<property name="passport" type="String"></property>
+		<property name="ticket" type="TicketsData"></property>
 	</bean>
 	
 	<bean class="it.uiip.airport.facades.data.TicketsData">

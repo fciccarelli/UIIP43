@@ -12,7 +12,7 @@ import de.hybris.platform.servicelayer.interceptor.PrepareInterceptor;
  * @author fabiosessa
  *
  */
-public class DefaultTicketPrepareInterception implements PrepareInterceptor
+public class DefaultTicketPrepareInterceptor implements PrepareInterceptor
 {
 
 	@Override

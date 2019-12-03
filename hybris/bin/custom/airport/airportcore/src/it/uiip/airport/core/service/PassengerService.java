@@ -3,6 +3,8 @@
  */
 package it.uiip.airport.core.service;
 
+import java.util.List;
+
 import it.uiip.airport.core.model.PassengerModel;
 
 
@@ -12,5 +14,5 @@ import it.uiip.airport.core.model.PassengerModel;
  */
 public interface PassengerService
 {
-	public PassengerModel getPassengerForCode(String code);
+	public List<PassengerModel> getPassengerForCode(String code);
 }

@@ -44,6 +44,8 @@
 			ref="catalogVersionService" />
 	</bean>
 	
+	<bean id="ticketEvent" class="it.uiip.airport.core.event.TicketEvent"/>
+	<bean id="ticketEventListener" class="it.uiip.airport.core.event.TicketEventListener" parent="abstractEventListener"></bean>
 	
 	<bean id="airportCroneJob" class="it.uiip.airport.core.job.AirportCroneJob" parent="abstractJobPerformable">
 	</bean>
@@ -58,13 +60,43 @@
 		<property name="interceptor" ref="airportValidateInterceptor"></property>
 		<property name="typeCode" value="ticketModel'"></property>
 	</bean>
+	
+	<bean id="flightValidateInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="flightValidateInterceptor"></property>
+		<property name="typeCode" value="flightModel'"></property>
+	</bean>
+	<bean id="flightPrepareInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="flightPrepareInterceptor"></property>
+		<property name="typeCode" value="flightModel'"></property>
+	</bean>
 
+	
+	<bean id="ticketInitDeafultInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketInitDefaultInterceptor"></property>
+		<property name="typeCode" value="ticketModel'"></property>
+	</bean>
+	<bean id="ticketRemoveInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketRemoveInterceptor"></property>
+		<property name="typeCode" value="ticketModel'"></property>
+	</bean>
+	
 	<bean id="ticketPrepareInterceptor"
-		class="it.uiip.airport.core.interceptor.impl.DefaultTicketPrepareInterception"></bean>
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketPrepareInterceptor"></bean>
 	<bean id="ticketValidateInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.DefaultTicketValidateInterceptor"></bean>
-	<bean id="ticketDefaultiInitInterceptor"
-		class="it.uiip.airport.core.interceptor.impl.DefaultTicketInitDefaultInterceptor "></bean>
+	
+	<bean id="ticketInitDefaultInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketInitDefaultInterceptor">
+		<property name="eventService" ref="eventService"></property>
+		</bean>
+	<bean id="ticketRemoveInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.DefaultTicketRemoveInterceptor">
+		<property name="eventService" ref="eventService"></property>
+		</bean>
 	
 	
 	<bean id="passengerInitDeafaultInterceptor"

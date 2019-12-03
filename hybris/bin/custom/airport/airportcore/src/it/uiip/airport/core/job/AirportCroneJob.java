@@ -43,7 +43,6 @@ public class AirportCroneJob extends AbstractJobPerformable<CronJobModel>
 		}
 		catch (final Exception e)
 		{
-			System.out.println("error in AirportcronJob:control flight set");
 			return new PerformResult(CronJobResult.ERROR, CronJobStatus.ABORTED);
 		}
 		return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);

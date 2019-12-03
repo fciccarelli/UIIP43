@@ -7,6 +7,8 @@ import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
 
+import java.util.List;
+
 import it.uiip.airport.core.dao.AirportDao;
 import it.uiip.airport.core.model.AirportModel;
 
@@ -37,8 +39,8 @@ public class DefaultAirportDao extends DefaultGenericDao<AirportModel> implement
 		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
 		fsq.addQueryParameter("code",code);
 		final SearchResult<AirportModel> result = getFlexibleSearchService().search(fsq);
-		final AirportModel airport = (AirportModel) result.getResult();
-		return airport;
+		final List<AirportModel> airport = result.getResult();
+		return airport.get(0);
 
 	}
 

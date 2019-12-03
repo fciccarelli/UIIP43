@@ -4,26 +4,20 @@
 package it.uiip.airport.core.interceptor.impl;
 
 import de.hybris.platform.servicelayer.event.EventService;
-import de.hybris.platform.servicelayer.interceptor.InitDefaultsInterceptor;
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
+import de.hybris.platform.servicelayer.interceptor.RemoveInterceptor;
 
-import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Required;
-
-import it.uiip.airport.core.event.TicketEvent;
-import it.uiip.airport.core.model.TicketModel;
 
 
 /**
  * @author fabiosessa
  *
  */
-public class DefaultTicketInitDefaultInterceptor implements InitDefaultsInterceptor<TicketModel>
+public class DefaultTicketRemoveInterceptor implements RemoveInterceptor
 {
 	private EventService eventService;
-	private TicketEvent ticketEvent;
-
 
 	/**
 	 * @return the eventService
@@ -33,7 +27,6 @@ public class DefaultTicketInitDefaultInterceptor implements InitDefaultsIntercep
 		return eventService;
 	}
 
-
 	/**
 	 * @param eventService
 	 *           the eventService to set
@@ -42,24 +35,13 @@ public class DefaultTicketInitDefaultInterceptor implements InitDefaultsIntercep
 	public void setEventService(final EventService eventService)
 	{
 		this.eventService = eventService;
-
 	}
 
-
 	@Override
-	public void onInitDefaults(final TicketModel ticket, final InterceptorContext arg1) throws InterceptorException
+	public void onRemove(final Object arg0, final InterceptorContext arg1) throws InterceptorException
 	{
 		// XXX Auto-generated method stub
 
-		ticketEvent.setCode(RandomStringUtils.random(4));
-		ticketEvent.setNumberSeat(RandomStringUtils.random(3));
-		eventService.publishEvent(ticketEvent);
-
-
 	}
-
-
-
-
 
 }

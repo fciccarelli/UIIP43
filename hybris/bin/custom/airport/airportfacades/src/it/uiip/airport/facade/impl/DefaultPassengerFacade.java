@@ -5,6 +5,8 @@ package it.uiip.airport.facade.impl;
 
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.PassengerModel;
@@ -66,11 +68,11 @@ public class DefaultPassengerFacade implements PassengerFacade
 	}
 
 	@Override
-	public PassengerData searchPassenger(final String code)
+	public List<PassengerData> searchPassenger(final String code)
 	{
 		// XXX Auto-generated method stub
 
-		final PassengerModel passengerModel = getPassengerService().getPassengerForCode(code);
-		return passengerConverter.convert(passengerModel);
+		final List<PassengerModel> passengerModel =  passengerService.getPassengerForCode(code);
+		return passengerConverter.convertAll(passengerModel);
 	}
 }
