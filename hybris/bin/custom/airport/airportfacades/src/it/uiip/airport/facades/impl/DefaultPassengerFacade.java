@@ -5,7 +5,6 @@ package it.uiip.airport.facades.impl;
 
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import it.uiip.airport.core.model.PassengerModel;
@@ -25,25 +24,12 @@ public class DefaultPassengerFacade implements PassengerFacade
 	private Converter<PassengerModel, PassengerData>  passengerConverter;
 
 	@Override
-	//	public PassengerData searchPassengersForCodeFlight(final String code)
-	//	{
-	//
-	//		final PassengerModel passengerModel = (PassengerModel) getPassengerService().getPassengersForCodeFlight(code);
-	//		return passengerConverter.convert(passengerModel);
-	//	}
-
 	public List<PassengerData> searchPassengersForCodeFlight(final String code)
 	{
 
 		final List<PassengerModel> passengers = passengerService.getPassengersForCodeFlight(code);
-		final List<PassengerData> passengersData = new ArrayList<PassengerData>();
+		final List<PassengerData> passengersData = passengerConverter.convertAll(passengers);
 
-		for (final PassengerModel passengerModel : passengers)
-		{
-			final PassengerData passengerData = passengerConverter.convert(passengerModel);
-			passengersData.add(passengerData);
-
-		}
 		return passengersData;
 	}
 

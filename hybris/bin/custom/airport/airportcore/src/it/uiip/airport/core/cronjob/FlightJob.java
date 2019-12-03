@@ -37,7 +37,7 @@ public class FlightJob extends AbstractJobPerformable<CronJobModel>
 			flight.setDepartureTime("14:00:00");
 			flight.setTimeArrival("16:00:00");
 
-			modelService.save(FlightModel.class);
+			modelService.save(flight);
 
 		}
 		catch (final Exception e)

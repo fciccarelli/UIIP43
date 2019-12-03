@@ -718,7 +718,7 @@
 	<bean id="passengerPrepareInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.PassengerPrepareInterceptor"></bean>
 
-	<bean id="passengerInitiDefaultsInterceptor"
+	<bean id="passengerInitDefaultsInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.PassengerInitDefaultsInterceptor"></bean>
 
 	<bean id="airportLoadInterceptor"
@@ -732,6 +732,17 @@
 
 	<bean id="flightPrepareInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.FlightPrepareInterceptor"></bean>
+		
+		<bean id="ticketRemoveInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.TicketRemoveInterceptor">
+		<property name="eventService" ref="eventService"/>
+		</bean>
+		
+		<bean id="ticketInitDefaultsInterceptor"
+		class="it.uiip.airport.core.interceptor.impl.TicketInitDefaultsInterceptor">
+		<property name="eventService" ref="eventService"/>
+		<property name="ticketEvent" ref="ticketEvent"/>
+		</bean>
 
 	<bean id="airportLoadInterceptorMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
@@ -743,6 +754,54 @@
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="airportValidateInterceptor" />
 		<property name="typeCode" value="TicketModel" />
+	</bean>
+	
+	<bean id="flightPrepareInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="flightPrepareInterceptor" />
+		<property name="typeCode" value="FlightModel" />
+	</bean>
+	
+	<bean id="flightValidateInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="flightValidateInterceptor" />
+		<property name="typeCode" value="FlightModel" />
+	</bean>
+	
+	<bean id="passengerInitDefaultsInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerInitDefaultsInterceptor" />
+		<property name="typeCode" value="PassengerModel" />
+	</bean>
+	
+	<bean id="passengerPrepareInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerPrepareInterceptor" />
+		<property name="typeCode" value="PassengerModel" />
+	</bean>
+	
+	<bean id="passengerRemoveInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerRemoveInterceptor" />
+		<property name="typeCode" value="PassengerModel" />
+	</bean>
+	
+	<bean id="ticketRemoveInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketRemoveInterceptor" />
+		<property name="typeCode" value="TicketModel" />
+	</bean>
+	
+	<bean id="ticketInitDefaultsInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketInitDefaultsInterceptor" />
+		<property name="typeCode" value="TicketModel" />
+	</bean>
+	
+	<bean id="ticketEvent" class="it.uiip.airport.core.event.TicketEvent"></bean>
+	
+	<bean id="ticketEventListener" class="it.uiip.airport.core.event.TicketEventListener" parent="abstractEventListener">
+		
 	</bean>
 
 	<bean id="flightJob"
@@ -758,11 +817,17 @@
 	<bean id="defaultPassengerDao"
 		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao"></bean>
 
-	<!-- <alias name="defaultFlightDao" alias="flightDao" /> <bean id="defaultFlightDao" 
-		class="it.uiip.airport.core.dao.impl.DefaultFlightDao"></bean> <alias name="defaultPlaneDao" 
-		alias="planeDao" /> <bean id="defaultPlaneDao" class="it.uiip.airport.core.dao.impl.DefaultPlaneDao"></bean> 
-		<alias name="defaultTicketDao" alias="ticketDao" /> <bean id="defaultTicketDao" 
-		class="it.uiip.airport.core.dao.impl.DefaultTicketDao"></bean> -->
+	    <!--  <alias name="defaultFlightDao" alias="flightDao" />
+	    <bean id="defaultFlightDao" 
+		class="it.uiip.airport.core.dao.impl.DefaultFlightDao">
+		</bean>
+		<alias name="defaultPlaneDao" alias="planeDao" /> 
+		<bean id="defaultPlaneDao" class="it.uiip.airport.core.dao.impl.DefaultPlaneDao">
+		</bean>-->
+		
+		<alias name="defaultTicketsDao" alias="ticketsDao" />
+	    <bean id="defaultTicketsDao"  class="it.uiip.airport.core.dao.impl.DefaultTicketsDao">
+		</bean>
 
 
 	<alias name="defaultAirportService" alias="airportService" />

@@ -176,6 +176,12 @@ public interface ControllerConstants
 			}
 
 
+			interface SubmitTickets // NOSONAR
+			{
+				String StoreFinderSubmitTickets = "pages/passenger/submitTickets";
+			}
+
+
 		}
 
 		interface Fragments

@@ -4,14 +4,13 @@
 <title>Passenger Info</title>
 <body>
 	<h1>Passenger Info</h1>
-	${passengers}
+	
 	<ul>
 		<c:forEach var="passenger" items="${passengers}">
         <li> ${passenger.name} </li>
          <li> ${passenger.surname} </li>
           <li> ${passenger.passport} </li>
         </c:forEach> 
-		
 	</ul>
 </body>
 </html>

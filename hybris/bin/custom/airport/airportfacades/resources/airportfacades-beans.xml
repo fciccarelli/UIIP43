@@ -30,5 +30,11 @@
 		<property name="name" type="String"></property>
 		<property name="surname" type="String"></property>
 	</bean>
+	
+		<bean class="it.uiip.airport.facades.data.TicketsData">
+		<property name="code" type="String"></property>
+		<property name="numberSeat" type="String"></property>
+		<property name="passenger" type="PassengerData"></property>
+	</bean>
 
 </beans>
