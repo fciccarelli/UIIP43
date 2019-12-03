@@ -16,4 +16,5 @@ public interface TicketsDao
 {
 	TicketModel findTicketsByFlight(String code, String passport);
 	List<TicketModel> findTicketsListByFlight(final String code);
+
 }
