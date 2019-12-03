@@ -7,11 +7,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	   http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<context:annotation-config />
 
@@ -720,7 +719,7 @@
 	<alias name="defaultPlaneService" alias="planeService" />
 	<bean id="defaultPlaneService"
 		class="it.uiip.airport.core.service.impl.DefaultPlaneService">
-		<property name="planeDao" ref="planeDao"></property>
+		<property name="planeDao" ref="planeDao"/>
 	</bean>
 
 	<alias name="defaultAirportDao" alias="airportDao" />
@@ -731,18 +730,19 @@
 	<alias name="defaultAirportService" alias="airportService" />
 	<bean id="defaultAirportService"
 		class="it.uiip.airport.core.service.impl.DefaultAirportService">
-		<property name="airportDao" ref="airportDao"></property>
+		<property name="airportDao" ref="airportDao"/>
 	</bean>
 
 	<alias name="defaultPassengerDao" alias="passengerDao" />
 	<bean id="defaultPassengerDao"
-		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao"></bean>
+		class="it.uiip.airport.core.dao.impl.DefaultPassengerDao">
+	</bean>
 
 	<alias alias="passengerService" name="defaultPassengerService" />
 	<bean id="defaultPassengerService"
 		class="it.uiip.airport.core.service.impl.DefaultPassengerService">
-		<property name="passengerDao" ref="passengerDao"></property>
-		<property name="ticketsDao" ref="ticketsDao"></property>
+		<property name="passengerDao" ref="passengerDao"/>
+		<property name="ticketsDao" ref="ticketsDao"/>
 	</bean>
 
 	<alias name="defaultFlightDao" alias="flightDao" />
@@ -753,7 +753,7 @@
 	<alias name="defaultFlightService" alias="flightService" />
 	<bean id="defaultFlightService"
 		class="it.uiip.airport.core.service.impl.DefaultFlightService">
-		<property name="flightDao" ref="flightDao"></property>
+		<property name="flightDao" ref="flightDao"/>
 	</bean>
 
 	<alias name="defaultTicketsDao" alias="ticketsDao" />
@@ -764,7 +764,7 @@
 	<alias name="defaultTicketsService" alias="ticketsService" />
 	<bean id="defaultTicketsService"
 		class="it.uiip.airport.core.service.impl.DefaultTicketsService">
-		<property name="ticketsDao" ref="ticketsDao"></property>
+		<property name="ticketsDao" ref="ticketsDao"/>
 	</bean>
 
 	<!-- AIRPORT LOAD INTERCEPTOR -->
@@ -808,17 +808,24 @@
 		class="it.uiip.airport.core.interceptor.impl.PassengerPrepareInterceptor">
 	</bean>
 
-
+	<!-- PASSENGER PREPARE INTERCEPTOR MAPPING -->
+	<bean id="passengerPrepareInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerPrepareInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
 
 	<!-- PASSENGER REMOVE INTERCEPTOR -->
 	<bean id="passengerRemoveInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.PassengerRemoveInterceptor">
 	</bean>
 
-	<!-- AIRPORT CRONJOB -->
-	<bean id="defaultAirportCronJob"
-		class="it.uiip.airport.core.cronJob.impl.DefaultAirportCronJob"
-		parent="abstractJobPerformable"></bean>
+	<!-- PASSENGER REMOVE INTERCEPTOR MAPPING -->
+	<bean id="passengerRemoveInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="passengerRemoveInterceptor" />
+		<property name="typeCode" value="Passenger" />
+	</bean>
 
 	<!-- FLIGHT PREPARE INTERCEPTOR -->
 	<bean id="flightPrepareInterceptor"
@@ -837,24 +844,67 @@
 	<bean id="flightInitDefaultInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.FlightInitDefaultInterceptor">
 	</bean>
+
+	<!-- FLIGHT INIT DEFAULT INTERCEPTOR MAPPING -->
+	<bean id="flightInitDefaultInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="flightInitDefaultInterceptor" />
+		<property name="typeCode" value="Flight" />
+	</bean>
 	
 	<!-- FLIGHT REMOVE INTERCEPTOR -->
 	<bean id="flightRemoveInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.FlightRemoveInterceptor">
+	</bean>
+
+	<!-- FLIGHT REMOVE INTERCEPTOR MAPPING -->
+	<bean id="flightRemoveInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="flightRemoveInterceptor" />
+		<property name="typeCode" value="Flight" />
 	</bean>
 	
 	<!-- TICKET PREPARE INTERCEPTOR -->
 	<bean id="ticketPrepareInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.TicketPrepareInterceptor">
 	</bean>
-	
+
+	<!-- TICKET PREPARE INTERCEPTOR MAPPING -->
+	<bean id="ticketPrepareInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketPrepareInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+
 	<!-- TICKET INIT DEFAULT INTERCEPTOR -->
 	<bean id="ticketInitDefaultInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.TicketInitDefaultInterceptor">
 	</bean>
-	
+
+	<!-- TICKET INIT DEFAULT INTERCEPTOR MAPPING -->
+	<bean id="ticketInitDefaultInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketInitDefaultInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+
 	<!-- TICKET REMOVE INTERCEPTOR -->
 	<bean id="ticketRemoveInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.TicketRemoveInterceptor">
+	</bean>
+
+	<!-- TICKET REMOVE INTERCEPTOR MAPPING -->
+	<bean id="ticketRemoveInterceptorMapping"
+		  class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="ticketRemoveInterceptor" />
+		<property name="typeCode" value="Ticket" />
+	</bean>
+
+	<!--..................................CRONJOBS..................................-->
+
+	<!-- AIRPORT CRONJOB -->
+	<bean id="defaultAirportCronJob"
+		  class="it.uiip.airport.core.cronJob.impl.DefaultAirportCronJob"
+		  parent="abstractJobPerformable">
 	</bean>
 </beans>
