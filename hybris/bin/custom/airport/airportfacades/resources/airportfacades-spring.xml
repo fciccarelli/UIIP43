@@ -272,7 +272,7 @@
 
  	<alias name="defaultTicketZConverter" alias="ticketZConverter" />
 	<bean id="defaultTicketZConverter" parent="abstractPopulatingConverter">
-		<property name="targetClass" value="it.uiip.airport.facades.data.TicketData"></property>
+		<property name="targetClass" value="it.uiip.airport.facades.data.TicketZData"></property>
 		<property name="populators">
 			<list>
 				<ref bean="ticketZPopulator"/>
@@ -290,6 +290,7 @@
 	<alias name="defaultTicketZPopulator" alias="ticketZPopulator" />
 	<bean id="defaultTicketZPopulator" class="it.uiip.airport.facades.populators.impl.TicketZPopulator">
 	</bean>
-
-
+	
+<alias name="defaultPassengerFacade" alias="PassengerFacade"/>
+<bean  id="defaultPassengerFacade" class="it.uiip.airport.facades.impl.defaultPassengerFacade"/>
 </beans>

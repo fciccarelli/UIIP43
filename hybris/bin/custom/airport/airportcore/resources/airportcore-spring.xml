@@ -744,6 +744,15 @@
 	<bean id= "PassengerRemoveInterceptor"  class="it.uiip.airport.core.interceptor.PassengerRemoveInterceptor"/>
 	<bean id= "airportLoadInterceptor"      class="it.uiip.airport.core.interceptor.AirportLoadInterceptor"/>
 	<bean id= "airportValidateInterceptor" class="it.uiip.airport.core.interceptor.AirportValidateInterceptor"/>
+	<bean id= "flightValidateInterceptor" class="it.uiip.airport.core.interceptor.FlightValidateInterceptor"/>
+	
+	<bean id= "ticketRemoveInterceptor"  class="it.uiip.airport.core.interceptor.TicketRemoveInterceptor">
+	<property name="eventService" ref="eventService"/>
+	</bean>
+	
+	<bean id= "ticketInitDefaultsInterceptor" class="it.uiip.airport.core.interceptor.TicketInitDefaultsInterceptor">
+	<property name="eventService" ref="eventService"/>
+	</bean>
 	
 	
 	
@@ -756,19 +765,33 @@
 	<bean id="airportLoadInterceptorMapping"
 	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 	<property name="interceptor" ref="airportLoadInterceptor"/>
-	<property name="typeCode" value="TicketModel"/>
+	<property name="typeCode" value="ticketModel"/>
 	</bean>
 	
-
+	<bean id="ticketRemoveInterceptorMapping"
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	<property name="interceptor" ref="ticketRemoveInterceptor"/>
+	<property name="ticketEvent" value="ticketEvent"/>
+	</bean>
+	
+	<bean id="ticketInitDefaultsInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	<property name="interceptor" ref="ticketInitDefaultsInterceptor"/>
+	<property name="typeCode" value="ticketModel"/>
+	</bean>
+	
+	<bean id="flightValidateInterceptorMapping" 
+	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	<property name="interceptor" ref="flightValidateInterceptor"/>
+	<property name="typeCode" value="TicketModel"/>
+	</bean>
 	
 	
 	
 	<bean id="airportJob"   class="it.uiip.airport.core.job.AirportJob" parent="abstractJobPerformable"/>
-	
-	
-	
-	
-	
+    <bean id="ticketEvent"   class="it.uiip.airport.core.event.TicketEvent"/> 
+    <bean id="ticketEventListener" class="it.uiip.airport.core.event.TicketEventListener" parent="abstractEventListener"/>
+    
 	
 	
 

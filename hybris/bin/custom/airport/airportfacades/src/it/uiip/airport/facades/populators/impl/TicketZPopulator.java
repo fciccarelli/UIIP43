@@ -7,22 +7,22 @@ import de.hybris.platform.converters.Populator;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 
 import it.uiip.airport.core.model.TicketModel;
-import it.uiip.airport.facades.data.TicketData;
+import it.uiip.airport.facades.data.TicketZData;
+
 
 
 /**
- * @author aDeangelis
+ * @author aDeangeliss
  *
  */
-public class TicketZPopulator implements Populator<TicketModel, TicketData>
+public class TicketZPopulator implements Populator<TicketModel, TicketZData>
 {
 
 	@Override
-	public void populate(final TicketModel source, final TicketData target) throws ConversionException
+	public void populate(final TicketModel source, final TicketZData target) throws ConversionException
 	{
 
-		target.setName(source.getPassenger().getName());
-		target.setSurname(source.getPassenger().getSurname());
+
 		target.setCode(source.getCode());
 		target.setNumberSeat(source.getNumberSeat());
 	}

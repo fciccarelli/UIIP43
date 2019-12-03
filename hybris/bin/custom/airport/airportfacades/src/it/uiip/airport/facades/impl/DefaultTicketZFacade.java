@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Required;
 import it.uiip.airport.core.model.TicketModel;
 import it.uiip.airport.core.service.impl.DefaultTicketZService;
 import it.uiip.airport.facades.TicketZFacade;
-import it.uiip.airport.facades.data.TicketData;
+import it.uiip.airport.facades.data.TicketZData;
 
 
 /**
@@ -23,13 +23,13 @@ public class DefaultTicketZFacade implements TicketZFacade
 {
 
 	private DefaultTicketZService ticketZService;
-	private Converter<TicketModel, TicketData> ticketZConverter;
+	private Converter<TicketModel, TicketZData> ticketZConverter;
 
 	@Override
-	public List<TicketData> getTicketByCodeFlight(final String code)
+	public List<TicketZData> getTicketByCodeFlight(final String code)
 	{
 		final TicketModel listTicket = (TicketModel) getTicketZService().getTicketForCode(code);
-		return (List<TicketData>) ticketZConverter.convert(listTicket);
+		return (List<TicketZData>) ticketZConverter.convert(listTicket);
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class DefaultTicketZFacade implements TicketZFacade
 	/**
 	 * @return the ticketZConverter
 	 */
-	public Converter<TicketModel, TicketData> getTicketZConverter()
+	public Converter<TicketModel, TicketZData> getTicketZConverter()
 	{
 		return ticketZConverter;
 	}
@@ -63,7 +63,7 @@ public class DefaultTicketZFacade implements TicketZFacade
 	 *           the ticketZConverter to set
 	 */
 	@Required
-	public void setTicketZConverter(final Converter<TicketModel, TicketData> ticketZConverter)
+	public void setTicketZConverter(final Converter<TicketModel, TicketZData> ticketZConverter)
 	{
 		this.ticketZConverter = ticketZConverter;
 	}
