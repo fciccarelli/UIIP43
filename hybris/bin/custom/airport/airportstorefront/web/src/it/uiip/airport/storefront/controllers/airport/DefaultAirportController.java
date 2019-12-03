@@ -48,7 +48,7 @@ public class DefaultAirportController extends AbstractPageController
 	private static final String PASSENGER_FILTER_PATTERN = "/passengers";
 	private static final String TICKET_FILTER_PATTERN = "/passengersTicket";
 	private static final String TICKET_REGISTRATION_INFO_PATTERN = "/newTicket";
-	provate static final String TICKET_REGISTRATION_PATTERN = "/addTicket";
+	private static final String TICKET_REGISTRATION_PATTERN = "/addTicket";
 	public static final int CODE_LENGTH = 4;
 	public static final int SEAT_CODE_LENGTH = 1;
 
@@ -99,8 +99,8 @@ public class DefaultAirportController extends AbstractPageController
 		return ControllerConstants.Views.Pages.StoreFinderShowPassengersTicket.StoreFinderShowPassengersTicket;
 	}
 
-	@RequestMapping(value = TICKET_REGISTRATION_INFO_PATTERN, method=RequestMethod.GET )
-	public String showNewTicketInfo(){
+	@RequestMapping(value = TICKET_REGISTRATION_INFO_PATTERN)
+	public String showNewTicketForm(){
  		return ControllerConstants.Views.Pages.StoreNewTicket.NewTicketForm;
 	}
 
