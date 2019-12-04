@@ -805,10 +805,17 @@
 		<property name="passengerService" ref="passengerService"/>
 	</bean>
 
+<!-- flightjob -->
 	<bean id="flightJob"
 		class="it.uiip.airport.core.cronjob.FlightJob"
 		parent="abstractJobPerformable"></bean>
-
+		
+		
+<!--SendConfirmationJob		
+		<bean id="sendConfirmationJob"
+		class="it.uiip.airport.core.cronjob.SendConfirmationJob"
+		parent="abstractJobPerformable"></bean>
+-->
 	<alias name="defaultAirportDao" alias="airportDao" />
 	<bean id="defaultAirportDao"
 		class="it.uiip.airport.core.dao.impl.DefaultAirportDao">
