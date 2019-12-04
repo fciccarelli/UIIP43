@@ -12,8 +12,9 @@ import java.util.List;
 
 import javax.naming.directory.SearchResult;
 
-import bootstrap.gensrc.it.uiip.airport.core.model.PassengerModel;
 import it.uiip.airport.core.dao.PassengerDao;
+import it.uiip.airport.core.model.PassengerModel;
+import it.uiip.airport.core.model.TicketModel;
 
 
 /**
@@ -43,7 +44,17 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		return passengers;
 	}
 
+	public List<PassengerModel> listPassengerEventTicketRemoved(final TicketModel ticket)
+	{
 
+		final String queryStr = "select {PK} from {Passenger} as p join{ {Flight} as f on {p.pk}={f.pk}} join {{Ticket} as t on {f.pk}={tcode} }where {code} = ?ticketcode";
+		final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+		fsq.addQueryParameter("ticket", ticket);
+		final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+		final List<PassengerModel> tickets = result.getResult();
+
+		return tickets;
+	}
 
 
 }
