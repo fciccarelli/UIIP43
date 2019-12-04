@@ -8,7 +8,7 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.AirportModel;
-import it.uiip.airport.core.service.AirportService;
+import it.uiip.airport.core.service.impl.DefaultAirportService;
 import it.uiip.airport.facades.AirportFacade;
 import it.uiip.airport.facades.data.AirportData;
 
@@ -20,7 +20,7 @@ import it.uiip.airport.facades.data.AirportData;
 public class DefaultAirportFacade implements AirportFacade
 {
 
-	private AirportService airportService;
+	private DefaultAirportService airportService;
 	private Converter<AirportModel, AirportData> airportConverter;
 
 
@@ -36,7 +36,7 @@ public class DefaultAirportFacade implements AirportFacade
 	/**
 	 * @return the airportService
 	 */
-	public AirportService getAirportService()
+	public DefaultAirportService getAirportService()
 	{
 		return airportService;
 	}
@@ -47,7 +47,7 @@ public class DefaultAirportFacade implements AirportFacade
 	 *           the airportService to set
 	 */
 	@Required
-	public void setAirportService(final AirportService airportService)
+	public void setAirportService(final DefaultAirportService airportService)
 	{
 		this.airportService = airportService;
 	}
@@ -71,8 +71,6 @@ public class DefaultAirportFacade implements AirportFacade
 	{
 		this.airportConverter = airportConverter;
 	}
-
-
 
 
 }

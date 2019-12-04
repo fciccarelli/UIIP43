@@ -9,10 +9,10 @@ import it.uiip.airport.facades.data.PassengerData;
 
 
 /**
- * @author pasop
+ * @author sdeli
  *
  */
 public interface PassengerFacade
 {
-	List<PassengerData> getPassengersByFlight(String code);
+	List<PassengerData> getPassengerByTicket(String code);
 }

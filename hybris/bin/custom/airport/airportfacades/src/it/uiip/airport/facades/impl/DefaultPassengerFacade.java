@@ -11,64 +11,49 @@ import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.PassengerModel;
 import it.uiip.airport.core.model.TicketModel;
-import it.uiip.airport.core.service.PassengerService;
-import it.uiip.airport.core.service.TicketsService;
+import it.uiip.airport.core.service.impl.DefaultTicketZService;
 import it.uiip.airport.facades.PassengerFacade;
 import it.uiip.airport.facades.data.PassengerData;
-import it.uiip.airport.facades.data.TicketsData;
-
 
 /**
- * @author pasop
+ * @author sdeli
  *
  */
 public class DefaultPassengerFacade implements PassengerFacade
 {
 
-	PassengerService passengerService;
-	Converter<PassengerModel, PassengerData> passengerConverter;
-	TicketsService ticketsService;
-	Converter<TicketModel, TicketsData> ticketsConverter;
+	DefaultTicketZService ticketZService;
+	private Converter<PassengerModel, PassengerData> passengerConverter;
 
 	@Override
-	public List<PassengerData> getPassengersByFlight(final String code)
+	public List<PassengerData> getPassengerByTicket(final String code)
 	{
-		final List<PassengerModel> passengersModel = passengerService.getPassengersForFlight(code);
-		final List<PassengerData> passengersData = passengerConverter.convertAll(passengersModel);
-		final int cont = passengersData.size();
-
-		for (int i = 0; i < passengersModel.size(); i++)
+		final List<TicketModel> listTicket = ticketZService.getTicketForCode(code);
+		final List<PassengerModel> listPass = null;
+		for (final TicketModel ticket : listTicket)
 		{
-			final String passport = passengersModel.get(i).getPassport();
-			if (passport != null)
-			{
-				final TicketModel ticketModel = ticketsService.getTicketForFlight(code, passport);
-				if (ticketModel != null)
-				{
-					final TicketsData ticketData = ticketsConverter.convert(ticketModel);
-					passengersData.get(i).setTicket(ticketData);
-				}
-			}
+			listPass.add(ticket.getPassenger());
+
 		}
-		return passengersData;
+		return passengerConverter.convertAll(listPass);
 	}
 
 	/**
-	 * @return the passengerService
+	 * @return the ticketZService
 	 */
-	public PassengerService getPassengerService()
+	public DefaultTicketZService getTicketZService()
 	{
-		return passengerService;
+		return ticketZService;
 	}
 
 	/**
-	 * @param passengerService
-	 *           the passengerService to set
+	 * @param ticketZService
+	 *           the ticketZService to set
 	 */
 	@Required
-	public void setPassengerService(final PassengerService passengerService)
+	public void setTicketZService(final DefaultTicketZService ticketZService)
 	{
-		this.passengerService = passengerService;
+		this.ticketZService = ticketZService;
 	}
 
 	/**
@@ -88,43 +73,6 @@ public class DefaultPassengerFacade implements PassengerFacade
 	{
 		this.passengerConverter = passengerConverter;
 	}
-
-	/**
-	 * @return the ticketsService
-	 */
-	public TicketsService getTicketsService()
-	{
-		return ticketsService;
-	}
-
-	/**
-	 * @param ticketsService
-	 *           the ticketsService to set
-	 */
-	@Required
-	public void setTicketsService(final TicketsService ticketsService)
-	{
-		this.ticketsService = ticketsService;
-	}
-
-	/**
-	 * @return the ticketsConverter
-	 */
-	public Converter<TicketModel, TicketsData> getTicketsConverter()
-	{
-		return ticketsConverter;
-	}
-
-	/**
-	 * @param ticketsConverter
-	 *           the ticketsConverter to set
-	 */
-	@Required
-	public void setTicketsConverter(final Converter<TicketModel, TicketsData> ticketsConverter)
-	{
-		this.ticketsConverter = ticketsConverter;
-	}
-
 
 
 }

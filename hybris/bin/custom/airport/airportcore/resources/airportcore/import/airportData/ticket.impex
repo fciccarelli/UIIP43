@@ -1,20 +1,12 @@
-INSERT_UPDATE Ticket ; code[unique=true, allowNull=false] ; numberSeat[allowNull=false] ; passenger(uid)[allowNull=false] ; flight(code)[allowNull=false]
-                     ; 1                                  ; A1                          ; 1                       		  ; 1                            
-                     ; 2                                  ; B1                          ; 2                        		  ; 2                            
-                     ; 3                                  ; C1                          ; 3                          	  ; 3                            
-                     ; 4                                  ; D1                          ; 4                         	  ; 4                            
-                     ; 5                                  ; E1                          ; 5                          	  ; 5                            
-                     ; 6                                  ; F1                          ; 6                            	  ; 6                            
-                     ; 7                                  ; A2                          ; 7                               ; 7                            
-                     ; 8                                  ; B2                          ; 8                               ; 8                            
-                     ; 9                                  ; C2                          ; 9                               ; 9                            
-                     ; 10                                 ; D2                          ; 2                             ; 1                          
-                     ; 11                                 ; E2                          ; 3                              ; 1                            
-                     ; 12                                 ; F2                          ; 4                              ; 1                            
-                     ; 13                                 ; A3                          ; 3                              ; 10                           
-                     ; 14                                 ; B3                          ; 4                              ; 18                           
-                     ; 15                                 ; C3                          ; 5                              ; 4                            
-                     ; 16                                 ; D3                          ; 6                              ; 5                            
-                     ; 17                                 ; E3                          ; 7                              ; 6                            
-                     ; 18                                 ; F3                          ; 8                              ; 7                            
-                     ; 19                                 ; G1                          ; 9                              ; 8                            
+INSERT_UPDATE Ticket;	code[unique=true] ;	numberSeat[allowNull=false]; passenger(uid)[allowNull=false]; flight(code)[allowNull=false]
+;		A1P2;				120;        			6;  				8;
+;		A2P2;				121;				1;	                	8;
+;		A3P2;				123;				8;				8;
+;		A4P3;				124;				9; 				9;
+;		A5P4;				125;				10;				9;
+;		A6P5;				126;				1;				9;
+;		A7P6;				127;				3;				9;
+;		A8P6;				128;				5;				9;
+;		A8P7;				129;				6;				9;
+;		A9P8;				130;				7;				9;
+;               A5P9;				131;				8;				9;
