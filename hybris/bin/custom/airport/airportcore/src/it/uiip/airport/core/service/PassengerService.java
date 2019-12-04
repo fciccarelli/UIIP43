@@ -15,4 +15,6 @@ import it.uiip.airport.core.model.PassengerModel;
 public interface PassengerService
 {
 	List<PassengerModel> getPassengersForCodeFlight(String code);
+
+	List<PassengerModel> getPassengersForCodeTicket(String code);
 }

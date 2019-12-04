@@ -27,6 +27,12 @@ public class DefaultPassengerService implements PassengerService
 		return passengerDao.findPassengersByCodeFlight(code);
 	}
 
+	@Override
+	public List<PassengerModel> getPassengersForCodeTicket(final String code)
+	{
+
+		return passengerDao.findPassengersByCodeTicket(code);
+	}
 	/**
 	 * @return the passengerDao
 	 */
@@ -44,6 +50,8 @@ public class DefaultPassengerService implements PassengerService
 	{
 		this.passengerDao = passengerDao;
 	}
+
+
 
 
 }

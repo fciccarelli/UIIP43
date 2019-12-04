@@ -34,12 +34,29 @@ public class TicketInitDefaultsInterceptor implements InitDefaultsInterceptor<Ti
 	{
 
 
-		ticketEvent.setCode(RandomStringUtils.randomAlphanumeric(12));
+		ticketEvent.setCode(generateTicketCode(ticketModel));
 		eventService.publishEvent(ticketEvent);
 
 	}
 
+	private String generateTicketCode(final TicketModel ticket)
+	{
 
+		String code = "";
+
+		if (ticket != null && ticket.getCode().isEmpty())
+		{
+
+			code = ticket.getCode();
+
+		}
+		else
+		{
+
+			code = RandomStringUtils.randomAlphabetic(3);
+		}
+		return code;
+	}
 
 	/**
 	 * @return the ticketEvent

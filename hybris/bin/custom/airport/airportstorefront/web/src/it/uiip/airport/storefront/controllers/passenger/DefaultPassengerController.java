@@ -69,7 +69,8 @@ public class DefaultPassengerController extends AbstractPageController
 		final TicketModel ticket = modelService.create(TicketModel.class);
 		//		ticket.setCode(RandomStringUtils.randomAlphanumeric(12));
 		//		ticket.setNumberSeat(RandomStringUtils.randomAlphanumeric(3));
-		return "ticketView";
+		//return "ticketView";
+		return ControllerConstants.Views.Pages.SubmitTickets.StoreFinderSubmitTickets;
 
 	}
 

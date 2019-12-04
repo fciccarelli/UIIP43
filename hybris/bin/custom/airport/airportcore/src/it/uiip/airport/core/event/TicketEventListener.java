@@ -7,8 +7,9 @@ import de.hybris.platform.servicelayer.event.impl.AbstractEventListener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Required;
 
-import it.uiip.airport.core.dao.PassengerDao;
+import it.uiip.airport.core.service.PassengerService;
 
 
 
@@ -19,7 +20,8 @@ import it.uiip.airport.core.dao.PassengerDao;
  */
 public class TicketEventListener extends AbstractEventListener<TicketEvent>
 {
-	private PassengerDao passengerDao;
+
+	private PassengerService passengerService;
 
 	private final Logger log = LoggerFactory.getLogger(TicketEventListener.class);
 
@@ -29,8 +31,27 @@ public class TicketEventListener extends AbstractEventListener<TicketEvent>
 
 		log.info("Logging Passengers");
 
-		passengerDao.findPassengersByCodeFlight("1");
 
+		passengerService.getPassengersForCodeTicket(ticketEvent.getCode());
+
+	}
+
+	/**
+	 * @return the passengerService
+	 */
+	public PassengerService getPassengerService()
+	{
+		return passengerService;
+	}
+
+	/**
+	 * @param passengerService
+	 *           the passengerService to set
+	 */
+	@Required
+	public void setPassengerService(final PassengerService passengerService)
+	{
+		this.passengerService = passengerService;
 	}
 
 

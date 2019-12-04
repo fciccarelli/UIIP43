@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Required;
 
+import it.uiip.airport.core.event.TicketEvent;
 import it.uiip.airport.core.model.TicketModel;
 
 
@@ -24,6 +25,16 @@ public class TicketRemoveInterceptor implements RemoveInterceptor<TicketModel>
 
 	@Resource
 	private EventService eventService;
+	private TicketEvent ticketEvent;
+
+	@Override
+	public void onRemove(final TicketModel ticketModel, final InterceptorContext ctx) throws InterceptorException
+	{
+
+		ticketEvent.setCode(ticketModel.getCode());
+		eventService.publishEvent(ticketEvent);
+
+	}
 
 
 	/**
@@ -46,11 +57,24 @@ public class TicketRemoveInterceptor implements RemoveInterceptor<TicketModel>
 	}
 
 
-	@Override
-	public void onRemove(final TicketModel ticketModel, final InterceptorContext ctx) throws InterceptorException
+	/**
+	 * @return the ticketEvent
+	 */
+	public TicketEvent getTicketEvent()
 	{
-		// XXX Auto-generated method stub
-
+		return ticketEvent;
 	}
+
+
+	/**
+	 * @param ticketEvent
+	 *           the ticketEvent to set
+	 */
+	public void setTicketEvent(final TicketEvent ticketEvent)
+	{
+		this.ticketEvent = ticketEvent;
+	}
+
+
 
 }

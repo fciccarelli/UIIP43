@@ -5,7 +5,7 @@
 <title>Passenger Submit</title>
 <body>
 	<h1>Passenger Submit</h1>
-    <form action="/addTicket" method="post">
+    <form action="addTicket" modelAttribute="" method="post">
     <b>Name</b>
     <input type="text" name="name" placeholder="Insert name">
 
@@ -14,7 +14,7 @@
     
     <b>Passport</b>
     <input type="text" name="passport" placeholder="Insert passport">
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit"> 
 
 </form>
 </body>
