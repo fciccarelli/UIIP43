@@ -41,7 +41,7 @@ public class DefaultPassengerController extends AbstractPageController
 		pass.setSurname(passenger.getSurname());
 		pass.setPassport(passenger.getPassport());
 
-		return ControllerConstants.Views.Pages.NewPassenger.StoreNewPassenger;
+		return ControllerConstants.Views.Pages.NewPassenger.RegisterOK;
 	}
 
 }

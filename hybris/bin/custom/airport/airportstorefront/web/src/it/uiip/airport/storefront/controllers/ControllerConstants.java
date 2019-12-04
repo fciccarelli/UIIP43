@@ -178,6 +178,7 @@ public interface ControllerConstants
 			interface NewPassenger // NOSONAR
 			{
 				String StoreNewPassenger = "pages/airport/newPassenger";
+				String RegisterOK = "pages/airport/newPassenger";
 			}
 
 

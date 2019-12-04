@@ -51,10 +51,25 @@ public class DefaultTicketInitDefaultInterceptor implements InitDefaultsIntercep
 	{
 		// XXX Auto-generated method stub
 
-		ticketEvent.setCode(RandomStringUtils.random(4));
-		ticketEvent.setNumberSeat(RandomStringUtils.random(3));
+
+		ticketEvent.setCode(genarateTicketCode(ticket));
 		eventService.publishEvent(ticketEvent);
 
+
+	}
+
+	private String genarateTicketCode(final TicketModel ticket)
+	{
+		final String code;
+		if (ticket != null && ticket.getCode() != null)
+		{
+			code = ticket.getCode();
+		}
+		else
+		{
+			code = RandomStringUtils.random(3);
+		}
+		return code;
 
 	}
 

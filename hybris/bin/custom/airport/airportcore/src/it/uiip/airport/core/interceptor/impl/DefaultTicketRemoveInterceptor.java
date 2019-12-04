@@ -10,13 +10,17 @@ import de.hybris.platform.servicelayer.interceptor.RemoveInterceptor;
 
 import org.springframework.beans.factory.annotation.Required;
 
+import it.uiip.airport.core.event.TicketEvent;
+import it.uiip.airport.core.model.TicketModel;
+
 
 /**
  * @author fabiosessa
  *
  */
-public class DefaultTicketRemoveInterceptor implements RemoveInterceptor
+public class DefaultTicketRemoveInterceptor implements RemoveInterceptor<TicketModel>
 {
+	private TicketEvent ticketEvent;
 	private EventService eventService;
 
 	/**
@@ -38,10 +42,12 @@ public class DefaultTicketRemoveInterceptor implements RemoveInterceptor
 	}
 
 	@Override
-	public void onRemove(final Object arg0, final InterceptorContext arg1) throws InterceptorException
+	public void onRemove(final TicketModel tick, final InterceptorContext arg1) throws InterceptorException
 	{
 		// XXX Auto-generated method stub
 
+		ticketEvent.setCode(tick.getCode());
+		eventService.publishEvent(ticketEvent);
 	}
 
 }

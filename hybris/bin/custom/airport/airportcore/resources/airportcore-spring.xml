@@ -44,12 +44,22 @@
 			ref="catalogVersionService" />
 	</bean>
 	
+	<!-- Event and eventListener airport -->
+	
 	<bean id="ticketEvent" class="it.uiip.airport.core.event.TicketEvent"/>
-	<bean id="ticketEventListener" class="it.uiip.airport.core.event.TicketEventListener" parent="abstractEventListener"></bean>
+	<bean id="ticketEventListener" class="it.uiip.airport.core.event.TicketEventListener" parent="abstractEventListener">
+		<property name="ticketService" ref="ticketsService"></property>
+	</bean>
+	
+	<!-- Cronejob airport -->
 	
 	<bean id="airportCroneJob" class="it.uiip.airport.core.job.AirportCroneJob" parent="abstractJobPerformable">
 	</bean>
-
+	<bean id="sendConfirmationJob" class="it.uiip.airport.core.job.SendConfirmationJob" parent="abstractJobPerformable">
+	</bean>
+	
+	<!-- Mapping interceptor airport -->
+	
 	<bean id="airportLoadInterceptorMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 		<property name="interceptor" ref="airportLoadInterceptor"></property>
@@ -83,6 +93,8 @@
 		<property name="interceptor" ref="ticketRemoveInterceptor"></property>
 		<property name="typeCode" value="ticketModel'"></property>
 	</bean>
+	
+	<!-- Interceptor airport -->
 	
 	<bean id="ticketPrepareInterceptor"
 		class="it.uiip.airport.core.interceptor.impl.DefaultTicketPrepareInterceptor"></bean>

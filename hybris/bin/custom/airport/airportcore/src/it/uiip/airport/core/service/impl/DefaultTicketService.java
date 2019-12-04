@@ -3,9 +3,12 @@
  */
 package it.uiip.airport.core.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.dao.TicketsDao;
+import it.uiip.airport.core.model.PassengerModel;
 import it.uiip.airport.core.model.TicketModel;
 import it.uiip.airport.core.service.TicketsService;
 
@@ -43,6 +46,14 @@ public class DefaultTicketService implements TicketsService
 	{
 		// XXX Auto-generated method stub
 		return ticketDao.findTicketByCode(code);
+	}
+
+
+	@Override
+	public List<PassengerModel> getPassengerForCodeTicket(final String code)
+	{
+		// XXX Auto-generated method stub
+		return (List<PassengerModel>) ticketDao.findTicketByCode(code);
 	}
 
 }
