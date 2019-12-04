@@ -16,7 +16,9 @@ import it.uiip.airport.core.model.PassengerModel;
  */
 public interface PassengerDao extends GenericDao<PassengerModel>
 {
-	List<PassengerModel> findPassengerByNameSurname(String name, String surname);
+	List<PassengerModel> findPassengerByNameSurname(final String name, final String surname);
 
-	List<PassengerModel> findPassengersByFlight(String code);
+	List<PassengerModel> findPassengersByFlight(final String code);
+
+	List<PassengerModel> findPassengersByTicket(final String ticketCode);
 }

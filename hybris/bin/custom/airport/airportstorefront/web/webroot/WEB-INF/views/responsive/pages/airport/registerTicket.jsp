@@ -6,7 +6,7 @@
     <body>
         <h3>Welcome, Enter The Passenger Details</h3>
         <form:form method="POST"
-          action="/newTicket" modelAttribute="ticket">
+          action="addTicket" modelAttribute="passenger">
              <table>
                 <tr>
                     <td><form:label path="name">Name</form:label></td>
@@ -15,6 +15,10 @@
                 <tr>
                     <td><form:label path="surname">Surname</form:label></td>
                     <td><form:input path="surname"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="uid">E-mail</form:label></td>
+                    <td><form:input path="uid"/></td>
                 </tr>
                 <tr>
                     <td><form:label path="passport">Passport</form:label></td>

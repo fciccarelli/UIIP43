@@ -18,4 +18,6 @@ public interface PassengerService
 
 	List<PassengerModel> getPassengersForFlight(String code);
 
+	List<PassengerModel> getPassengersForTicket(String code);
+
 }

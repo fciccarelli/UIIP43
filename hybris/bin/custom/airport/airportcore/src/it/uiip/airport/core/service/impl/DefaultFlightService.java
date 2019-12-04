@@ -5,6 +5,7 @@ package it.uiip.airport.core.service.impl;
 
 import java.util.List;
 
+import it.uiip.airport.core.model.TicketModel;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.dao.FlightDao;
@@ -26,6 +27,21 @@ public class DefaultFlightService implements FlightService
 	{
 		// XXX Auto-generated method stub
 		return flightDao.findAllFlights();
+	}
+
+	@Override
+	public FlightModel getFlightByTicket(String code) {
+		return flightDao.findFlightByTicket(code);
+	}
+
+	@Override
+	public List<TicketModel> getTicketByFlight(String code) {
+		return flightDao.findTicketByFlight(code);
+	}
+
+	@Override
+	public FlightModel getFlightByCode(String code) {
+		return flightDao.findFlightByCode(code);
 	}
 
 	/**

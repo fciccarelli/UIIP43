@@ -31,6 +31,11 @@ public class DefaultPassengerService implements PassengerService
 	}
 
 	@Override
+	public List<PassengerModel> getPassengersForTicket(String code) {
+		return passengerDao.findPassengersByTicket(code);
+	}
+
+	@Override
 	public List<PassengerModel> PassengerForNameSurname(final String name, final String surname)
 	{
 		return passengerDao.findPassengerByNameSurname(name, surname);
