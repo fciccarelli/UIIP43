@@ -755,7 +755,7 @@
 	</bean>
 	
 	
-	
+	  
 	<bean id="airportValidateInterceptorMapping"
 	class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
 	<property name="interceptor" ref="airportValidateInterceptor"/>
@@ -788,6 +788,9 @@
 	
 	
 	
+	<!--
+	<bean id="sendConfirmationJob"   class="it.uiip.airport.core.job.SendConfirmationJob" parent="abstractJobPerformable"/>
+	-->
 	<bean id="airportJob"   class="it.uiip.airport.core.job.AirportJob" parent="abstractJobPerformable"/>
     <bean id="ticketEvent"   class="it.uiip.airport.core.event.TicketEvent"/> 
     <bean id="ticketEventListener" class="it.uiip.airport.core.event.TicketEventListener" parent="abstractEventListener"/>

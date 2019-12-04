@@ -8,7 +8,7 @@ import de.hybris.platform.servicelayer.event.impl.AbstractEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import it.uiip.airport.core.dao.TicketZDao;
+import it.uiip.airport.core.service.TicketZService;
 
 
 /**
@@ -17,7 +17,7 @@ import it.uiip.airport.core.dao.TicketZDao;
  */
 public class TicketEventListener extends AbstractEventListener<TicketEvent>
 {
-	private TicketZDao ticketDao;
+	private TicketZService ticketZService;
 	private final Logger log = LoggerFactory.getLogger(TicketEventListener.class);
 
 
@@ -25,7 +25,7 @@ public class TicketEventListener extends AbstractEventListener<TicketEvent>
 	protected void onEvent(final TicketEvent ticketEvent)
 	{
 		log.info("Logging Ticket");
-		ticketDao.findTicketByCodeFlight("9");
+		ticketZService.getTicketForCode(ticketEvent.getCode());
 	}
 
 

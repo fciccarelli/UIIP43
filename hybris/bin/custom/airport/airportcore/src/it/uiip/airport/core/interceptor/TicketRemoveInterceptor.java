@@ -8,7 +8,11 @@ import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.RemoveInterceptor;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Required;
+
+import it.uiip.airport.core.event.TicketEvent;
 
 /**
  * @author soprasteria
@@ -16,8 +20,9 @@ import org.springframework.beans.factory.annotation.Required;
  */
 public class TicketRemoveInterceptor  implements RemoveInterceptor
 {
-private EventService eventService;
-
+	@Resource
+   private EventService eventService;
+	private TicketEvent ticketEvent;
 
 
 /**
@@ -39,14 +44,24 @@ public void setEventService(final EventService eventService)
 
 @Override
 public void onRemove(final Object arg0, final InterceptorContext arg1) throws InterceptorException
-{
-		//
+	{ //ticketEvent.setCode();
+      ticketEvent.setCode(generateTicketCode(arg0));
+	   eventService.publishEvent(ticketEvent);
 
 }
 
-
+	/**
+	 * @param arg0
+	 * @return
+	 */
+	private String generateTicketCode(final Object arg0)
+	{
+		// XXX Auto-generated method stub
+		return null;
+}
 
 }
+
 
 
 

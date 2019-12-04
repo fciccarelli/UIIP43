@@ -24,6 +24,7 @@ import it.uiip.airport.storefront.controllers.ControllerConstants;
  */
 @Controller
 @RequestMapping(value = "/airportController")
+
 public class DefaultAirportController extends AbstractPageController
 {
 

@@ -40,6 +40,23 @@ public class DefaultTicketZDao extends DefaultGenericDao<TicketModel> implements
 		return tickets;
 	}
 
-
+	//	public List<PassengerModel> findPassengerByTicket(final String ticketCode){
+	//
+	//		 final String query = "SELECT {p.Pk} FROM { Ticket as t"
+	//
+	//		 		+ " Join Flight2PassengerRelation as r ON {r.target}={p.PK}"
+	//		 		+ "  Join Flight as f ON {t.flight} ={f.PK}"
+	//		 		+ "  Join Passenger as p ON {t.flight} = {p.pk} "
+	//		 		+ "where {t.code} =?code";
+	//			final FlexibleSearchQuery fsq = new FlexibleSearchQuery(query);
+	//			fsq.addQueryParameter("ticketCode", ticketCode);
+	//			final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+	//			final result.getResult();
+	//
+	//
+	//
+	//		return null;
+	//		
+	//	 }
 
 }

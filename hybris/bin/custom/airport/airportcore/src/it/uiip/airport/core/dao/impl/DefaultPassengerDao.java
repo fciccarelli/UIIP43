@@ -42,6 +42,21 @@ public class DefaultPassengerDao extends DefaultGenericDao<PassengerModel> imple
 		return passengers;
 	}
 
+	//     public List<PassengerModel> findPassengerByNameSurnamePassport(final String name, final String surname, final String passport)
+	//	
+	//     {
+	//   	  final String queryStr = "Select {PK} FROM {Passenger} where{name}=?name AND {surname}=?surname AND {passport}=?passport ";
+	//   	  final FlexibleSearchQuery fsq = new FlexibleSearchQuery(queryStr);
+	//   		fsq.addQueryParameter("name", name);
+	//   		fsq.addQueryParameter("surname", surname);
+	//			fsq.addQueryParameter("passport", passport);
+	//			final SearchResult<PassengerModel> result = getFlexibleSearchService().search(fsq);
+	//			final List<PassengerModel> passengers = result.getResult();
+	//			
+	//			
+	//			return passengers;
+	// 
+	//     }
 
 
 

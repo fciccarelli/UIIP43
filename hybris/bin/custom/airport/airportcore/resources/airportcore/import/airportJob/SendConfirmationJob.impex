@@ -1,0 +1,10 @@
+INSERT_UPDATE CronJob ;code[unique=true]; job(code)  ; singleExecutable; sessionLanguage(isocode);
+                      ;SendConfirmationJob   ; airportJob ; false           ;de;
+
+
+INSERT_UPDATE ServicelayerJob; code[unique=true]  ; springId;
+                             ;SendConfirmationJob ; SendConfirmationJob;
+
+INSERT_UPDATE Trigger; cronjob(code)[unique=true]; cronExpression ;
+                     ; SendConfirmationJob            ; 0 0 0 * * ? ;
+

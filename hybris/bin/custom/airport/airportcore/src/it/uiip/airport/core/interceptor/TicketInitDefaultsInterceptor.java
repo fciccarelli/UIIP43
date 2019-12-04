@@ -30,9 +30,24 @@ public class TicketInitDefaultsInterceptor implements InitDefaultsInterceptor<Ti
 	@Override
 	public void onInitDefaults(final TicketModel arg0, final InterceptorContext arg1) throws InterceptorException
 	{
-		ticketEvent.setCode(RandomStringUtils.randomAlphanumeric(3));
+		ticketEvent.setCode(genereteTicketCode(arg0));
 		eventService.publishEvent(ticketEvent);
 	}
+
+	private String genereteTicketCode(final TicketModel ticket)
+	{
+		String code = "";
+		if (ticket != null && !ticket.getCode().isEmpty())
+		{
+			code = ticket.getCode();
+		}
+		else
+		{
+			code = RandomStringUtils.randomAlphanumeric(3);
+		}
+		return code;
+	}
+
 
 	/**
 	 * @return the eventService
