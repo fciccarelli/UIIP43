@@ -923,4 +923,9 @@
           class="it.uiip.airport.core.cronJob.impl.DefaultAirportCronJob"
           parent="abstractJobPerformable">
     </bean>
+    
+    <bean id="defaultMailJob" 
+    	  class="it.uiip.airport.core.cronJob.impl.DefaultMailJob" 
+    	  parent="abstractJobPerformable"></bean>
+    
 </beans>

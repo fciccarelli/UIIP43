@@ -7,6 +7,9 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import java.util.List;
 
+import it.uiip.airport.core.model.AirportModel;
+import it.uiip.airport.facades.data.AirportData;
+import ma.glasnost.orika.impl.generator.specification.Convert;
 import org.springframework.beans.factory.annotation.Required;
 
 import it.uiip.airport.core.model.FlightModel;
@@ -24,12 +27,18 @@ public class DefaultFlightFacade implements FlightFacade
 
 	FlightService flightService;
 	Converter<FlightModel, FlightData> flightConverter;
+	Converter<AirportModel, AirportData> airportConverter;
 
 	@Override
 	public List<FlightData> getAllFlights()
 	{
 		final List<FlightModel> flightModels = flightService.getAllFlights();
-		return flightConverter.convertAll(flightModels);
+		List<FlightData> flightData =flightConverter.convertAll(flightModels);
+		for(int i = 0; i< flightModels.size(); i++){
+			flightData.get(i).setDepartureAirport(airportConverter.convert(flightModels.get(i).getDepartureAirport()));
+			flightData.get(i).setArrivalAirport(airportConverter.convert(flightModels.get(i).getArrivalAirport()));
+		}
+		return flightData;
 	}
 
 	/**
@@ -68,5 +77,12 @@ public class DefaultFlightFacade implements FlightFacade
 		this.flightConverter = flightConverter;
 	}
 
+	public Converter<AirportModel, AirportData> getAirportConverter() {
+		return airportConverter;
+	}
 
+	@Required
+	public void setAirportConverter(Converter<AirportModel, AirportData> airportConverter) {
+		this.airportConverter = airportConverter;
+	}
 }
