@@ -4,6 +4,7 @@
 package it.uiip.airport.storefront.controllers.airport;
 
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
+import de.hybris.platform.servicelayer.model.ModelService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +12,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
-import de.hybris.platform.servicelayer.model.ModelService;
-import it.uiip.airport.core.model.FlightModel;
-import it.uiip.airport.core.model.PassengerModel;
-import it.uiip.airport.core.model.TicketModel;
-import it.uiip.airport.core.service.FlightService;
-import it.uiip.airport.core.service.PassengerService;
-import it.uiip.airport.facades.data.TicketsData;
 import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -28,15 +21,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import it.uiip.airport.core.model.FlightModel;
+import it.uiip.airport.core.model.PassengerModel;
+import it.uiip.airport.core.model.TicketModel;
+import it.uiip.airport.core.service.FlightService;
+import it.uiip.airport.core.service.PassengerService;
 import it.uiip.airport.facades.AirportFacade;
 import it.uiip.airport.facades.FlightFacade;
 import it.uiip.airport.facades.PassengerFacade;
 import it.uiip.airport.facades.TicketsFacade;
 import it.uiip.airport.facades.data.AirportData;
 import it.uiip.airport.facades.data.PassengerData;
+import it.uiip.airport.facades.data.TicketsData;
 import it.uiip.airport.storefront.controllers.ControllerConstants;
-import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -147,13 +146,17 @@ public class DefaultAirportController extends AbstractPageController
 		ticket.setFlight(flight);
 		ticket.setPassenger(passenger);
 
-		modelService.save(ticket);
+		modelService.save(tempPassengerList.get(tempPassengerList.size() - 1));
 		modelService.save(flight);
+		modelService.save(ticket);
+
 
 		//Creare numero biglietto e posto, se è stato creato correttamente
 		model.addAttribute("name", newPassenger.getName());
 		model.addAttribute("surname", newPassenger.getSurname());
 		model.addAttribute("passport", newPassenger.getPassport());
+		model.addAttribute("code", newPassenger.getTicket().getCode());
+		model.addAttribute("code", newPassenger.getTicket().getNumberSeat());
 
 		return ControllerConstants.Views.Pages.NewTicketRegistered.NewTicketRegistered;
 	}
