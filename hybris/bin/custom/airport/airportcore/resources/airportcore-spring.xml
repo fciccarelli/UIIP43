@@ -920,7 +920,7 @@
 
     <!-- AIRPORT CRONJOB -->
     <bean id="defaultAirportCronJob"
-          class="it.uiip.airport.core.cronJob.impl.DefaultAirportCronJob"
+          class="it.uiip.airport.core.job.impl.DefaultAirportCronJob"
           parent="abstractJobPerformable">
     </bean>
 </beans>
