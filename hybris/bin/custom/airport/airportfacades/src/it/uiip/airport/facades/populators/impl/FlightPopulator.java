@@ -24,6 +24,7 @@ public class FlightPopulator implements Populator<FlightModel, FlightData>
 		target.setDayWeek(source.getDayWeek());
 		target.setDepartureTime(source.getDepartureTime());
 		target.setTimeArrival(source.getTimeArrival());
+
 	}
 
 }

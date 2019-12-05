@@ -920,7 +920,15 @@
 
     <!-- AIRPORT CRONJOB -->
     <bean id="defaultAirportCronJob"
-          class="it.uiip.airport.core.cronJob.impl.DefaultAirportCronJob"
+          class="it.uiip.airport.core.job.impl.DefaultAirportCronJob"
           parent="abstractJobPerformable">
     </bean>
+
+    <!-- SEND CONFIRMATION CRONJOB -->
+    <bean id="sendConfirmationCronJob"
+          class="it.uiip.airport.core.job.impl.SendConfirmationJob"
+          parent="abstractJobPerformable">
+        <property name="emailService" ref="emailService"/>
+    </bean>
+
 </beans>

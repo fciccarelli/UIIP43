@@ -70,10 +70,10 @@ public class AirportValidateInterceptor implements ValidateInterceptor
 			{
 				throw new InterceptorException("code is null");
 			}
-			else if (fm.getCode().length() != 12)
-			{
-				throw new InterceptorException("The code has length different from 12");
-			}
+//			else if (fm.getCode().length() != 12)
+//			{
+//				throw new InterceptorException("The code has length different from 12");
+//			}
 			if (fm.getDayWeek() == null)
 			{
 				throw new InterceptorException("dayWeek is null");

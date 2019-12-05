@@ -105,6 +105,4 @@ yarn-error.log*
 config/licence/installedSaplicenses.properties
 
 /config/hybris4intellij.properties
-
-
-
+local.properties

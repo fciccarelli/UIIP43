@@ -17,6 +17,7 @@ import it.uiip.airport.core.model.PassengerModel;
 import it.uiip.airport.core.model.TicketModel;
 import it.uiip.airport.core.service.FlightService;
 import it.uiip.airport.core.service.PassengerService;
+import it.uiip.airport.facades.data.FlightData;
 import it.uiip.airport.facades.data.TicketsData;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
@@ -116,7 +117,9 @@ public class DefaultAirportController extends AbstractPageController
 //	}
 
 	@RequestMapping(value = "/registerTicket", method = RequestMethod.GET)
-	public ModelAndView showForm() {
+	public ModelAndView showForm(final ModelMap model) {
+ 		List<FlightData> flightsData = flightFacade.getAllFlights();
+ 		model.put("flightsData", flightsData);
 		return new ModelAndView(ControllerConstants.Views.Pages.StoreNewTicket.NewTicketForm, "passenger", new PassengerData());
 	}
 
@@ -136,24 +139,33 @@ public class DefaultAirportController extends AbstractPageController
 		passenger.setPassport(newPassenger.getPassport());
 
 
-		FlightModel flight = flightService.getFlightByCode("1");
+		FlightModel flight = flightService.getFlightByCode("ABCD1234EFGH");
 		List<TicketModel> ticketList = flightService.getTicketByFlight(flight.getCode());
 		List<PassengerModel> passengersList = passengerService.getPassengersForFlight(flight.getCode());
 		flight.setTickets(ticketList);
 		List<PassengerModel> tempPassengerList = new ArrayList<>();
 		tempPassengerList.addAll(passengersList);
 		tempPassengerList.add(passenger);
+
+
 		flight.setPassengers(tempPassengerList);
 		ticket.setFlight(flight);
 		ticket.setPassenger(passenger);
 
-		modelService.save(ticket);
+		modelService.save(tempPassengerList.get(tempPassengerList.size()-1));
+
 		modelService.save(flight);
+
+		modelService.save(ticket);
+
 
 		//Creare numero biglietto e posto, se è stato creato correttamente
 		model.addAttribute("name", newPassenger.getName());
 		model.addAttribute("surname", newPassenger.getSurname());
 		model.addAttribute("passport", newPassenger.getPassport());
+		model.addAttribute("code", newPassenger.getTicket().getCode());
+		model.addAttribute("numberSeat", newPassenger.getTicket().getNumberSeat());
+
 
 		return ControllerConstants.Views.Pages.NewTicketRegistered.NewTicketRegistered;
 	}

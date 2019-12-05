@@ -21,39 +21,42 @@
 	</bean>
 	
 	<bean class="it.uiip.airport.facades.data.AirportData">
-		<property name="code" type="String"></property>
-		<property name="city" type="String"></property>
-		<property name="country" type="String"></property>
-		<property name="nRunways" type="Integer"></property>
+		<property name="code" type="String"/>
+		<property name="city" type="String"/>
+		<property name="country" type="String"/>
+		<property name="nRunways" type="Integer"/>
 	</bean>
 	
 
 	<bean class="it.uiip.airport.facades.data.PlaneData">
-		<property name="code" type="String"></property>
-		<property name="nPassengers" type="Integer"></property>
-		<property name="nGoods" type="Integer"></property>
+		<property name="code" type="String"/>
+		<property name="nPassengers" type="Integer"/>
+		<property name="nGoods" type="Integer"/>
 	</bean>
 
 	<bean class="it.uiip.airport.facades.data.TicketsData">
-		<property name="code" type="String"></property>
-		<property name="numberSeat" type="String"></property>
-		<property name="passenger" type="PassengerData"></property>
+		<property name="code" type="String"/>
+		<property name="numberSeat" type="String"/>
+		<property name="passenger" type="PassengerData"/>
 	</bean>
 	
 	<bean class="it.uiip.airport.facades.data.FlightData">
-		<property name="code" type="String"></property>
-		<property name="dayWeek" type="String"></property>
-		<property name="departureTime" type="String"></property>
-		<property name="timeArrival" type="String"></property>
+		<property name="code" type="String"/>
+		<property name="dayWeek" type="String"/>
+		<property name="departureTime" type="String"/>
+		<property name="timeArrival" type="String"/>
+		<property name="departureAirport" type="AirportData"/>
+		<property name="arrivalAirport" type="AirportData"/>
 	</bean>
 
 
 	<bean class="it.uiip.airport.facades.data.PassengerData">
-		<property name="uid" type="String"></property>
-		<property name="name" type="String"></property>
-		<property name="surname" type="String"></property>
-		<property name="passport" type="String"></property>
-		<property name="ticket" type="TicketsData"></property>
+		<property name="uid" type="String"/>
+		<property name="name" type="String"/>
+		<property name="surname" type="String"/>
+		<property name="passport" type="String"/>
+		<property name="ticket" type="TicketsData"/>
+		<property name="flight" type="FlightData"/>
 	</bean>
 
 <!--	<bean class="it.uiip.airport.facades.data.PassengerData2">
