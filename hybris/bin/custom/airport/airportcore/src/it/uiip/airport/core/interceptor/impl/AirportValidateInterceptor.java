@@ -1,6 +1,7 @@
 /**
  *
  */
+
 package it.uiip.airport.core.interceptor.impl;
 
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
@@ -15,10 +16,12 @@ import it.uiip.airport.core.model.PassengerModel;
 import it.uiip.airport.core.model.TicketModel;
 
 
+
 /**
  * @author pasop
  *
  */
+
 public class AirportValidateInterceptor implements ValidateInterceptor
 {
 	Logger log = LoggerFactory.getLogger(AirportValidateInterceptor.class);
@@ -26,6 +29,7 @@ public class AirportValidateInterceptor implements ValidateInterceptor
 	@Override
 	public void onValidate(final Object arg0, final InterceptorContext arg1) throws InterceptorException
 	{
+
 		// XXX Auto-generated method stub
 		if (arg0 instanceof TicketModel)
 		{
@@ -70,10 +74,12 @@ public class AirportValidateInterceptor implements ValidateInterceptor
 			{
 				throw new InterceptorException("code is null");
 			}
-			else if (fm.getCode().length() != 12)
-			{
-				throw new InterceptorException("The code has length different from 12");
-			}
+
+	//	else if (fm.getCode().length() != 12)
+	//		{
+		//		throw new InterceptorException("The code has length different from 12");
+		//	}
+
 			if (fm.getDayWeek() == null)
 			{
 				throw new InterceptorException("dayWeek is null");
@@ -91,3 +97,4 @@ public class AirportValidateInterceptor implements ValidateInterceptor
 	}
 
 }
+

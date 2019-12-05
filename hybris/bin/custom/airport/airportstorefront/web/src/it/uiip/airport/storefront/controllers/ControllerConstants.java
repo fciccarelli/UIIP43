@@ -182,7 +182,7 @@ public interface ControllerConstants {
             }
 
             interface NewTicketRegistered {
-                String NewTicketRegistered = "pages/airport/ticketRegistered";
+                String NewTicketRegistered = "pages/airport/newTicketRegistered";
             }
         }
 

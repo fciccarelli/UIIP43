@@ -115,10 +115,7 @@ public class DefaultAirportController extends AbstractPageController
 // 		return ControllerConstants.Views.Pages.StoreNewTicket.NewTicketForm;
 //	}
 
-	@RequestMapping(value = "/registerTicket", method = RequestMethod.GET)
-	public ModelAndView showForm() {
-		return new ModelAndView(ControllerConstants.Views.Pages.StoreNewTicket.NewTicketForm, "passenger", new PassengerData());
-	}
+
 
 	@RequestMapping(value = TICKET_REGISTRATION_PATTERN, method=RequestMethod.POST )
 	public String submit(@Valid @ModelAttribute("passenger") PassengerData newPassenger, BindingResult result, Model model){
@@ -147,8 +144,9 @@ public class DefaultAirportController extends AbstractPageController
 		ticket.setFlight(flight);
 		ticket.setPassenger(passenger);
 
-		modelService.save(ticket);
 		modelService.save(flight);
+		modelService.save(ticket);
+
 
 		//Creare numero biglietto e posto, se è stato creato correttamente
 		model.addAttribute("name", newPassenger.getName());
@@ -156,6 +154,11 @@ public class DefaultAirportController extends AbstractPageController
 		model.addAttribute("passport", newPassenger.getPassport());
 
 		return ControllerConstants.Views.Pages.NewTicketRegistered.NewTicketRegistered;
+	}
+	@RequestMapping(value = "/registerTicket", method = RequestMethod.GET)
+	public ModelAndView showForm() {
+ 		flightFacade.getAllFlights();
+		return new ModelAndView(ControllerConstants.Views.Pages.StoreNewTicket.NewTicketForm, "passenger", new PassengerData());
 	}
 
 //	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
