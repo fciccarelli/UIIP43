@@ -147,8 +147,10 @@ public class DefaultAirportController extends AbstractPageController
 		ticket.setFlight(flight);
 		ticket.setPassenger(passenger);
 
-		modelService.save(ticket);
+		modelService.save(tempPassengerList.get(tempPassengerList.size()-1));
 		modelService.save(flight);
+		modelService.save(ticket);
+
 
 		//Creare numero biglietto e posto, se è stato creato correttamente
 		model.addAttribute("name", newPassenger.getName());
