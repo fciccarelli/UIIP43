@@ -146,6 +146,7 @@ public class DefaultAirportController extends AbstractPageController
 		final List<PassengerModel> tempPassengerList = new ArrayList<>();
 		tempPassengerList.addAll(passengersList);
 		tempPassengerList.add(passenger);
+
 		flight.setPassengers(tempPassengerList);
 		ticket.setFlight(flight);
 		ticket.setPassenger(passenger);
